@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eslobar — Chat IA</title>
+  <meta name="color-scheme" content="dark" />
+  <link rel="stylesheet" href="static/css/app.css" />
+</head>
+<body>
+  <aside class="topbar">
+    <div class="brand">
+      <img src="static/images/icon_black.png" alt="Logo" class="logo"/>
+      <h1 class="app-title">Eslobar — Chat IA</h1>
+    </div>
+
+    <div class="personality">
+      <label for="mode">Personalidad:</label>
+      <select id="mode">
+        <option value="generic" selected>Genérico (GPT)</option>
+        <option value="agent">Agente (con navegador)</option>
+      </select>
+      <button id="agentConnectBtn" class="ghost" title="Conectar visor" style="display:none">Conectar visor</button>
+    </div>
+  </aside>
+
+  <main class="layout">
+    <section id="chat" class="chat">
+      <div id="messages" class="messages"></div>
+      <div class="composer">
+        <textarea id="input" rows="1" placeholder="Escribí tu mensaje o instrucción..."></textarea>
+        <button id="sendBtn">Enviar</button>
+      </div>
+    </section>
+
+    <section id="agentPanel" class="agent-panel" style="display:none">
+      <header class="agent-header">
+        <strong>Agente en vivo</strong>
+        <div class="agent-actions">
+          <button id="openCanva">Abrir Canva</button>
+          <button id="pauseAgent">Pausar</button>
+          <button id="resumeAgent">Reanudar</button>
+        </div>
+      </header>
+
+      <!-- Visor del agente (capturas en tiempo real + control) -->
+      <div class="agent-view">
+        <div class="agent-stream">
+          <img id="agentFrame" alt="pantalla del agente" />
+          <canvas id="agentOverlay"></canvas>
+        </div>
+        <div class="agent-logs">
+          <h4>Estado</h4>
+          <pre id="agentStatus">Desconectado</pre>
+          <h4>Pestañas</h4>
+          <ul id="agentTabs"></ul>
+        </div>
+      </div>
+
+      <footer class="agent-tip">
+        Consejo: iniciá sesión manualmente cuando el agente abra Canva (tomás control con tu mouse/teclado sobre el visor).
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Configurable: URL pública del runner (Render/Railway/VPS), p.ej. https://tu-runner.com
+    window.AGENT_RUNNER_URL = localStorage.getItem("AGENT_RUNNER_URL") || "http://localhost:4000";
+  </script>
+  <script src="static/script/app.js"></script>
+</body>
+</html>
