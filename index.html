@@ -7,21 +7,24 @@
   <meta name="color-scheme" content="dark" />
   <link rel="stylesheet" href="static/css/app.css" />
 </head>
-
 <body>
-  <!-- Navbar estilo ChatGPT -->
+  <!-- Topbar estilo ChatGPT -->
   <header class="top-nav">
     <div class="nav-left">
-      <button id="modelSelector" class="model-btn">
+      <!-- Selector de modelo -->
+      <button id="modelSelector" class="model-btn" aria-haspopup="listbox" aria-expanded="false">
         <img src="static/images/icon_black.png" alt="Logo" class="nav-logo" />
-        <span id="currentModelName">Eslobar</span>
+        <span id="currentModelName">GPT-4 mini</span>
         <span class="chevron">▾</span>
       </button>
 
-      <!-- Dropdown Modelos -->
-      <div id="modelDropdown" class="dropdown hidden">
-        <button class="dropdown-item" data-model="generic">🧠 Genérico (GPT)</button>
-        <button class="dropdown-item" data-model="agent">🧑‍💻 Agente con Navegador</button>
+      <!-- Dropdown de modelos -->
+      <div id="modelDropdown" class="dropdown hidden" role="listbox">
+        <button class="dropdown-item" data-model="gpt-3.5-turbo">Eslobar 2.5</button>
+        <button class="dropdown-item" data-model="gpt-4o-mini">Eslobar 3-mini</button>
+        <button class="dropdown-item" data-model="gpt-4-turbo">Eslobar 3</button>
+        <div class="separator"></div>
+        <button class="dropdown-item" data-model="agent">🧑‍💻 Agente con navegador</button>
       </div>
     </div>
 
@@ -31,20 +34,20 @@
     </div>
   </header>
 
-  <!-- Contenedor principal del chat -->
+  <!-- Chat -->
   <main id="main" class="main">
-    <div id="messages" class="messages"></div>
+    <div id="messages" class="messages" aria-live="polite"></div>
 
-    <!-- Mensaje inicial cuando no hay chats -->
+    <!-- Bienvenida -->
     <div id="welcome" class="welcome">
       <h1>¿Qué tienes en mente hoy?</h1>
     </div>
 
-    <!-- Input estilo ChatGPT -->
+    <!-- Composer -->
     <div class="composer">
       <div class="input-wrapper">
-        <button id="attachBtn" class="attach-btn">
-          <img src="static/images/icon1.png" alt="Adjuntar" />
+        <button id="quickPlus" class="attach-btn" title="Acciones rápidas">
+          <img src="static/images/icon1.png" alt="Acciones" />
         </button>
 
         <textarea id="input" rows="1" placeholder="Escribí tu mensaje..."></textarea>
@@ -58,11 +61,11 @@
     </div>
   </main>
 
+  <!-- Mantener tu runner intacto -->
   <script>
     window.AGENT_RUNNER_URL = localStorage.getItem("AGENT_RUNNER_URL") || "https://agent-runner-tpcc.onrender.com";
   </script>
   <script src="static/script/app.js"></script>
 </body>
 </html>
-
 
