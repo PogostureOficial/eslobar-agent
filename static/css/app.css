@@ -5,7 +5,7 @@
   --text:#000;
   --muted:#9b9ba1;
   --line:#26272e;
-  --hover:#1c1c20;
+  --hover:#fff;
   --accent:#8ab4ff;
   --radius:12px;
   --radius-lg:16px;
@@ -75,8 +75,8 @@ body{
   display:flex;justify-content:center;
 }
 .input-wrapper{
-  background:var(--surface-2);border:1px solid var(--line);width:min(780px,94%);
-  border-radius:var(--radius);display:flex;align-items:center;padding:6px 8px;gap:6px;
+  background: #fff;width:min(780px,94%);
+  border-radius: 999px;display:flex;align-items:center;padding:6px 8px;gap:6px;
 }
 .attach-btn,.send-btn{
   background:none;border:none;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center
@@ -139,4 +139,5 @@ body{
   .welcome h1{font-size:26px}
   .input-wrapper{width:95%}
 }
+
 
