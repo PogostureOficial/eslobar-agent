@@ -140,6 +140,82 @@ body{
   .input-wrapper{width:95%}
 }
 
+/* ===== Visor con look exacto ===== */
+.agent-shell{
+  border-radius:16px;
+  padding:2px;
+  background:linear-gradient(180deg,#1673ff 0%, #07c2ff 100%);
+}
+.agent-inner{
+  background:#121418;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #22262f;
+  box-shadow:0 12px 30px rgba(0,0,0,.35) inset;
+}
+
+/* Top bar */
+.agent-top{
+  background:#0f1116;
+  padding:10px 14px;
+  border-bottom:1px solid #22262f;
+}
+.agent-tab{
+  display:inline-block;
+  background:#181b23;
+  color:#cfd3dc;
+  border:1px solid #2c3140;
+  border-radius:8px;
+  font-size:12px;
+  padding:6px 10px;
+}
+
+/* Área negra del frame */
+.agent-stage{
+  background:#0b0c10;
+}
+.agent-stage img.frame{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* Barra inferior exacta */
+.agent-statusbar{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:12px 16px;
+  background:#0f1116;
+  border-top:1px solid #22262f;
+}
+.agent-progress{
+  flex:1;
+  height:8px;
+  background:#ffffff;
+  opacity:.95;
+  border-radius:999px;
+  position:relative;
+}
+.agent-progress-fill{
+  content:"";
+  position:absolute; left:32px; right:110px; top:0; bottom:0;
+  /* solo para dar una “brecha” y simular los extremos redondeados */
+}
+.agent-live{
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.02em;
+  color:#9fc7ff;
+  display:flex; align-items:center; gap:8px;
+}
+.agent-live .dot{
+  width:10px; height:10px;
+  background:#1e7bff;
+  border-radius:999px;
+  display:inline-block;
+}
+
 
 
 
