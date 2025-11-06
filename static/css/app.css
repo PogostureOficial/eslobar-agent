@@ -28,15 +28,15 @@ body{
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:8px;background:var(--surface-2);
-  border:1px solid var(--line);color:var(--text);padding:6px 10px;border-radius:10px;
+  display:flex;align-items:center;gap:8px;background: #F2F2F2;
+  border:0px solid var(--line);color:var(--text);padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
 }
 .model-btn:hover{background:var(--hover)}
 .nav-logo{width:18px;height:18px}
 .chevron{font-size:12px;opacity:.8}
 .dropdown{
-  position:absolute;top:44px;left:0;background:var(--surface-2);border:1px solid var(--line);
+  position:absolute;top:44px;left:0;background: #fff;border:0px solid var(--line);
   border-radius:12px;width:220px;padding:6px 6px;display:flex;flex-direction:column;gap:4px;
   box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
@@ -58,7 +58,7 @@ body{
   display:flex;flex-direction:column;gap:14px;overflow-y:auto;
 }
 .msg{
-  background: #fff;border:1px solid var(--line);padding:14px;border-radius:var(--radius);
+  background: #fff;border:0px solid var(--line);padding:14px;border-radius: 999px;
   max-width:680px;white-space:pre-wrap;line-height:1.5;
 }
 .msg.user{align-self:flex-end;background:#fff}
@@ -139,6 +139,7 @@ body{
   .welcome h1{font-size:26px}
   .input-wrapper{width:95%}
 }
+
 
 
 
