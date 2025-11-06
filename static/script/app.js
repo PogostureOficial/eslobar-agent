@@ -91,37 +91,31 @@ async function askGeneric(text){
 }
 
 // ======= Tarjeta “En Directo” (marco azul) =======
-function makeLiveCard({tabTitle='Nueva pestaña…'}={}){
+function makeLiveCard(){
   const wrap = document.createElement('div');
   wrap.className = 'msg assistant';
 
-  // Shell azul + interior
+  // Shell azul + interior con top-tab y statusbar exactos
   wrap.innerHTML = `
     <div class="agent-shell">
       <div class="agent-inner">
+        <!-- Top bar con pestaña -->
         <div class="agent-top">
-          <div class="agent-tab">${tabTitle}</div>
-          <div class="spacer"></div>
-          <div class="status" aria-live="polite">Conectando…</div>
+          <div class="agent-tab">Nueva pestaña…</div>
         </div>
 
+        <!-- Stage negro -->
         <div class="agent-stage">
           <img class="frame" alt="pantalla del agente"/>
           <canvas class="agent-overlay"></canvas>
-          <img class="agent-cursor" src="static/images/cursor.png" />
-          <div class="agent-tip"></div>
+          <img class="agent-cursor" src="static/images/cursor.png" style="display:none"/>
+          <div class="agent-tip" style="display:none"></div>
         </div>
 
-        <div class="agent-bottom">
-          <div class="live-pill"><span class="live-dot"></span><strong>EN DIRECTO</strong></div>
-          <div class="progress-bar"></div>
-          <div class="url" style="opacity:.8;font-size:12px"></div>
-        </div>
-
-        <div class="quick-actions">
-          <button data-q="canva">Créame un Canva sobre: </button>
-          <button data-q="search">Busca información sobre: </button>
-          <button data-q="open">Abrí la página: </button>
+        <!-- Statusbar inferior: barra blanca + punto azul + EN DIRECTO -->
+        <div class="agent-statusbar">
+          <div class="agent-progress"><span class="agent-progress-fill"></span></div>
+          <div class="agent-live"><span class="dot"></span> EN DIRECTO</div>
         </div>
       </div>
     </div>
@@ -131,44 +125,25 @@ function makeLiveCard({tabTitle='Nueva pestaña…'}={}){
 
   const frame   = wrap.querySelector('.frame');
   const overlay = wrap.querySelector('.agent-overlay');
-  const cursor  = wrap.querySelector('.agent-cursor');
   const tip     = wrap.querySelector('.agent-tip');
-  const status  = wrap.querySelector('.status');
-  const urlEl   = wrap.querySelector('.url');
+  const liveEl  = wrap.querySelector('.agent-live');
 
-  // Ajuste del canvas
+  // Ajuste de canvas
   function fit(){
     overlay.width  = overlay.clientWidth;
     overlay.height = overlay.clientHeight;
   }
   new ResizeObserver(fit).observe(overlay); fit();
 
-  const state = { timer:null, last:{x:.5,y:.5}, anim:null };
+  const state = { timer:null };
 
-  // Refresh del frame cada 300 ms
+  // refresco cada 300 ms
   async function startStream(){
     if(state.timer) clearInterval(state.timer);
     state.timer = setInterval(async ()=>{
       if(!agentSessionId) return;
       frame.src = `${window.AGENT_RUNNER_URL}/api/session/${agentSessionId}/frame?ts=${Date.now()}`;
-      try{
-        const s = await fetch(`${window.AGENT_RUNNER_URL}/api/session/${agentSessionId}/status`);
-        const d = await s.json();
-        if(d.ok){
-          status.textContent = d.status.paused ? 'Pausado' : 'En vivo';
-          urlEl.textContent  = d.status.url || '';
-        }
-      }catch{}
     }, 300);
-  }
-
-  function moveCursor(rx, ry, label){
-    const lx = rx * overlay.clientWidth;
-    const ly = ry * overlay.clientHeight;
-    cursor.style.display = 'block';
-    cursor.style.transform = `translate(${lx}px, ${ly}px)`;
-    if(label){ tip.style.display='block'; tip.textContent = label; tip.style.transform = `translate(${lx}px, ${ly+28}px)`; }
-    state.last = {x:rx,y:ry};
   }
 
   // Click dentro del visor
@@ -177,30 +152,19 @@ function makeLiveCard({tabTitle='Nueva pestaña…'}={}){
     const r = overlay.getBoundingClientRect();
     const rx = (ev.clientX - r.left)/r.width;
     const ry = (ev.clientY - r.top)/r.height;
-    moveCursor(rx, ry, 'Clic');
     await fetch(`${window.AGENT_RUNNER_URL}/api/session/${agentSessionId}/click`, {
       method:'POST', headers:{'Content-Type':'application/json'},
       body:JSON.stringify({ x:rx, y:ry, button:'left' })
     });
   });
 
-  // Acciones rápidas (inyectan texto al input)
-  wrap.querySelector('.quick-actions').addEventListener('click', (e)=>{
-    const b = e.target.closest('button'); if(!b) return;
-    let prefix = '';
-    if(b.dataset.q === 'canva') prefix = 'Entrá a Canva y créame un folleto sobre ';
-    if(b.dataset.q === 'search') prefix = 'Busca información sobre ';
-    if(b.dataset.q === 'open') prefix = 'Abrí la página ';
-    inputEl.value = prefix;
-    autosize(); setSendEnabled(); inputEl.focus();
-  });
-
   return {
     startStream,
-    setStatus:(t)=> status.textContent=t,
-    setTip:(t)=>{ tip.style.display = t ? 'block':'none'; if(t) tip.textContent=t; }
+    setStatus:(t)=>{ liveEl.dataset.state = t; },
+    setTip:(t)=>{ tip.style.display = t ? 'block' : 'none'; if(t) tip.textContent=t; }
   };
 }
+
 
 // ======= Agent session helpers =======
 async function ensureAgentSession(){
@@ -261,3 +225,4 @@ inputEl.addEventListener('keydown', (e)=>{
     e.preventDefault(); sendBtn.click();
   }
 });
+
