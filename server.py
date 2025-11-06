@@ -14,28 +14,22 @@ def root():
 
 @app.route('/<path:path>')
 def assets(path):
-    # sirve archivos estáticos desde /static y otros
     return send_from_directory('.', path)
 
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.get_json(force=True)
     user_msg = data.get('message','').strip()
-    personality = data.get('personality','generic')
+    model = data.get('model', 'gpt-4o-mini')  # <- viene del selector
 
     if not user_msg:
         return jsonify({"reply":"(mensaje vacío)"}), 200
 
-    # Prompt muy simple para MVP
     system = "Eres un asistente útil, claro y conciso. Responde en español."
-    if personality == 'generic':
-        pass
-    else:
-        system += " Habla como un experto ejecutor de tareas."
 
     try:
         resp = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model,
             messages=[
                 {"role":"system","content":system},
                 {"role":"user","content":user_msg}
