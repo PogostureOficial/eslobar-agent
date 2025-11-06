@@ -1,5 +1,5 @@
 :root{
-  --bg:#fafafa;
+  --bg:#EBEBEB;
   --surface:#0d0d0f;
   --surface-2:#111214;
   --text:#000;
@@ -84,7 +84,7 @@ body{
 .attach-btn img{width:22px;height:22px;opacity:.8}
 .attach-btn:hover img{opacity:1}
 #input{
-  flex:1;resize:none;border:none;background:transparent;color:var(--text);font-size:15px;
+  flex:1;resize:none;border:none;background:transparent;color:var(--text);font-size:15px;font-family:"Segoe UI", Inter, Roboto, system-ui, sans-serif;
   padding:8px;max-height:150px;overflow-y:auto;
 }
 #input:focus{outline:none}
@@ -139,5 +139,6 @@ body{
   .welcome h1{font-size:26px}
   .input-wrapper{width:95%}
 }
+
 
 
