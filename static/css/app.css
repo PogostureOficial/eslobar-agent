@@ -1,5 +1,5 @@
 :root{
-  --bg:#EBEBEB;
+  --bg:#F2F2F2;
   --surface:#0d0d0f;
   --surface-2:#111214;
   --text:#000;
@@ -22,7 +22,7 @@ body{
 
 /* Topbar */
 .top-nav{
-  height:52px;background:var(--surface);border-bottom:1px solid var(--line);
+  height:52px;background: #F2F2F2;border-bottom:1px solid #F2F2F2;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
   position:sticky;top:0;z-index:10;
 }
@@ -139,6 +139,7 @@ body{
   .welcome h1{font-size:26px}
   .input-wrapper{width:95%}
 }
+
 
 
 
