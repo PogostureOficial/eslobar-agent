@@ -95,75 +95,69 @@ function makeLiveCard(){
   const wrap = document.createElement('div');
   wrap.className = 'msg assistant';
 
-  // Shell azul + interior con top-tab y statusbar exactos
   wrap.innerHTML = `
-    <div class="agent-shell">
-      <div class="agent-inner">
-        <!-- Top bar con pestaña -->
-        <div class="agent-top">
-          <div class="agent-tab">Nueva pestaña…</div>
+    <div class="agent-card">
+      <div class="agent-frame-wrap">
+        <div class="agent-tabbar">
+          <img class="favicon" alt="favicon" />
+          <span class="title">Nueva pestaña…</span>
         </div>
-
-        <!-- Stage negro -->
-        <div class="agent-stage">
+        <div class="agent-viewport" style="aspect-ratio: 16 / 9;">
           <img class="frame" alt="pantalla del agente"/>
-          <canvas class="agent-overlay"></canvas>
-          <img class="agent-cursor" src="static/images/cursor.png" style="display:none"/>
-          <div class="agent-tip" style="display:none"></div>
-        </div>
-
-        <!-- Statusbar inferior: barra blanca + punto azul + EN DIRECTO -->
-        <div class="agent-statusbar">
-          <div class="agent-progress"><span class="agent-progress-fill"></span></div>
-          <div class="agent-live"><span class="dot"></span> EN DIRECTO</div>
         </div>
       </div>
+      <div class="agent-meta"></div>
     </div>
   `;
   messagesEl.appendChild(wrap);
   messagesEl.scrollTop = messagesEl.scrollHeight;
 
-  const frame   = wrap.querySelector('.frame');
-  const overlay = wrap.querySelector('.agent-overlay');
-  const tip     = wrap.querySelector('.agent-tip');
-  const liveEl  = wrap.querySelector('.agent-live');
+  const frameEl   = wrap.querySelector('.frame');
+  const viewEl    = wrap.querySelector('.agent-viewport');
+  const titleEl   = wrap.querySelector('.agent-tabbar .title');
+  const favEl     = wrap.querySelector('.agent-tabbar .favicon');
 
-  // Ajuste de canvas
-  function fit(){
-    overlay.width  = overlay.clientWidth;
-    overlay.height = overlay.clientHeight;
+  // 1) Ajustar el aspect-ratio EXACTO al del frame real
+  function lockAspectFromImage(){
+    // al cargar el primer frame, usamos su tamaño real
+    const w = frameEl.naturalWidth || 1280;
+    const h = frameEl.naturalHeight || 720;
+    viewEl.style.aspectRatio = `${w} / ${h}`;
   }
-  new ResizeObserver(fit).observe(overlay); fit();
+  frameEl.addEventListener('load', lockAspectFromImage);
 
-  const state = { timer:null };
-
-  // refresco cada 300 ms
+  // 2) Polling de frame + status cada 300ms
+  const state = { timer: null };
   async function startStream(){
     if(state.timer) clearInterval(state.timer);
     state.timer = setInterval(async ()=>{
       if(!agentSessionId) return;
-      frame.src = `${window.AGENT_RUNNER_URL}/api/session/${agentSessionId}/frame?ts=${Date.now()}`;
+      // refrescar imagen
+      frameEl.src = `${window.AGENT_RUNNER_URL}/api/session/${agentSessionId}/frame?ts=${Date.now()}`;
+      // pedir status para título y favicon
+      try{
+        const s = await fetch(`${window.AGENT_RUNNER_URL}/api/session/${agentSessionId}/status`);
+        const d = await s.json();
+        if(d?.ok){
+          // título de la página si lo expone el runner
+          if(d.status?.title) titleEl.textContent = d.status.title;
+          // favicon: si no viene, inferimos /favicon.ico del host actual
+          if(d.status?.favicon){
+            favEl.src = d.status.favicon;
+          }else if(d.status?.url){
+            try{
+              const u = new URL(d.status.url);
+              favEl.src = `${u.origin}/favicon.ico`;
+            }catch{}
+          }
+        }
+      }catch{}
     }, 300);
   }
 
-  // Click dentro del visor
-  wrap.querySelector('.agent-stage').addEventListener('click', async (ev)=>{
-    if(!agentSessionId) return;
-    const r = overlay.getBoundingClientRect();
-    const rx = (ev.clientX - r.left)/r.width;
-    const ry = (ev.clientY - r.top)/r.height;
-    await fetch(`${window.AGENT_RUNNER_URL}/api/session/${agentSessionId}/click`, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ x:rx, y:ry, button:'left' })
-    });
-  });
-
-  return {
-    startStream,
-    setStatus:(t)=>{ liveEl.dataset.state = t; },
-    setTip:(t)=>{ tip.style.display = t ? 'block' : 'none'; if(t) tip.textContent=t; }
-  };
+  return { startStream };
 }
+
 
 
 // ======= Agent session helpers =======
@@ -225,4 +219,5 @@ inputEl.addEventListener('keydown', (e)=>{
     e.preventDefault(); sendBtn.click();
   }
 });
+
 
