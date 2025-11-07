@@ -216,6 +216,67 @@ body{
   display:inline-block;
 }
 
+/* ===== Visor EXACTO según maqueta ===== */
+.agent-card{
+  /* la imagen azul con barra blanca viene del PNG */
+  background: url("static/images/background-agent.png") center/cover no-repeat;
+  border-radius: 26px;               /* coincidir radios de la maqueta */
+  padding: 38px 34px 54px 50px;      /* margen interior para que encaje el rectángulo gris y la pestaña */
+}
+
+.agent-frame-wrap{
+  background: #2f2f2f;               /* gris interior */
+  border-radius: 18px;                /* radios del rectángulo interior */
+  position: relative;
+  overflow: hidden;
+  /* El aspect-ratio lo fijamos por JS al del frame real (ej: 1280/720) */
+  width: 100%;
+}
+
+/* pestaña superior dentro del rectángulo gris */
+.agent-tabbar{
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: #222;                   /* “píldora” oscura */
+  color: #d9d9d9;
+  border-radius: 14px 14px 10px 10px; /* igual al look redondeado */
+  border: 1px solid rgba(0,0,0,.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+  font-size: 13px;
+  z-index: 3;
+}
+.agent-tabbar img.favicon{
+  width: 14px; height: 14px; border-radius: 3px; flex: 0 0 auto;
+}
+.agent-tabbar .title{
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: min(60vw, 420px);
+}
+
+/* zona donde pintamos el frame */
+.agent-viewport{
+  position: relative;
+  width: 100%;
+  /* La altura se resuelve con aspect-ratio dinámico */
+}
+.agent-viewport img.frame{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;         /* no deforma */
+  background: #000;            /* lo que no ocupe el frame queda negro */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* opcional: ocultar cualquier texto debajo si no lo querés */
+.agent-meta{ display: none; }
+
+
 
 
 
