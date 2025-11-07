@@ -219,7 +219,7 @@ body{
 /* ===== Visor EXACTO según maqueta ===== */
 .agent-card{
   /* la imagen azul con barra blanca viene del PNG */
-  background: url("static/images/background-agent.png") center/cover no-repeat;
+  background: url("/static/images/background-agent.png") center/cover no-repeat;
   border-radius: 26px;               /* coincidir radios de la maqueta */
   padding: 38px 34px 54px 50px;      /* margen interior para que encaje el rectángulo gris y la pestaña */
 }
@@ -275,6 +275,7 @@ body{
 
 /* opcional: ocultar cualquier texto debajo si no lo querés */
 .agent-meta{ display: none; }
+
 
 
 
