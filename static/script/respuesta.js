@@ -63,8 +63,10 @@ askGeneric = async function(text) {
     loadingEl.remove();
 
     // Crear burbuja vacía para escribir ahí
-    const aiDiv = addTextMsg('assistant', ""); 
-    typeWriterEffect(aiDiv, data.reply || "(sin respuesta)");
+    const aiDiv = addTextMsg('assistant', "");
+    const html = markdownToHTML(data.reply || "(sin respuesta)");
+    typeWriterEffect(aiDiv, html);
+
     
   } catch (err) {
     loadingEl.remove();
@@ -72,5 +74,6 @@ askGeneric = async function(text) {
     typeWriterEffect(aiDiv, "Error al consultar el modelo.");
   }
 };
+
 
 
