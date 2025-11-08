@@ -8,17 +8,56 @@
  * text: texto completo
  * speed: velocidad (ms por letra)
  */
-function typeWriterEffect(element, text, speed = 5) {
-  let i = 0;
-  function typing() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, speed);
+function typeWriterEffect(element, html, speed = 8) {
+  const container = document.createElement("div");
+  container.innerHTML = html;
+
+  const nodes = Array.from(container.childNodes);
+
+  function processNode(index = 0) {
+    if (index >= nodes.length) return;
+
+    const node = nodes[index];
+
+    // Caso 1: Si es un título, lista, HR o elemento estructural → mostrar instantáneo
+    if (
+      node.tagName === "H1" ||
+      node.tagName === "H2" ||
+      node.tagName === "H3" ||
+      node.tagName === "UL" ||
+      node.tagName === "OL" ||
+      node.tagName === "HR"
+    ) {
+      element.appendChild(node);
+      element.scrollTop = element.scrollHeight;
+      setTimeout(() => processNode(index + 1), 80);
+      return;
+    }
+
+    // Caso 2: Si es texto o un párrafo → animarlo
+    if (node.nodeType === Node.ELEMENT_NODE || node.nodeType === Node.TEXT_NODE) {
+      const text = node.innerHTML || node.textContent;
+      const newEl = document.createElement(node.tagName || "p");
+      element.appendChild(newEl);
+
+      let i = 0;
+      function type() {
+        newEl.innerHTML = text.slice(0, i++);
+        element.scrollTop = element.scrollHeight;
+
+        if (i <= text.length) {
+          setTimeout(type, speed);
+        } else {
+          setTimeout(() => processNode(index + 1), 120);
+        }
+      }
+      type();
     }
   }
-  typing();
+
+  processNode();
 }
+
 
 /**
  * Muestra burbuja de carga de la IA
@@ -74,6 +113,7 @@ askGeneric = async function(text) {
     typeWriterEffect(aiDiv, "Error al consultar el modelo.");
   }
 };
+
 
 
 
