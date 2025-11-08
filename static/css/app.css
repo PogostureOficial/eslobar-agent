@@ -298,6 +298,8 @@ body{
 
 /* ========= ESTILO PARA RESPUESTAS DE LA IA (tipo ChatGPT) ========= */
 
+/* === Estilo de respuesta tipo ChatGPT Profesional === */
+
 .msg.assistant {
   font-size: 15px;
   line-height: 1.45;
@@ -308,46 +310,51 @@ body{
 .msg.assistant h1 {
   font-size: 22px;
   font-weight: 600;
-  margin: -50px 0 -50px;
+  margin: 2px 0 8px;
 }
 
 .msg.assistant h2 {
   font-size: 19px;
   font-weight: 600;
-  margin: -20px 0 0px;
+  margin: 12px 0 6px;
 }
 
 .msg.assistant h3 {
   font-size: 17px;
   font-weight: 600;
-  margin: -50px 0 -20px;
+  margin: 8px 0 4px;
 }
 
 /* Párrafos */
 .msg.assistant p {
-  margin: 6px 0;
-  line-height: 1.45;
+  margin: 4px 0 8px;
+  line-height: 1.48;
 }
 
 /* Listas */
 .msg.assistant ul,
 .msg.assistant ol {
-  margin: 4px 0 10px 5px;
+  margin: 2px 0 10px 22px;
   padding: 0;
 }
 
 .msg.assistant li {
   margin: 3px 0;
-  line-height: 1.4;
+  line-height: 1.42;
+}
+
+/* Sub-listas */
+.msg.assistant ul ul,
+.msg.assistant ol ol {
+  margin: 2px 0 6px 18px;
 }
 
 /* Línea separadora (---) */
 .msg.assistant hr {
   border: none;
-  border-top: 1px solid #dcdcdc;
-  margin: 14px 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 16px 0;
 }
-
 
 
 
