@@ -1,17 +1,22 @@
 // ==================
-// RESPUESTA CON LOADING + TYPEWRITER
+// RESPUESTA CON LOADING + TYPEWRITER (SMART)
 // ==================
 
+function smartScroll() {
+  messagesEl.scrollTo({
+    top: messagesEl.scrollHeight,
+    behavior: "smooth"
+  });
+}
+
 /**
- * Efecto máquina de escribir
- * element: nodo donde escribir
- * text: texto completo
- * speed: velocidad (ms por letra)
+ * Typewriter SMART: respeta HTML
+ * - Títulos, listas, hr → aparecen instantáneo
+ * - Párrafos → animados
  */
-function typeWriterEffect(element, html, speed = 8) {
+function typeWriterSmart(element, html, speed = 8) {
   const container = document.createElement("div");
   container.innerHTML = html;
-
   const nodes = Array.from(container.childNodes);
 
   function processNode(index = 0) {
@@ -19,7 +24,7 @@ function typeWriterEffect(element, html, speed = 8) {
 
     const node = nodes[index];
 
-    // Caso 1: Si es un título, lista, HR o elemento estructural → mostrar instantáneo
+    // Caso 1: Elementos instantáneos (no tipeados)
     if (
       node.tagName === "H1" ||
       node.tagName === "H2" ||
@@ -29,21 +34,21 @@ function typeWriterEffect(element, html, speed = 8) {
       node.tagName === "HR"
     ) {
       element.appendChild(node);
-      element.scrollTop = element.scrollHeight;
-      setTimeout(() => processNode(index + 1), 80);
+      smartScroll();
+      setTimeout(() => processNode(index + 1), 100);
       return;
     }
 
-    // Caso 2: Si es texto o un párrafo → animarlo
+    // Caso 2: Texto / párrafos → animados
     if (node.nodeType === Node.ELEMENT_NODE || node.nodeType === Node.TEXT_NODE) {
-      const text = node.innerHTML || node.textContent;
+      const text = node.innerHTML || node.textContent || "";
       const newEl = document.createElement(node.tagName || "p");
       element.appendChild(newEl);
 
       let i = 0;
       function type() {
         newEl.innerHTML = text.slice(0, i++);
-        element.scrollTop = element.scrollHeight;
+        smartScroll();
 
         if (i <= text.length) {
           setTimeout(type, speed);
@@ -58,24 +63,21 @@ function typeWriterEffect(element, html, speed = 8) {
   processNode();
 }
 
-
 /**
  * Muestra burbuja de carga de la IA
- * Devuelve el elemento creado para luego eliminarlo
  */
 function showLoadingBubble() {
   const div = document.createElement('div');
   div.className = "msg assistant";
-  
+
   const bubble = document.createElement('div');
   bubble.className = "ai-loading";
 
   div.appendChild(bubble);
   messagesEl.appendChild(div);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
-  return div; // para poder borrarlo después
+  smartScroll();
+  return div;
 }
-
 
 // ============= PATCH a askGeneric para integrar la UI =============
 
@@ -86,7 +88,6 @@ const originalAskGeneric = askGeneric;
 askGeneric = async function(text) {
   addTextMsg('user', text);
 
-  // Mostrar burbuja de carga
   const loadingEl = showLoadingBubble();
 
   try {
@@ -98,22 +99,15 @@ askGeneric = async function(text) {
 
     const data = await res.json();
 
-    // Quitar loading
     loadingEl.remove();
 
-    // Crear burbuja vacía para escribir ahí
     const aiDiv = addTextMsg('assistant', "");
     const html = markdownToHTML(data.reply || "(sin respuesta)");
-    typeWriterEffect(aiDiv, html);
+    typeWriterSmart(aiDiv, html);
 
-    
   } catch (err) {
     loadingEl.remove();
     const aiDiv = addTextMsg('assistant', "");
-    typeWriterEffect(aiDiv, "Error al consultar el modelo.");
+    typeWriterSmart(aiDiv, "Error al consultar con el modelo.");
   }
 };
-
-
-
-
