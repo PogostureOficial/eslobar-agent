@@ -28,7 +28,7 @@ body{
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:8px;background: #F2F2F2;
+  display:flex;align-items:center;gap:8px;background: #fff;
   border:0px solid var(--line);color:var(--text);padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
 }
@@ -278,6 +278,7 @@ body{
 
 /* opcional: ocultar cualquier texto debajo si no lo querés */
 .agent-meta{ display: none; }
+
 
 
 
