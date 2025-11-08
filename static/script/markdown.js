@@ -1,29 +1,32 @@
-// Convierte Markdown básico a HTML
 function markdownToHTML(md) {
   if (!md) return "";
 
-  return md
-    // Títulos
-    .replace(/^### (.*$)/gim, "<h3>$1</h3>")
-    .replace(/^## (.*$)/gim, "<h2>$1</h2>")
-    .replace(/^# (.*$)/gim, "<h1>$1</h1>")
+  // Normalizar saltos múltiples: convertir 3+ saltos en 2
+  md = md.replace(/\n{3,}/g, "\n\n");
 
-    // Negritas
-    .replace(/\*\*(.*?)\*\*/gim, "<strong>$1</strong>")
+  // Encabezados
+  md = md.replace(/^### (.*)$/gim, "<h3>$1</h3>");
+  md = md.replace(/^## (.*)$/gim, "<h2>$1</h2>");
+  md = md.replace(/^# (.*)$/gim, "<h1>$1</h1>");
 
-    // Separadores ---
-    .replace(/^---$/gim, "<hr>")
+  // Negritas
+  md = md.replace(/\*\*(.*?)\*\*/gim, "<strong>$1</strong>");
 
-    // Listas con viñetas
-    .replace(/^\- (.*$)/gim, "<li>$1</li>")
-    .replace(/^• (.*$)/gim, "<li>$1</li>")
+  // Línea separadora
+  md = md.replace(/^\s*---\s*$/gim, "<hr>");
 
-    // Listas numeradas
-    .replace(/^\d+\. (.*$)/gim, "<li>$1</li>")
+  // Listas con viñeta
+  md = md.replace(/^\s*[-•] (.*)$/gim, "<ul><li>$1</li></ul>");
 
-    // Encapsular <li> en <ul> o <ol> automáticamente
-    .replace(/(<li>[\s\S]*?<\/li>)/gim, "<ul>$1</ul>")
+  // Listas numeradas
+  md = md.replace(/^\s*\d+\. (.*)$/gim, "<ol><li>$1</li></ol>");
 
-    // Saltos de línea → párrafos
-    .replace(/\n$/gim, "<br>");
+  // Compactar listas: juntar <ul>…</ul> repetidos
+  md = md.replace(/<\/ul>\s*<ul>/gim, "");
+  md = md.replace(/<\/ol>\s*<ol>/gim, "");
+
+  // Párrafos: envolver solo bloques que no son parte de listas ni títulos
+  md = md.replace(/^(?!<h\d|<ul>|<ol>|<hr|<\/ul>|<\/ol|<li)(.+)$/gim, "<p>$1</p>");
+
+  return md.trim();
 }
