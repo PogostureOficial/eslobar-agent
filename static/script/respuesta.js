@@ -14,7 +14,7 @@ function smartScroll() {
  * - Títulos, listas, hr → aparecen instantáneo
  * - Párrafos → animados
  */
-function typeWriterSmart(element, html, speed = 18) {
+function typeWriterSmart(element, html, speed = 8) {
   const container = document.createElement("div");
   container.innerHTML = html;
   const nodes = Array.from(container.childNodes);
@@ -24,28 +24,33 @@ function typeWriterSmart(element, html, speed = 18) {
 
     const node = nodes[index];
 
-    // Elementos que deben aparecer instantáneos
-    if (["H1", "H2", "H3", "UL", "OL", "HR"].includes(node.tagName)) {
+    // Caso 1: Elementos instantáneos (no tipeados)
+    if (
+      node.tagName === "H1" ||
+      node.tagName === "H2" ||
+      node.tagName === "H3" ||
+      node.tagName === "UL" ||
+      node.tagName === "OL" ||
+      node.tagName === "HR"
+    ) {
       element.appendChild(node);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-      setTimeout(() => processNode(index + 1), 80);
+      smartScroll();
+      setTimeout(() => processNode(index + 1), 100);
       return;
     }
 
-    // Párrafos animados (por palabra)
-    if (node.nodeType === Node.ELEMENT_NODE) {
-      const text = (node.innerHTML || "").trim();
-      const words = text.split(" ");
+    // Caso 2: Texto / párrafos → animados
+    if (node.nodeType === Node.ELEMENT_NODE || node.nodeType === Node.TEXT_NODE) {
+      const text = node.innerHTML || node.textContent || "";
       const newEl = document.createElement(node.tagName || "p");
       element.appendChild(newEl);
 
       let i = 0;
       function type() {
-        newEl.innerHTML = words.slice(0, i).join(" ");
-        messagesEl.scrollTop = messagesEl.scrollHeight;
+        newEl.innerHTML = text.slice(0, i++);
+        smartScroll();
 
-        if (i < words.length) {
-          i++;
+        if (i <= text.length) {
           setTimeout(type, speed);
         } else {
           setTimeout(() => processNode(index + 1), 120);
@@ -109,5 +114,6 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
