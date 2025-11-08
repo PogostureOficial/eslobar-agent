@@ -107,7 +107,10 @@ askGeneric = async function(text) {
 
   } catch (err) {
     loadingEl.remove();
+    console.error("ERROR EN RESPUESTA.JS:", err);
     const aiDiv = addTextMsg('assistant', "");
-    typeWriterSmart(aiDiv, "Error al consultar con el modelo.");
+    aiDiv.innerText = "⚠️ Error en cliente: " + err;
   }
+
 };
+
