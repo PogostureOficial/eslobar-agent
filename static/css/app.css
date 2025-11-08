@@ -49,7 +49,7 @@ body{
 .separator{height:1px;background:var(--line);margin:4px 2px}
 .nav-right{display:flex;gap:20px}
 .nav-link{background: #000;border:none;color: #fff;padding:6px 8px;width:100%;border-radius: 30px;cursor:pointer}
-.nav-link-2{background: #fff;border:none;color: #000;padding:6px 8px;cursor:pointer;margin-right:20px}
+.nav-link-2{background: #fff;border:none;color: #000;padding:2px 4px;cursor:pointer;margin-right:60px}
 
 /* Main */
 .main{flex:1;display:flex;flex-direction:column;position:relative;padding-bottom:96px}
@@ -278,6 +278,7 @@ body{
 
 /* opcional: ocultar cualquier texto debajo si no lo querés */
 .agent-meta{ display: none; }
+
 
 
 
