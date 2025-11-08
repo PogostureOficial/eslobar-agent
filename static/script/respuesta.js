@@ -8,7 +8,7 @@
  * text: texto completo
  * speed: velocidad (ms por letra)
  */
-function typeWriterEffect(element, text, speed = 30) {
+function typeWriterEffect(element, text, speed = 5) {
   let i = 0;
   function typing() {
     if (i < text.length) {
@@ -72,4 +72,5 @@ askGeneric = async function(text) {
     typeWriterEffect(aiDiv, "Error al consultar el modelo.");
   }
 };
+
 
