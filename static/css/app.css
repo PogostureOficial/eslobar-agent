@@ -320,7 +320,7 @@ body{
 .msg.assistant h3 {
   font-size: 17px;
   font-weight: 600;
-  margin: 6px 0 5px;
+  margin: 0px 0 0px;
 }
 
 /* Párrafos */
@@ -347,6 +347,7 @@ body{
   border-top: 1px solid #dcdcdc;
   margin: 14px 0;
 }
+
 
 
 
