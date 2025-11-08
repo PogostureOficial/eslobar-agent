@@ -332,7 +332,7 @@ body{
 /* Listas */
 .msg.assistant ul,
 .msg.assistant ol {
-  margin: 4px 0 10px 20px;
+  margin: 4px 0 10px 5px;
   padding: 0;
 }
 
@@ -347,6 +347,7 @@ body{
   border-top: 1px solid #dcdcdc;
   margin: 14px 0;
 }
+
 
 
 
