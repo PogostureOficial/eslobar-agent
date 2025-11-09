@@ -66,8 +66,33 @@ IMPORTANTE: Responde siempre aplicando estas reglas de formato, sin importar el 
     except Exception as e:
         return jsonify({"reply": f"Error: {e}"}), 500
 
+@app.route('/stt', methods=['POST'])
+def stt():
+    if "audio" not in request.files:
+        return jsonify({"error": "No audio file"}), 400
+
+    audio_file = request.files["audio"]
+
+    try:
+        # Transcripción usando Whisper de OpenAI
+        transcript = client.audio.transcriptions.create(
+            model="whisper-1",
+            file=audio_file,
+            language="es",
+            response_format="json"
+        )
+
+        text = transcript.text if hasattr(transcript, "text") else ""
+        return jsonify({"text": text})
+
+    except Exception as e:
+        print("STT Error:", e)
+        return jsonify({"error": "Transcription failed"}), 500
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
