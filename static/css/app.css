@@ -95,8 +95,8 @@ body{
 
 /* Botón del micrófono — mismo tamaño que enviar */
 .mic-btn img {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   margin-right: 7px;
   opacity: .6;
   transition: var(--t);
@@ -421,6 +421,7 @@ body{
 /* Quitar márgenes extra en el primer y último elemento del bloque */
 .msg.assistant > :first-child { margin-top: 0; }
 .msg.assistant > :last-child  { margin-bottom: 0; }
+
 
 
 
