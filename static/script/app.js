@@ -220,4 +220,135 @@ inputEl.addEventListener('keydown', (e)=>{
   }
 });
 
+// ====== VOZ → TEXTO con MediaRecorder (compatible Safari/Chrome/Firefox) ======
+const micBtn   = document.getElementById("micBtn");
+const inputEl  = document.getElementById("input");
+const sendBtn  = document.getElementById("sendBtn");
+
+// Modal no mic
+const noMicModal  = document.getElementById("noMicModal");
+const noMicClose  = document.getElementById("noMicClose");
+noMicClose?.addEventListener("click", () => noMicModal.classList.add("hidden"));
+
+let mediaRecorder = null;
+let mediaStream   = null;
+let chunks        = [];
+let isRecording   = false;
+
+// Selección de MIME cross-browser (Safari prefiere MP4, Chrome WebM)
+function pickBestMime() {
+  const candidates = [
+    "audio/webm;codecs=opus",
+    "audio/webm",
+    "audio/mp4", // Safari iOS/macOS
+    "audio/ogg;codecs=opus",
+    "audio/ogg"
+  ];
+  for (const type of candidates) {
+    if (MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(type)) return type;
+  }
+  return ""; // dejar que el browser elija
+}
+
+// Verificar existencia de micrófono
+async function hasMicrophone() {
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    return devices.some(d => d.kind === "audioinput");
+  } catch {
+    return false;
+  }
+}
+
+function showNoMicModal() {
+  noMicModal?.classList.remove("hidden");
+}
+
+// Iniciar grabación
+async function startRecording() {
+  const okMic = await hasMicrophone();
+  if (!okMic) { showNoMicModal(); return; }
+
+  try {
+    mediaStream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true }
+    });
+  } catch (err) {
+    showNoMicModal();
+    return;
+  }
+
+  chunks = [];
+  const mimeType = pickBestMime();
+  try {
+    mediaRecorder = new MediaRecorder(mediaStream, mimeType ? { mimeType } : undefined);
+  } catch (e) {
+    // fallback sin mimeType
+    mediaRecorder = new MediaRecorder(mediaStream);
+  }
+
+  mediaRecorder.ondataavailable = (e) => { if (e.data?.size) chunks.push(e.data); };
+  mediaRecorder.onstop = async () => {
+    // Detener tracks
+    mediaStream.getTracks().forEach(t => t.stop());
+    mediaStream = null;
+
+    // Blob final
+    const chosenType = mediaRecorder.mimeType || "audio/webm";
+    const ext = chosenType.includes("mp4") ? "m4a" :
+                chosenType.includes("ogg") ? "ogg" : "webm";
+    const blob = new Blob(chunks, { type: chosenType || "audio/webm" });
+    await sendBlobToSTT(blob, ext);
+  };
+
+  mediaRecorder.start();
+  isRecording = true;
+  micBtn.classList.add("recording");
+}
+
+// Detener grabación
+function stopRecording() {
+  if (mediaRecorder && isRecording) {
+    mediaRecorder.stop();
+  }
+  isRecording = false;
+  micBtn.classList.remove("recording");
+}
+
+// Enviar al backend /stt y volcar texto en el input (NO auto-envía)
+async function sendBlobToSTT(blob, ext) {
+  try {
+    const form = new FormData();
+    form.append("audio", blob, `voice.${ext}`);
+
+    const res = await fetch("/stt", {
+      method: "POST",
+      body: form
+    });
+
+    if (!res.ok) throw new Error("STT error");
+    const data = await res.json(); // { text: "..." }
+    if (data?.text) {
+      inputEl.value = data.text;
+      inputEl.dispatchEvent(new Event("input")); // habilita botón Enviar si aplica
+    }
+  } catch (err) {
+    alert("No se pudo transcribir el audio. Probá de nuevo.");
+  }
+}
+
+// Click del botón: un click inicia, otro click detiene
+if (micBtn) {
+  micBtn.addEventListener("click", async () => {
+    // Soporte básico
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      showNoMicModal();
+      return;
+    }
+    if (!isRecording) startRecording(); else stopRecording();
+  });
+}
+
+
+
 
