@@ -80,6 +80,19 @@
     </div>
   </main>
 
+  <!-- Modal: no hay micrófono -->
+  <div id="noMicModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="noMicTitle">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <h3 id="noMicTitle">No se detectó un micrófono</h3>
+      <p>Verificá permisos del navegador y que tu dispositivo tenga un micrófono disponible.</p>
+      <div class="modal-actions">
+        <button id="noMicClose" class="btn-primary">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+
   <!-- Mantener tu runner intacto -->
   <script>
     window.AGENT_RUNNER_URL = localStorage.getItem("AGENT_RUNNER_URL") || "https://agent-runner-tpcc.onrender.com";
@@ -89,6 +102,7 @@
   <script src="static/script/respuesta.js"></script>
 </body>
 </html>
+
 
 
 
