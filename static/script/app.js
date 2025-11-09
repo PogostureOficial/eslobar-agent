@@ -222,8 +222,6 @@ inputEl.addEventListener('keydown', (e)=>{
 
 // ====== VOZ → TEXTO con MediaRecorder (compatible Safari/Chrome/Firefox) ======
 const micBtn   = document.getElementById("micBtn");
-const inputEl  = document.getElementById("input");
-const sendBtn  = document.getElementById("sendBtn");
 
 // Modal no mic
 const noMicModal  = document.getElementById("noMicModal");
@@ -348,6 +346,7 @@ if (micBtn) {
     if (!isRecording) startRecording(); else stopRecording();
   });
 }
+
 
 
 
