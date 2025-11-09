@@ -83,7 +83,7 @@ body{
 .attach-btn,.send-btn{
   background:none;border:none;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center
 }
-.attach-btn img{width:38px;height:38px;opacity:.8}
+.attach-btn img{width:38px;height:38px;opacity:1}
 .attach-btn:hover img{opacity:1}
 #input{
   flex:1;resize:none;border:none;background:transparent;color:var(--text);font-size:15px;font-family:"Segoe UI", Inter, Roboto, system-ui, sans-serif;
@@ -421,6 +421,7 @@ body{
 /* Quitar márgenes extra en el primer y último elemento del bloque */
 .msg.assistant > :first-child { margin-top: 0; }
 .msg.assistant > :last-child  { margin-bottom: 0; }
+
 
 
 
