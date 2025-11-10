@@ -457,27 +457,7 @@ body{
   user-select: none;
 }
 
-.nav-link .nav-link-2 {
-  display: none !important;
-}
 
-/* Hace que el textarea crezca hasta 4 líneas */
-#input {
-  max-height: 120px; /* Aproximadamente 4 líneas*/
-  overflow-y: auto;
-  resize: none;
-}
-
-/* Mantiene los botones alineados abajo mientras crece el texto */
-.input-wrapper {
-  display: flex;
-  align-items: flex-end; /* Fuerza que iconos queden abajo */
-}
-
-.input-wrapper textarea {
-  margin-top: 10px;
-  padding-top: 10px;
-}
 
 
 
