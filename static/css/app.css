@@ -447,6 +447,39 @@ body{
 /* Indicador de grabación en el botón de micrófono (ya tenés .recording en CSS) */
 .mic-btn.recording img { filter: drop-shadow(0 0 6px #ff4444); }
 
+.disclaimer {
+  font-size: 11px;
+  opacity: 0.55;
+  color: #fff;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+.nav-link .nav-link-2 {
+  display: none !important;
+}
+
+/* Hace que el textarea crezca hasta 4 líneas */
+#input {
+  max-height: 120px; /* Aproximadamente 4 líneas*/
+  overflow-y: auto;
+  resize: none;
+}
+
+/* Mantiene los botones alineados abajo mientras crece el texto */
+.input-wrapper {
+  display: flex;
+  align-items: flex-end; /* Fuerza que iconos queden abajo */
+}
+
+.input-wrapper textarea {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+
 
 
 
