@@ -447,7 +447,7 @@ body{
 /* Indicador de grabación en el botón de micrófono (ya tenés .recording en CSS) */
 .mic-btn.recording img { filter: drop-shadow(0 0 6px #ff4444); }
 
-.disclaimer {
+/* .disclaimer {
   font-size: 11px;
   opacity: 0.55;
   color: #fff;
@@ -455,7 +455,8 @@ body{
   margin-top: 6px;
   margin-bottom: 8px;
   user-select: none;
-}
+} */
+
 
 
 
