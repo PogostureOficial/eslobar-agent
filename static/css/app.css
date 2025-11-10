@@ -448,11 +448,11 @@ body{
 .mic-btn.recording img { filter: drop-shadow(0 0 6px #ff4444); }
 
  .disclaimer {
-  font-size: 15px;
+  font-size: 12px;
   opacity: 0.55;
   color: #000;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 600px;
   margin-bottom: 8px;
   user-select: none;
 } 
@@ -460,6 +460,7 @@ body{
 .top-nav .nav-right {
   display: none !important;
 }
+
 
 
 
