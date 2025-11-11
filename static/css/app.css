@@ -488,12 +488,12 @@ body{
 
 .disclaimer {
   font-size: 11px;
-  opacity: 0.55;
   color: #000;
   text-align: center;
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
