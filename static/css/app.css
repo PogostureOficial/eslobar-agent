@@ -75,10 +75,10 @@ body{
   display:flex;justify-content:center;
 }
 .input-wrapper{
-  background: #fff;width:min(780px,105%);
+  background: #D4D4D4;width:min(780px,105%);
   border-radius: 30px;display:flex;align-items:center;padding:9px 13px;gap:6px;
   border:1px solid #D4D4D4;
-  box-shadow: 0px 2px 15px -10px #D4D4D4;
+  /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
 }
 .attach-btn,.send-btn{
   background:none;border:none;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center
@@ -494,6 +494,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
