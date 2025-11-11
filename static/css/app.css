@@ -28,8 +28,8 @@ body{
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:8px;background: #fff;
-  border:0px solid var(--line);color:var(--text);padding:6px 10px;border-radius:10px;
+  display:flex;align-items:center;gap:8px;background: #fff;font-weight:600;font-size:16px;
+  border:0px solid var(--line);color: #363636;padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
 }
 .model-btn:hover{background:var(--hover)}
@@ -494,6 +494,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
