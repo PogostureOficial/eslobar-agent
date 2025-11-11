@@ -475,7 +475,7 @@ body{
 }
 
 .input-wrapper {
-  background: #fff;
+  background: #D4D4D4;
   width: min(780px, 94%);
   border-radius: 30px;
   display: flex;
@@ -494,6 +494,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
