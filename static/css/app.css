@@ -475,12 +475,12 @@ body{
 }
 
 .input-wrapper {
-  background: #D4D4D4;
-  width: min(780px, 94%);
+  background: #f0f0f0;
+  width: min(780px, 105%);
   border-radius: 30px;
   display: flex;
   align-items: flex-end; /* Fuerza iconos abajo */
-  padding: 12px 16px;
+  padding: 9px 13px;
   gap: 6px;
   border: 1px solid #D4D4D4;
   box-shadow: 0px 2px 15px -10px #D4D4D4;
@@ -494,6 +494,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
