@@ -465,7 +465,7 @@ body{
 .composer {
   position: fixed;
   bottom: 0;
-  width: 115%;
+  width: 100%;
   background: linear-gradient(180deg, transparent 0%, var(--bg) 40%);
   padding: 10px 0 6px;
   display: flex;
@@ -494,6 +494,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
