@@ -58,7 +58,7 @@ body{
   display:flex;flex-direction:column;gap:14px;overflow-y:auto;
 }
 .msg{
-  background: #fff;border:0px solid var(--line);padding:12px 16px;border-radius: 30px;
+  background:none;border:0px solid var(--line);padding:12px 16px;border-radius: 30px;
   max-width:680px;white-space:pre-wrap;line-height:1.5;
 }
 .msg.user{align-self:flex-end;background:#F2F2F2}
@@ -304,7 +304,7 @@ body{
 .ai-loading {
   width: 10px;
   height: 10px;
-  background-color: #000;
+  background-color: #fff;
   border-radius: 50%;
   margin: 6px 0 0 4px;
   animation: aiPulse 0.9s ease-in-out infinite;
@@ -493,6 +493,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
