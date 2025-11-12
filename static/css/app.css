@@ -61,7 +61,7 @@ body{
   background:none;border:0px solid var(--line);padding:8px 12px;border-radius: 30px;
   max-width:680px;white-space:pre-wrap;line-height:1.5;
 }
-.msg.user{align-self:flex-end;background:#5C595C}
+.msg.user{align-self:flex-end;background:#413e3c}
 .msg.assistant{align-self:flex-start;background:none}
 
 /* Bienvenida */
@@ -515,6 +515,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
