@@ -495,10 +495,11 @@ body{
 }
 
 #input::placeholder {
-  color: #b2b0aa;         /* color gris suave */                /* hace que no sea tan fuerte */
+  color: #C4C2BC;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
   font-weight:400;
 }
+
 
 
