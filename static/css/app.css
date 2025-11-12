@@ -1,5 +1,5 @@
 :root{
-  --bg:#201c19;
+  --bg:#22201f;
   --surface:#0d0d0f;
   --surface-2:#111214;
   --text:#fff;
@@ -493,6 +493,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
