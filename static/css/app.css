@@ -496,10 +496,12 @@ body{
 
 #input::placeholder {
   color: #fff;         /* color gris suave */
-  opacity: 0.7;                /* hace que no sea tan fuerte */
-  font-size: 18px;             /* mismo tamaño que el input */
+  opacity: 0.6;                /* hace que no sea tan fuerte */
+  font-size: 16px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
+  font-weight:500;
 }
+
 
 
 
