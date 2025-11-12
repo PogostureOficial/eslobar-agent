@@ -328,7 +328,7 @@ body{
 .msg.assistant {
   font-size: 15.2px;
   line-height: 1.45;
-  color: #0f0f0f;
+  color: #fff;
   font-family: "Segoe UI", system-ui, sans-serif;
 }
 
@@ -493,6 +493,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
