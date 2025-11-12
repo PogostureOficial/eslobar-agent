@@ -22,14 +22,14 @@ body{
 
 /* Topbar */
 .top-nav{
-  height:52px;background: #fff;border-bottom:1px solid #D4D4D4;
+  height:52px;background: #191a17;border-bottom:1px solid #2d2e2d;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
   position:sticky;top:0;z-index:10;
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
   display:flex;align-items:center;gap:8px;background: #fff;font-weight:600;font-size:16px;
-  border:0px solid var(--line);color: #363636;padding:6px 10px;border-radius:10px;
+  border:0px solid var(--line);color: #fff;padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
 }
 .model-btn:hover{background:var(--hover)}
@@ -493,6 +493,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
