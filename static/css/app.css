@@ -511,11 +511,11 @@ body{
 }
 
 .welcome-img {
-  width: 120px;            /* podés ajustar si lo querés más grande o chico */
-  opacity: 0.35;           /* igual que ChatGPT */
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.4));
+  width: 90px;            /* podés ajustar si lo querés más grande o chico */
+  opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
