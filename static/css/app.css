@@ -501,5 +501,21 @@ body{
   font-weight:400;
 }
 
+/* Imagen de bienvenida estilo ChatGPT */
+.welcome {
+  position: absolute;
+  top: 35%;                /* mismo valor que tu título */
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.welcome-img {
+  width: 120px;            /* podés ajustar si lo querés más grande o chico */
+  opacity: 0.35;           /* igual que ChatGPT */
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.4));
+  user-select: none;
+}
+
 
 
