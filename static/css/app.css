@@ -1,8 +1,8 @@
 :root{
-  --bg:#fff;
+  --bg:#212121;
   --surface:#0d0d0f;
   --surface-2:#111214;
-  --text:#000;
+  --text:#fff;
   --muted:#9b9ba1;
   --line:#26272e;
   --hover:#fff;
@@ -493,6 +493,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
