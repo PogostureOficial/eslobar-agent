@@ -480,9 +480,9 @@ body{
   border-radius: 30px;
   display: flex;
   align-items: flex-end; /* Fuerza iconos abajo */
-  padding: 6px 10px;
+  padding: 5px 9px;
   gap: 6px;
-  border: 2px solid #5d5b57;
+  border: 1px solid #5d5b57;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
 }
 
@@ -500,4 +500,5 @@ body{
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
   font-weight:400;
 }
+
 
