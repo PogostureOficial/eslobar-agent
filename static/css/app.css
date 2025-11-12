@@ -62,10 +62,10 @@ body{
   max-width:680px;white-space:pre-wrap;line-height:1.5;
 }
 .msg.user{align-self:flex-end;background:#F2F2F2}
-.msg.assistant{align-self:flex-start;background: #fff}
+.msg.assistant{align-self:flex-start;background:none}
 
 /* Bienvenida */
-.welcome{position:absolute;top:35%;width:100%;text-align:center;color: #000;pointer-events:none}
+.welcome{position:absolute;top:35%;width:100%;text-align:center;color: #fff;pointer-events:none}
 .welcome h1{font-size:32px;font-weight:400}
 
 /* Composer ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -493,6 +493,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
