@@ -90,7 +90,7 @@ body{
   padding:8px;max-height:150px;overflow-y:auto;
 }
 #input:focus{outline:none}
-.send-btn img{width:38px;height:38px;opacity:.1;transition:var(--t)}
+.send-btn img{width:30px;height:30px;opacity:.2;transition:var(--t)}
 .send-btn.enabled img,.send-btn:not([disabled]) img{opacity:1}
 
 /* Botón del micrófono — mismo tamaño que enviar */
@@ -493,6 +493,7 @@ body{
   user-select: none;
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
+
 
 
 
