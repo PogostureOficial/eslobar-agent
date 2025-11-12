@@ -494,6 +494,13 @@ body{
   margin: 2px 0 0 0; /* Pegado abajo de la caja */
 }
 
+#input::placeholder {
+  color: #fff;         /* color gris suave */
+  opacity: 0.7;                /* hace que no sea tan fuerte */
+  font-size: 18px;             /* mismo tamaño que el input */
+  font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
+}
+
 
 
 
