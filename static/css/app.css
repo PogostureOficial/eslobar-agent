@@ -482,7 +482,7 @@ body{
   align-items: flex-end; /* Fuerza iconos abajo */
   padding: 6px 10px;
   gap: 6px;
-  border: 2px solid #454544;
+  border: 2px solid #5d5b57;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
 }
 
@@ -495,79 +495,9 @@ body{
 }
 
 #input::placeholder {
-  color: #fff;         /* color gris suave */
-  opacity: 0.6;                /* hace que no sea tan fuerte */
+  color: #b2b0aa;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
-  font-weight:500;
+  font-weight:400;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
