@@ -529,6 +529,50 @@ body{
   user-select: none;
 }
 
+/* Botón menú izquierdo */
+.menu-btn {
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+}
+.menu-btn img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+}
+.menu-btn:hover img { opacity: 1; }
+
+/* Texto "4o" */
+.brand-sub {
+  font-size: 15px;
+  font-weight: 500;
+  color: #9bbcff; /* similar al 4o de ChatGPT */
+  margin-left: 4px;
+  margin-top: 1px;
+}
+
+/* Botón nuevo chat (derecha) */
+.newchat-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.newchat-btn img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.75;
+}
+.newchat-btn:hover img { opacity: 1; }
+
+
+
 
 
 
