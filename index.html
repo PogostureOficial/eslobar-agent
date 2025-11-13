@@ -26,6 +26,10 @@
   <!-- Topbar estilo ChatGPT -->
   <header class="top-nav">
     <div class="nav-left">
+
+      <button class="menu-btn">
+        <img src="static/images/bar.png" alt="menu">
+      </button>
       <!-- Selector de modelo -->
       <button id="modelSelector" class="model-btn" aria-haspopup="listbox" aria-expanded="false">
         <span id="currentModelName">Eslobar</span>
@@ -42,10 +46,10 @@
       </div>
     </div>
 
-    <div class="nav-right">
-      <button class="nav-link">Iniciar sesión</button>
-      <button class="nav-link-2">Registrate</button>
-    </div>
+    <!-- Botón nuevo chat (derecha) -->
+    <button class="newchat-btn" id="newChatBtn">
+      <img src="static/images/new-chat.png" alt="Nuevo chat">
+    </button>
   </header>
 
   <!-- Chat -->
@@ -104,6 +108,7 @@
   <script src="static/script/respuesta.js"></script>
 </body>
 </html>
+
 
 
 
