@@ -30,7 +30,7 @@ body{
 
 /* Topbar */
 .top-nav{
-  height:52px;background: #191a17;border-bottom:1px solid #2d2e2d;
+  height:52px;background: rgba(0,0,0,0.85);border-bottom:1px solid #2d2e2d;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
   position:sticky;top:0;z-index:10;
 }
@@ -528,6 +528,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
