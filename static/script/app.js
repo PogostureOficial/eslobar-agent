@@ -347,6 +347,15 @@ if (micBtn) {
   });
 }
 
+document.getElementById("newChatBtn").addEventListener("click", () => {
+  messagesEl.innerHTML = "";
+  welcomeEl.style.display = "block";
+  inputEl.value = "";
+  inputEl.style.height = "auto";
+  sendBtn.disabled = true;
+  agentSessionId = null;
+});
+
 
 
 
