@@ -550,7 +550,7 @@ body{
 .brand-sub {
   font-size: 16px;
   font-weight: 600;
-  color: #373433; /* similar al 4o de ChatGPT */
+  color: #5d5b57; /* similar al 4o de ChatGPT */
   margin-left: 1px;
   margin-top: 1px;
 }
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
