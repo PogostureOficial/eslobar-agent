@@ -482,7 +482,7 @@ body{
   align-items: flex-end; /* Fuerza iconos abajo */
   padding: 5px 9px;
   gap: 6px;
-  border: 1px solid #5d5b57;
+  border: 2px solid #5d5b57;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
 }
 
@@ -498,7 +498,7 @@ body{
   color: #C4C2BC;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
-  font-weight:400;
+  font-weight:500;
 }
 
 /* Imagen de bienvenida estilo ChatGPT */
@@ -515,6 +515,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
