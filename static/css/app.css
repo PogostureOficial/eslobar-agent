@@ -488,7 +488,7 @@ body{
 }
 
 .input-wrapper {
-  background: #22201f;
+  background:none;
   width: min(780px, 95%);
   border-radius: 30px;
   display: flex;
@@ -528,6 +528,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
