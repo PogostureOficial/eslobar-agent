@@ -495,7 +495,7 @@ body{
 }
 
 #input::placeholder {
-  color: #C4C2BC;         /* color gris suave */                /* hace que no sea tan fuerte */
+  color: #5d5b57;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
   font-weight:500;
@@ -515,6 +515,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
