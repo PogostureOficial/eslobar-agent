@@ -30,17 +30,17 @@ body{
 
 /* Topbar */
 .top-nav{
-  height:52px;background: rgba(0,0,0,0.45);border-bottom:1px solid #2d2e2d;
+  height:52px;background: rgba(0,0,0,0.25);border-bottom:2px solid #2d2e2d;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
   position:sticky;top:0;z-index:10;
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:8px;background: #191a17;font-weight:600;font-size:16px;
+  display:flex;align-items:center;gap:8px;background:none;font-weight:600;font-size:16px;
   border:0px solid var(--line);color: #fff;padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
 }
-.model-btn:hover{background:var(--hover)}
+.model-btn:hover{background: #191a17}
 .nav-logo{width:18px;height:18px}
 .chevron{font-size:12px;opacity:.8}
 .dropdown{
@@ -528,6 +528,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
