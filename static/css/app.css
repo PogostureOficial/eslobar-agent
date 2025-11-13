@@ -548,10 +548,10 @@ body{
 
 /* Texto "4o" */
 .brand-sub {
-  font-size: 15px;
-  font-weight: 500;
-  color: #9bbcff; /* similar al 4o de ChatGPT */
-  margin-left: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #373433; /* similar al 4o de ChatGPT */
+  margin-left: 1px;
   margin-top: 1px;
 }
 
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
