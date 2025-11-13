@@ -21,7 +21,7 @@ body{
 
   /* FONDO TIPO CHATGPT */
   background:
-    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    linear-gradient(rgba(34,32,31,0.85), rgba(34,32,31,0.85)),
     url("/static/images/bg-blur.jpg");
   background-size: cover;
   background-position: center;
@@ -528,6 +528,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
