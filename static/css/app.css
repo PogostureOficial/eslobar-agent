@@ -565,11 +565,12 @@ body{
   align-items: center;
 }
 .newchat-btn img {
-  width: 36px;
-  height: 36px;
-  opacity: 0.75;
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
