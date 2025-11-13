@@ -474,7 +474,12 @@ body{
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(180deg, transparent 0%, var(--bg) 40%);
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.35) 35%,
+    rgba(0,0,0,0.60) 100%
+  );
   padding: 10px 0 6px;
   display: flex;
   flex-direction: column; /* IMPORTANTE */
@@ -523,6 +528,7 @@ body{
   opacity: 0.25;           /* igual que ChatGPT */
   user-select: none;
 }
+
 
 
 
