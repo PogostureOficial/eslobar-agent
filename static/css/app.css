@@ -30,7 +30,7 @@ body{
 
 /* Topbar */
 .top-nav{
-  height:52px;background: rgba(255,255,255,1);border-bottom:2px solid #2d2e2d;
+  height:52px;background: rgba(255,255,255,1);border-bottom:2px solid #CCC2BE;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
   position:sticky;top:0;z-index:10;
 }
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
