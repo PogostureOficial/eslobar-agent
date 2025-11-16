@@ -21,7 +21,7 @@ body{
 
   /* FONDO TIPO CHATGPT */
   background:
-    linear-gradient(rgba(245,245,245,0.60), rgba(245,245,245,0.60)),
+    linear-gradient(rgba(245,245,245,0.80), rgba(245,245,245,0.80)),
     url("/static/images/bg-blur.jpg");
   background-size: cover;
   background-position: center;
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
