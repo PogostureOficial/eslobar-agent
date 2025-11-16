@@ -30,13 +30,13 @@ body{
 
 /* Topbar */
 .top-nav{
-  height:82px;background: rgba(255,255,255,1);border-bottom:1px solid #CCCCCC;
+  height:62px;background: rgba(255,255,255,1);border-bottom:1px solid #CCCCCC;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
   position:sticky;top:0;z-index:10;
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:8px;background:none;font-weight:600;font-size:16px;
+  display:flex;align-items:center;gap:8px;background:none;font-weight:500;font-size:16px;
   border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
 }
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
