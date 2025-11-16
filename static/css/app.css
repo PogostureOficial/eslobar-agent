@@ -495,7 +495,7 @@ body{
   align-items: flex-end; /* Fuerza iconos abajo */
   padding: 5px 9px;
   gap: 6px;
-  border: 2px solid #66615F;
+  border: 2px solid #CCC2BE;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
 }
 
@@ -508,7 +508,7 @@ body{
 }
 
 #input::placeholder {
-  color: #66615F;         /* color gris suave */                /* hace que no sea tan fuerte */
+  color: #CCC2BE;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
   font-weight:500;
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
