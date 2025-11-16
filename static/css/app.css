@@ -37,7 +37,7 @@ body{
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
   display:flex;align-items:center;gap:8px;background:none;font-weight:600;font-size:16px;
-  border:0px solid var(--line);color: #fff;padding:6px 10px;border-radius:10px;
+  border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
 }
 .model-btn:hover{background: #191a17}
@@ -495,7 +495,7 @@ body{
   align-items: flex-end; /* Fuerza iconos abajo */
   padding: 5px 9px;
   gap: 6px;
-  border: 2px solid #373433;
+  border: 2px solid #66615F;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
 }
 
@@ -508,7 +508,7 @@ body{
 }
 
 #input::placeholder {
-  color: #5d5b57;         /* color gris suave */                /* hace que no sea tan fuerte */
+  color: #66615F;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", Inter, Roboto, system-ui, sans-serif;
   font-weight:500;
@@ -549,7 +549,7 @@ body{
 /* Texto "4o" */
 .brand-sub {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: #5d5b57; /* similar al 4o de ChatGPT */
   margin-left: 1px;
   margin-top: 1px;
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
