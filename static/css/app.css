@@ -21,7 +21,7 @@ body{
 
   /* FONDO TIPO CHATGPT */
   background:
-    linear-gradient(rgba(245,245,245,0.80), rgba(245,245,245,0.80)),
+    linear-gradient(rgba(245,245,245,1), rgba(245,245,245,1)),
     url("/static/images/bg-blur.jpg");
   background-size: cover;
   background-position: center;
@@ -30,7 +30,7 @@ body{
 
 /* Topbar */
 .top-nav{
-  height:52px;background: rgba(255,255,255,0.25);border-bottom:2px solid #2d2e2d;
+  height:52px;background: rgba(255,255,255,1);border-bottom:2px solid #2d2e2d;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
   position:sticky;top:0;z-index:10;
 }
@@ -570,6 +570,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
