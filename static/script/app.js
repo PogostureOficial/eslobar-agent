@@ -365,8 +365,14 @@ const underline    = document.querySelector(".mode-underline");
 function moveUnderline(btn) {
   const rect = btn.getBoundingClientRect();
   const parent = btn.parentElement.getBoundingClientRect();
-  underline.style.left = (rect.left - parent.left) + "px";
+
+  const btnCenter = rect.left - parent.left + rect.width / 2;
+  const underlineWidth = underline.offsetWidth;
+
+  // centrar
+  underline.style.left = (btnCenter - underlineWidth / 2) + "px";
 }
+
 
 // === modo CHAT ===
 modeChatBtn.addEventListener("click", () => {
@@ -410,6 +416,7 @@ modeAgentBtn.addEventListener("click", () => {
 window.addEventListener("DOMContentLoaded", () => {
   moveUnderline(modeChatBtn);
 });
+
 
 
 
