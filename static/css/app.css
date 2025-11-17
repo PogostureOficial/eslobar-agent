@@ -313,7 +313,7 @@ body{
 .ai-loading {
   width: 10px;
   height: 10px;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 50%;
   margin: 6px 0 0 4px;
   animation: aiPulse 0.9s ease-in-out infinite;
@@ -571,6 +571,7 @@ body{
   opacity: 1;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
