@@ -32,7 +32,7 @@ body{
 .top-nav{
   height:62px;background: rgba(255,255,255,1);border-bottom:1px solid #E8E8E8;
   display:flex;align-items:center;justify-content:space-between;padding:0 14px;
-  position:sticky;top:0;z-index:10;
+  position:sticky;top:0;z-index:10;flex-shrink: 0;
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
@@ -476,8 +476,8 @@ body{
   width: 100%;
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,1) 35%,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 35%,
     rgba(255,255,255,1) 100%
   );
   padding: 10px 0 6px;
@@ -488,7 +488,7 @@ body{
 }
 
 .input-wrapper {
-  background:none;
+  background: #fff;
   width: min(780px, 95%);
   border-radius: 30px;
   display: flex;
@@ -580,6 +580,7 @@ body{
 .input-wrapper {
   box-shadow: 0px 1px 4px rgba(0,0,0,0.05);
 }
+
 
 
 
