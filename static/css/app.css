@@ -70,7 +70,7 @@ body{
   background:none;border:0px solid var(--line);padding:8px 12px;border-radius: 30px;
   max-width:680px;white-space:pre-wrap;line-height:1.5;
 }
-.msg.user{align-self:flex-end;background:#413e3c}
+.msg.user{align-self:flex-end;background:#f4f4f4}
 .msg.assistant{align-self:flex-start;background:none}
 
 /* Bienvenida */
@@ -337,7 +337,7 @@ body{
 .msg.assistant {
   font-size: 15.2px;
   line-height: 1.45;
-  color: #fff;
+  color: #000;
   font-family: "Segoe UI", system-ui, sans-serif;
 }
 
@@ -571,6 +571,7 @@ body{
   opacity: 1;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
