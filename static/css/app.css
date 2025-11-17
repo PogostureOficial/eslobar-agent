@@ -621,11 +621,12 @@ body{
   bottom: -1px;
   left: 0;
   height: 2px;
-  width: 40px;
+  width: 60px;
   background: #000;
   border-radius: 10px;
   transition: left 0.18s ease;
 }
+
 
 
 
