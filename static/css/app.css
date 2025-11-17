@@ -16,7 +16,7 @@
 html,body{height:100%}
 body{
   margin:0;color:var(--text);
-  font-family: "Inter", sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   display:flex;flex-direction:column;
 
   /* FONDO TIPO CHATGPT */
@@ -94,7 +94,7 @@ body{
 .attach-btn img{width:38px;height:38px;opacity: 1}
 .attach-btn:hover img{opacity:1}
 #input{
-  flex:1;resize:none;border:none;background:transparent;color: #000;font-size:15px;font-family: "Inter", sans-serif;
+  flex:1;resize:none;border:none;background:transparent;color: #000;font-size:15px;font-family: "Segoe UI", system-ui, sans-serif;
   padding:8px;max-height:150px;overflow-y:auto;
 }
 #input:focus{outline:none}
@@ -337,7 +337,7 @@ body{
   font-size: 15.2px;
   line-height: 1.45;
   color: #000;
-  font-family: "Inter", sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 /* --------- TÍTULOS --------- */
@@ -510,7 +510,7 @@ body{
 #input::placeholder {
   color: #878787;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
-  font-family: "Inter", sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   font-weight:400;
 }
 
@@ -580,6 +580,7 @@ body{
 .input-wrapper {
   box-shadow: 0px 1px 4px rgba(0,0,0,0.05);
 }
+
 
 
 
