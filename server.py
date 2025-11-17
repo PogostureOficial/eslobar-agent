@@ -26,13 +26,13 @@ def ask():
         return jsonify({"reply":"(mensaje vacío)"}), 200
 
     try:
-        PROMPT_ID = "pmpt_6913ab61e8388197a2088283aed78fe306483a4edf29f752"  # <-- tu ID
+        PROMPT_ID = "pmpt_691b7fed2d988197b948b6e5bee1bcde0c795e0d75914fa9"  # <-- tu ID
 
         resp = client.responses.create(
             model=model,
             prompt={
                 "id": PROMPT_ID,
-                "version": "4"   # O la versión que quieras usar
+                "version": "1"   # O la versión que quieras usar
             },
             input=user_msg,
             temperature=0.4
@@ -68,6 +68,7 @@ def stt():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
