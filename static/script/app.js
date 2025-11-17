@@ -356,6 +356,61 @@ document.getElementById("newChatBtn").addEventListener("click", () => {
   agentSessionId = null;
 });
 
+// ===== BOTONES CENTRALES DE MODO =====
+const modeChatBtn  = document.getElementById("modeChatBtn");
+const modeAgentBtn = document.getElementById("modeAgentBtn");
+const underline    = document.querySelector(".mode-underline");
+
+// función para mover la línea debajo del botón activo
+function moveUnderline(btn) {
+  const rect = btn.getBoundingClientRect();
+  const parent = btn.parentElement.getBoundingClientRect();
+  underline.style.left = (rect.left - parent.left) + "px";
+}
+
+// === modo CHAT ===
+modeChatBtn.addEventListener("click", () => {
+  modeChatBtn.classList.add("active");
+  modeAgentBtn.classList.remove("active");
+  moveUnderline(modeChatBtn);
+
+  // restaurar bienvenida original
+  welcomeEl.style.display = "block";
+  document.querySelector(".welcome-img").src = "static/images/chat-mode.png";
+
+  // resetear chat
+  messagesEl.innerHTML = "";
+  agentSessionId = null;
+  inputEl.value = "";
+  sendBtn.disabled = true;
+});
+
+// === modo AGENTE ===
+modeAgentBtn.addEventListener("click", () => {
+  modeAgentBtn.classList.add("active");
+  modeChatBtn.classList.remove("active");
+  moveUnderline(modeAgentBtn);
+
+  // mostrar imagen del agente en bienvenida
+  welcomeEl.style.display = "block";
+  document.querySelector(".welcome-img").src = "static/images/agent-mode.png";
+
+  // nuevo chat igual que newChatBtn
+  messagesEl.innerHTML = "";
+  agentSessionId = null;
+  inputEl.value = "";
+  sendBtn.disabled = true;
+
+  // activar modo agente
+  currentModel = "agent";
+  isAgentMode = true;
+});
+
+// posicion inicial al cargar
+window.addEventListener("DOMContentLoaded", () => {
+  moveUnderline(modeChatBtn);
+});
+
 
 
 
