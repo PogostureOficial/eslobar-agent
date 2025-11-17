@@ -494,7 +494,7 @@ body{
   border-radius: 30px;
   display: flex;
   align-items: flex-end; /* Fuerza iconos abajo */
-  padding: 9px 13px;
+  padding: 11px 15px;
   gap: 6px;
   border: 1px solid #CCCCCC;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
@@ -579,5 +579,6 @@ body{
 }
 
 .input-wrapper {
-  box-shadow: 0px 2px 14px rgba(0,0,0,0.10);
+  box-shadow: -2px 2px 4px rgba(0,0,0,0.10);
 }
+
