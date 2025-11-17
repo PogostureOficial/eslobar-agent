@@ -540,8 +540,8 @@ body{
   margin-right: 6px;
 }
 .menu-btn img {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   opacity: 1;
 }
 .menu-btn:hover img { opacity: 1; }
@@ -565,8 +565,8 @@ body{
   align-items: center;
 }
 .newchat-btn img {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   opacity: 1;
 }
 .newchat-btn:hover img { opacity: 1; }
@@ -621,11 +621,12 @@ body{
   bottom: -1px;
   left: 0;
   height: 2px;
-  width: 28px;
+  width: 40px;
   background: #000;
   border-radius: 10px;
   transition: left 0.18s ease;
 }
+
 
 
 
