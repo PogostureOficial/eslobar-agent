@@ -37,7 +37,7 @@ body{
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
   display:flex;align-items:center;gap:0px;background:none;font-weight:400;font-size:18px;
-  border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;margin-left: -20px;
+  border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;margin-left: -10px;
   cursor:pointer;transition:var(--t);
 }
 .model-btn:hover{background: #191a17}
@@ -540,8 +540,8 @@ body{
   margin-right: 6px;
 }
 .menu-btn img {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   opacity: 1;
 }
 .menu-btn:hover img { opacity: 1; }
@@ -565,8 +565,8 @@ body{
   align-items: center;
 }
 .newchat-btn img {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   opacity: 1;
 }
 .newchat-btn:hover img { opacity: 1; }
@@ -605,8 +605,8 @@ body{
 }
 
 .mode-btn img {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   opacity: 0.5;
   transition: 0.15s ease;
 }
@@ -626,6 +626,7 @@ body{
   border-radius: 10px;
   transition: left 0.18s ease;
 }
+
 
 
 
