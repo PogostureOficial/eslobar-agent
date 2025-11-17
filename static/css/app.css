@@ -37,9 +37,8 @@ body{
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
   display:flex;align-items:center;gap:0px;background:none;font-weight:500;font-size:18px;
-  border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;
+  border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;margin-left: -10px;
   cursor:pointer;transition:var(--t);
-  margen-right: 30px;
 }
 .model-btn:hover{background: #191a17}
 .nav-logo{width:18px;height:18px}
@@ -477,9 +476,9 @@ body{
   width: 100%;
   background: linear-gradient(
     180deg,
-    rgba(20,20,20,0) 0%,
-    rgba(20,20,20,0) 35%,
-    rgba(20,20,20,0) 100%
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,1) 35%,
+    rgba(255,255,255,1) 100%
   );
   padding: 10px 0 6px;
   display: flex;
@@ -581,6 +580,7 @@ body{
 .input-wrapper {
   box-shadow: 0px 1px 4px rgba(0,0,0,0.05);
 }
+
 
 
 
