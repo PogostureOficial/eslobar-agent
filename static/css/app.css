@@ -36,9 +36,10 @@ body{
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:8px;background:none;font-weight:500;font-size:16px;
+  display:flex;align-items:center;gap:8px;background:none;font-weight:500;font-size:20px;
   border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
+  margen-right: 10px;
 }
 .model-btn:hover{background: #191a17}
 .nav-logo{width:18px;height:18px}
@@ -91,7 +92,7 @@ body{
 .attach-btn,.send-btn{
   background:none;border:none;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center
 }
-.attach-btn img{width:38px;height:38px;opacity:1}
+.attach-btn img{width:38px;height:38px;opacity:0,5}
 .attach-btn:hover img{opacity:1}
 #input{
   flex:1;resize:none;border:none;background:transparent;color:var(--text);font-size:15px;font-family:"Segoe UI", Inter, Roboto, system-ui, sans-serif;
@@ -570,6 +571,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
