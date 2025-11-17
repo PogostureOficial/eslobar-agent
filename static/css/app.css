@@ -582,6 +582,51 @@ body{
 }
 
 
+/* ==========================
+   BOTONES CENTRALES DEL TOPBAR
+   ========================== */
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-bottom: 5px; /* para alinear perfecto */
+  height: 62px;
+}
+
+.mode-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.mode-btn img {
+  width: 26px;
+  height: 26px;
+  opacity: 0.5;
+  transition: 0.15s ease;
+}
+
+.mode-btn.active img {
+  opacity: 1;
+}
+
+/* Línea negra debajo del botón seleccionado */
+.mode-underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  width: 28px;
+  background: #000;
+  border-radius: 10px;
+  transition: left 0.18s ease;
+}
+
 
 
 
