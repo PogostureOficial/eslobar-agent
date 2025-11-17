@@ -14,54 +14,116 @@ function smartScroll() {
  * - Títulos, listas, hr → aparecen instantáneo
  * - Párrafos → animados
  */
-function typeWriterSmart(element, html, speed = 8) {
-  const container = document.createElement("div");
-  container.innerHTML = html;
-  const nodes = Array.from(container.childNodes);
+function typeWriterFull(element, html, speed = 9) {
+  const temp = document.createElement("div");
+  temp.innerHTML = html.trim();
 
-  function processNode(index = 0) {
-    if (index >= nodes.length) return;
+  const nodes = Array.from(temp.childNodes);
 
-    const node = nodes[index];
+  function processNode(i = 0) {
+    if (i >= nodes.length) return;
 
-    // Caso 1: Elementos instantáneos (no tipeados)
-    if (
-      node.tagName === "H1" ||
-      node.tagName === "H2" ||
-      node.tagName === "H3" ||
-      node.tagName === "UL" ||
-      node.tagName === "OL" ||
-      node.tagName === "HR"
-    ) {
+    const node = nodes[i];
+
+    // ------------------------------
+    // HR → aparece instantáneo
+    // ------------------------------
+    if (node.tagName === "HR") {
       element.appendChild(node);
       smartScroll();
-      setTimeout(() => processNode(index + 1), 100);
-      return;
+      return setTimeout(() => processNode(i + 1), 120);
     }
 
-    // Caso 2: Texto / párrafos → animados
-    if (node.nodeType === Node.ELEMENT_NODE || node.nodeType === Node.TEXT_NODE) {
-      const text = node.innerHTML || node.textContent || "";
-      const newEl = document.createElement(node.tagName || "p");
+    // -----------------------------------------
+    // LISTAS → UL/OL aparecen instantáneas
+    //   pero CADA <li> se escribe letra por letra
+    // -----------------------------------------
+    if (node.tagName === "UL" || node.tagName === "OL") {
+      const listClone = node.cloneNode(false);
+      element.appendChild(listClone);
+
+      const items = Array.from(node.childNodes);
+
+      function processItem(j = 0) {
+        if (j >= items.length) return setTimeout(() => processNode(i + 1), 80);
+
+        const li = document.createElement("li");
+        listClone.appendChild(li);
+
+        const text = items[j].textContent || "";
+        let k = 0;
+
+        function typeItem() {
+          li.textContent = text.slice(0, k++);
+          smartScroll();
+
+          if (k <= text.length) {
+            setTimeout(typeItem, speed);
+          } else {
+            setTimeout(() => processItem(j + 1), 60);
+          }
+        }
+
+        typeItem();
+      }
+
+      return processItem();
+    }
+
+    // -----------------------------------------
+    // TITULOS (H1 / H2 / H3) → letra por letra
+    // -----------------------------------------
+    if (node.tagName === "H1" || node.tagName === "H2" || node.tagName === "H3") {
+      const newEl = document.createElement(node.tagName.toLowerCase());
       element.appendChild(newEl);
 
-      let i = 0;
-      function type() {
-        newEl.innerHTML = text.slice(0, i++);
+      const text = node.textContent;
+      let k = 0;
+
+      function typeTitle() {
+        newEl.textContent = text.slice(0, k++);
         smartScroll();
 
-        if (i <= text.length) {
-          setTimeout(type, speed);
+        if (k <= text.length) {
+          setTimeout(typeTitle, speed);
         } else {
-          setTimeout(() => processNode(index + 1), 120);
+          setTimeout(() => processNode(i + 1), 120);
         }
       }
-      type();
+
+      return typeTitle();
+    }
+
+    // -----------------------------------------
+    // TEXTO / PÁRRAFOS / SPAN / DIV → letra x letra
+    // -----------------------------------------
+    if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
+      const text = node.textContent || "";
+      const tag = node.tagName ? node.tagName.toLowerCase() : "p";
+
+      const newEl = document.createElement(tag);
+      element.appendChild(newEl);
+
+      let j = 0;
+
+      function type() {
+        newEl.textContent = text.slice(0, j++);
+        smartScroll();
+
+        if (j <= text.length) {
+          setTimeout(type, speed);
+        } else {
+          setTimeout(() => processNode(i + 1), 80);
+        }
+      }
+
+      return type();
     }
   }
 
   processNode();
 }
+
 
 
 /**
@@ -104,7 +166,8 @@ askGeneric = async function(text) {
 
     const aiDiv = addTextMsg('assistant', "");
     const html = markdownToHTML(data.reply || "(sin respuesta)");
-    typeWriterSmart(aiDiv, html);
+    typeWriterFull(aiDiv, html);
+
 
   } catch (err) {
     loadingEl.remove();
@@ -114,6 +177,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
