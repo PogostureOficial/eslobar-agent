@@ -2,7 +2,7 @@
   --bg:#22201f;
   --surface:#0d0d0f;
   --surface-2:#111214;
-  --text:#fff;
+  --text:#000;
   --muted:#9b9ba1;
   --line:#26272e;
   --hover:#fff;
@@ -572,51 +572,12 @@ body{
 }
 .newchat-btn:hover img { opacity: 1; }
 
+@media (min-width: 800px) {
+  .input-wrapper {
+    width: min(900px, 95%); /* ← Aumenta a 900px en PC */
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.input-wrapper {
+  box-shadow: 0px 2px 14px rgba(0,0,0,0.10);
+}
