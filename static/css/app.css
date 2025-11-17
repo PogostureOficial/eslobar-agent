@@ -92,7 +92,7 @@ body{
 .attach-btn,.send-btn{
   background:none;border:none;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center
 }
-.attach-btn img{width:38px;height:38px;opacity:0,5}
+.attach-btn img{width:38px;height:38px;opacity: 0.5}
 .attach-btn:hover img{opacity:1}
 #input{
   flex:1;resize:none;border:none;background:transparent;color:var(--text);font-size:15px;font-family:"Segoe UI", Inter, Roboto, system-ui, sans-serif;
@@ -107,7 +107,7 @@ body{
   width: 42px;
   height: 42px;
   margin-right: 7px;
-  opacity: .6;
+  opacity: 0.5;
   transition: var(--t);
 }
 
@@ -552,7 +552,7 @@ body{
   font-size: 18px;
   font-weight: 400;
   color: #87817E; /* similar al 4o de ChatGPT */
-  margin-left: 1px;
+  margin-left: 3px;
   margin-top: 1px;
 }
 
@@ -571,6 +571,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
