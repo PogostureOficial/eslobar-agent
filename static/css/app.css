@@ -36,7 +36,7 @@ body{
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:0px;background:none;font-weight:300;font-size:18px;
+  display:flex;align-items:center;gap:0px;background:none;font-weight:400;font-size:18px;
   border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;margin-left: -10px;
   cursor:pointer;transition:var(--t);
 }
@@ -580,6 +580,7 @@ body{
 .input-wrapper {
   box-shadow: 0px 1px 4px rgba(0,0,0,0.05);
 }
+
 
 
 
