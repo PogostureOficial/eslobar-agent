@@ -20,7 +20,7 @@ def assets(path):
 def ask():
     data = request.get_json(force=True)
     user_msg = data.get('message','').strip()
-    model = data.get('model', 'gpt-4o-mini')  # <- viene del selector
+    model = data.get('model', 'gpt-4')  # <- viene del selector
 
     if not user_msg:
         return jsonify({"reply":"(mensaje vacío)"}), 200
@@ -69,6 +69,7 @@ def stt():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
