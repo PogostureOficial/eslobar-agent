@@ -36,7 +36,7 @@ body{
 }
 .nav-left{display:flex;align-items:center;position:relative}
 .model-btn{
-  display:flex;align-items:center;gap:8px;background:none;font-weight:500;font-size:20px;
+  display:flex;align-items:center;gap:0px;background:none;font-weight:500;font-size:18px;
   border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;
   cursor:pointer;transition:var(--t);
   margen-right: 30px;
@@ -549,10 +549,10 @@ body{
 
 /* Texto "4o" */
 .brand-sub {
-  font-size: 20px;
-  font-weight: 500;
-  color: #CCCCCC; /* similar al 4o de ChatGPT */
-  margin-left: 1px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #87817E; /* similar al 4o de ChatGPT */
+  margin-left: 0px;
   margin-top: 1px;
 }
 
@@ -571,6 +571,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
