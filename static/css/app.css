@@ -619,13 +619,14 @@ body{
 .mode-underline {
   position: absolute;
   bottom: -1px;
-  left: -20px;
+  left: 0;
   height: 2px;
-  width: 48px;
+  width: 28px;
   background: #000;
   border-radius: 10px;
   transition: left 0.18s ease;
 }
+
 
 
 
