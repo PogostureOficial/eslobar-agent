@@ -552,7 +552,7 @@ body{
   font-size: 18px;
   font-weight: 400;
   color: #87817E; /* similar al 4o de ChatGPT */
-  margin-left: 0px;
+  margin-left: 1px;
   margin-top: 1px;
 }
 
@@ -571,6 +571,7 @@ body{
   opacity: 0.5;
 }
 .newchat-btn:hover img { opacity: 1; }
+
 
 
 
