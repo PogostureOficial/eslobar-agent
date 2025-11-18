@@ -10,6 +10,7 @@
   --radius:12px;
   --radius-lg:16px;
   --t:0.15s ease;
+  --a:0s ease;
 }
 
 *{box-sizing:border-box}
@@ -38,9 +39,9 @@ body{
 .model-btn{
   display:flex;align-items:center;gap:0px;background:none;font-weight:400;font-size:18px;
   border:0px solid var(--line);color: #000;padding:6px 10px;border-radius:10px;margin-left: -10px;
-  cursor:pointer;transition:var(--t);
+  cursor:pointer;transition:var(--a);
 }
-.model-btn:hover{background: #191a17}
+.model-btn:hover{background: #CCCCCC}
 .nav-logo{width:18px;height:18px}
 .chevron{font-size:12px;opacity:.8}
 .dropdown{
@@ -637,6 +638,7 @@ body{
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
