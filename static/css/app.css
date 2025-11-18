@@ -539,7 +539,7 @@ body{
   display: flex;
   align-items: center;
   margin-right: 6px;
-  margin-top: -4px;
+  margin-top: 0px;
 }
 .menu-btn img {
   width: 20px;
@@ -638,6 +638,7 @@ body{
   user-select: none;
   pointer-events: none;
 }
+
 
 
 
