@@ -640,6 +640,27 @@ body{
 }
 
 
+.msg-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+  padding-left: 4px;
+  opacity: 0.65;
+  transition: 0.15s ease;
+}
+
+.msg-actions img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.15s ease;
+}
+
+.msg-actions img:hover {
+  opacity: 1;
+}
+
 
 
 
