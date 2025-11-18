@@ -627,6 +627,16 @@ body{
   transition: left 0.18s ease;
 }
 
+.brand-arrow {
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  margin-top: 2px;       /* alineación vertical exacta */
+  opacity: 0.7;
+  user-select: none;
+  pointer-events: none;
+}
+
 
 
 
