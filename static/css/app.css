@@ -550,7 +550,7 @@ body{
 .brand-sub {
   font-size: 18px;
   font-weight: 400;
-  color: #87817E; /* similar al 4o de ChatGPT */
+  color: #858585; /* similar al 4o de ChatGPT */
   margin-left: 6px;
   margin-top: 1px;
 }
@@ -626,6 +626,7 @@ body{
   border-radius: 10px;
   transition: left 0.18s ease;
 }
+
 
 
 
