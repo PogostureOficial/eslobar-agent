@@ -18,15 +18,40 @@ let currentModel = 'gpt-4o-mini'; // default
 let isAgentMode  = false;
 
 // ======= Utils UI =======
-function addTextMsg(role, html){
+function addTextMsg(role, html) {
   const div = document.createElement('div');
   div.className = `msg ${role}`;
-  div.innerHTML = html;
+  
+  // Contenedor del contenido de la respuesta
+  const content = document.createElement('div');
+  content.className = "msg-content";
+  content.innerHTML = html;
+
+  div.appendChild(content);
+
+  // ====== BOTONES SOLO PARA RESPUESTAS DE IA ======
+  if (role === "assistant") {
+    const actions = document.createElement('div');
+    actions.className = "msg-actions";
+
+    actions.innerHTML = `
+      <img class="btn-copy" src="static/images/copy.png" alt="copiar">
+      <img class="btn-like" src="static/images/like0.png" alt="like">
+      <img class="btn-dislike" src="static/images/dislike0.png" alt="dislike">
+    `;
+
+    div.appendChild(actions);
+
+    // Eventos de botones
+    enableMessageActions(actions, content);
+  }
+
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;
   welcomeEl.style.display = 'none';
-  return div;
+  return content;  // devolvemos el contenido para typewriter
 }
+
 function autosize(){
   inputEl.style.height = 'auto';
   inputEl.style.height = (inputEl.scrollHeight) + 'px';
@@ -416,6 +441,56 @@ modeAgentBtn.addEventListener("click", () => {
 window.addEventListener("DOMContentLoaded", () => {
   moveUnderline(modeChatBtn);
 });
+
+
+function enableMessageActions(actionsDiv, contentDiv) {
+  const btnCopy = actionsDiv.querySelector(".btn-copy");
+  const btnLike = actionsDiv.querySelector(".btn-like");
+  const btnDislike = actionsDiv.querySelector(".btn-dislike");
+
+  // --- COPIAR TEXTO ---
+  btnCopy.addEventListener("click", () => {
+    const text = contentDiv.innerText;
+    navigator.clipboard.writeText(text);
+    btnCopy.style.opacity = 0.4;
+    setTimeout(() => btnCopy.style.opacity = 1, 300);
+  });
+
+  // --- LIKE ---
+  btnLike.addEventListener("click", () => {
+    const isActive = btnLike.dataset.active === "1";
+
+    if (isActive) {
+      btnLike.dataset.active = "0";
+      btnLike.src = "static/images/like0.png";
+    } else {
+      btnLike.dataset.active = "1";
+      btnLike.src = "static/images/like1.png";
+
+      // Apaga dislike si estaba activo
+      btnDislike.dataset.active = "0";
+      btnDislike.src = "static/images/dislike0.png";
+    }
+  });
+
+  // --- DISLIKE ---
+  btnDislike.addEventListener("click", () => {
+    const isActive = btnDislike.dataset.active === "1";
+
+    if (isActive) {
+      btnDislike.dataset.active = "0";
+      btnDislike.src = "static/images/dislike0.png";
+    } else {
+      btnDislike.dataset.active = "1";
+      btnDislike.src = "static/images/dislike1.png";
+
+      // Apaga like si estaba activo
+      btnLike.dataset.active = "0";
+      btnLike.src = "static/images/like0.png";
+    }
+  });
+}
+
 
 
 
