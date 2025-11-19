@@ -510,6 +510,22 @@ function enableMessageActions(actionsDiv, contentDiv) {
 }
 
 
+function updatePreChatMode() {
+  const hasMessages = messagesEl.children.length > 0;
+  document.body.classList.toggle("pre-chat", !hasMessages);
+}
+
+// activar cuando se crea un mensaje
+const originalAddTextMsg = addTextMsg;
+addTextMsg = function(role, html){
+  const el = originalAddTextMsg(role, html);
+  updatePreChatMode();
+  return el;
+};
+
+// activar al cargar la página
+updatePreChatMode();
+
 
 
 
