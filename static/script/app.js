@@ -38,6 +38,7 @@ function addTextMsg(role, html) {
       <img class="btn-copy" src="static/images/copy.png" alt="copiar">
       <img class="btn-like" src="static/images/like0.png" alt="like">
       <img class="btn-dislike" src="static/images/dislike0.png" alt="dislike">
+      <img class="btn-retry" src="static/images/regenerar.png" alt="regenerar">
     `;
 
     div.appendChild(actions);
@@ -489,7 +490,25 @@ function enableMessageActions(actionsDiv, contentDiv) {
       btnLike.src = "static/images/like0.png";
     }
   });
+
+    // --- REGENERAR RESPUESTA ---
+  const btnRetry = actionsDiv.querySelector(".btn-retry");
+  btnRetry.addEventListener("click", () => {
+    const oldText = contentDiv.innerText.trim();
+    if (!oldText) return;
+
+    // eliminar mensaje anterior
+    const msgContainer = contentDiv.parentElement;
+    msgContainer.remove();
+
+    // reenviar mismo mensaje
+    inputEl.value = oldText;
+    inputEl.dispatchEvent(new Event("input"));
+    sendBtn.click();
+  });
+
 }
+
 
 
 
