@@ -668,6 +668,37 @@ body{
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* ============================
+   CENTRAR INPUT EN PC (solo pre-chat)
+   ============================ */
+@media (min-width: 800px) {
+
+  /* Estado inicial: chat vacío */
+  body.pre-chat .composer {
+    bottom: 50%;                 /* centrar en pantalla */
+    transform: translateY(50%);  /* corrección exacta */
+    transition: all 0.45s ease;
+  }
+
+  body.pre-chat .welcome-img {
+    margin-top: -40px;           /* subir un poco el logo */
+    transition: all 0.45s ease;
+  }
+
+  /* Cuando aparece el primer mensaje → posición normal */
+  body:not(.pre-chat) .composer {
+    bottom: 0;
+    transform: translateY(0);
+    transition: all 0.45s ease;
+  }
+
+  body:not(.pre-chat) .welcome-img {
+    margin-top: 0;
+    transition: all 0.45s ease;
+  }
+}
+
+
 
 
 
