@@ -640,13 +640,15 @@ body{
 }
 
 
+
 .msg-actions {
   display: flex;
   gap: 14px;
-  margin-top: 6px;
+  margin-top: 9px;
   padding-left: -4px;
-  opacity: 1;
-  transition: 0.15s ease;
+
+  opacity: 0;
+  animation: fadeInActions 0.35s ease forwards;
 }
 
 .msg-actions img {
@@ -661,6 +663,10 @@ body{
   opacity: 1;
 }
 
+@keyframes fadeInActions {
+  0%   { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
 
 
