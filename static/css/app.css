@@ -650,8 +650,8 @@ body{
 }
 
 .msg-actions img {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
   opacity: 1;
   transition: 0.15s ease;
@@ -660,6 +660,7 @@ body{
 .msg-actions img:hover {
   opacity: 1;
 }
+
 
 
 
