@@ -14,7 +14,7 @@ function smartScroll() {
  * - Títulos, listas, hr → aparecen instantáneo
  * - Párrafos → animados
  */
-function typeWriterFull(element, html, speed = 30) {
+function typeWriterFull(element, html, speed = 1) {
   const temp = document.createElement("div");
   temp.innerHTML = html.trim();
 
@@ -177,6 +177,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
