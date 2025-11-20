@@ -791,7 +791,7 @@ body.pre-chat .suggestions {
   bottom: 0;
   width: 40px;
   pointer-events: none;
-  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0));
 }
 
 /* En PC: input abajo, sugerencias debajo del input (como ChatGPT) */
@@ -807,6 +807,7 @@ body.pre-chat .suggestions {
     order: 3;
   }
 }
+
 
 
 
