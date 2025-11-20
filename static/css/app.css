@@ -770,9 +770,11 @@ body.pre-chat .suggestions {
 .suggestion-title {
   font-weight: 500;
   color: #111;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;     /* ✔ permite multilínea */
+  overflow: visible;       /* ✔ no lo corta */
+  text-overflow: unset;    /* ✔ elimina los "..." */
 }
+
 
 /* Separador */
 .suggestion-sep {
@@ -810,6 +812,7 @@ body.pre-chat .suggestions {
     padding-left: 2px;
   }
 }
+
 
 
 
