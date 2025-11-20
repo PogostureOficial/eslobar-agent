@@ -478,8 +478,8 @@ body{
   background: linear-gradient(
     180deg,
     rgba(255,255,255,0) 0%,
-    rgba(255,255,255,1) 35%,
-    rgba(255,255,255,1) 100%
+    rgba(255,255,255,0) 35%,
+    rgba(255,255,255,0) 100%
   );
   padding: 10px 0 6px;
   display: flex;
@@ -681,7 +681,7 @@ body{
   }
 
   body.pre-chat .welcome-img {
-    margin-top: -40px;           /* subir un poco el logo */
+    margin-top: -120px;           /* subir un poco el logo */
     transition: all 0.45s ease;
   }
 
@@ -810,6 +810,7 @@ body.pre-chat .suggestions {
     padding-left: 2px;
   }
 }
+
 
 
 
