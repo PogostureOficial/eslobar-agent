@@ -698,9 +698,9 @@ body{
   }
 }
 
-/* ============================
-   SUGERENCIAS INICIALES (tipo ChatGPT)
-   ============================ */
+/* ================================
+   SUGERENCIAS TIPO CHATGPT (1 línea)
+   ================================ */
 
 /* Orden móvil: sugerencias arriba del input */
 .suggestions {
@@ -713,15 +713,13 @@ body{
   order: 3;
 }
 
-/* Contenedor base */
+/* Contenedor */
 .suggestions {
   width: min(780px, 95%);
-  max-height: 220px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 6px;
-  overflow: hidden;
+  gap: 2px;
+  margin-top: 14px;
   position: relative;
 
   opacity: 0;
@@ -730,83 +728,89 @@ body{
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* Solo se ven cuando no hay mensajes (pre-chat) */
+/* Solo en pre-chat */
 body.pre-chat .suggestions {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-/* Cada fila de sugerencia */
 .suggestion-item {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 6px 10px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.9);
+  align-items: center;
+  gap: 10px;
+  padding: 6px 4px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 13px;
+  background: transparent;
+  transition: 0.12s ease;
 }
 
 .suggestion-item:hover {
-  background: #f3f3f3;
+  background: rgba(0,0,0,0.04);
 }
 
-/* Emoji a la izquierda */
+/* Emoji */
 .suggestion-emoji {
   font-size: 18px;
-  line-height: 1;
-  margin-top: 2px;
   flex-shrink: 0;
 }
 
-/* Texto (título + descripción) */
-.suggestion-text {
+/* Línea completa */
+.suggestion-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
+/* Título negro */
 .suggestion-title {
   font-weight: 500;
   color: #111;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* Separador */
+.suggestion-sep {
+  color: #888;
+}
+
+/* Descripción gris */
 .suggestion-desc {
-  font-size: 12px;
-  color: #777;
-  white-space: nowrap;
+  color: #666;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Gradiente a la derecha tipo “desaparece” */
+/* Gradiente como ChatGPT */
 .suggestions::after {
   content: "";
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
-  width: 40px;
+  width: 70px;
+  background: linear-gradient(to right, rgba(255,255,255,0), #ffffff);
   pointer-events: none;
-  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0));
 }
 
-/* En PC: input abajo, sugerencias debajo del input (como ChatGPT) */
+/* Alineación exacta en PC (bajo el input) */
 @media (min-width: 800px) {
   .input-wrapper {
     order: 1;
   }
   .suggestions {
     order: 2;
-    margin-top: 10px;
-  }
-  .disclaimer {
-    order: 3;
+    margin-top: 12px;
+    margin-left: 4px;  /* alineado con el input */
+    padding-left: 2px;
   }
 }
+
 
 
 
