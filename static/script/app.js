@@ -3,6 +3,8 @@ const messagesEl = document.getElementById('messages');
 const inputEl     = document.getElementById('input');
 const sendBtn     = document.getElementById('sendBtn');
 const welcomeEl   = document.getElementById('welcome');
+const suggestionsEl = document.getElementById('suggestions');
+
 
 // Model selector
 const modelBtn    = document.getElementById('modelSelector');
@@ -50,6 +52,7 @@ function addTextMsg(role, html) {
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;
   welcomeEl.style.display = 'none';
+  updatePreChatMode();   // <- NUEVO
   return content;  // devolvemos el contenido para typewriter
 }
 
@@ -100,6 +103,91 @@ function isAgentInstruction(text){
   ];
   return verbs.some(v => t.includes(v));
 }
+
+// ======= SUGERENCIAS INICIALES (tipo ChatGPT) =======
+const SUGGESTIONS_POOL = [
+  {
+    emoji: "📱",
+    title: "Compará los últimos iPhone y Samsung",
+    desc: "Te explico cámaras, batería, rendimiento y cuál conviene."
+  },
+  {
+    emoji: "📰",
+    title: "Haceme un resumen de las noticias de hoy",
+    desc: "Te doy los titulares más importantes en lenguaje simple."
+  },
+  {
+    emoji: "🎓",
+    title: "Ayudame a estudiar para un parcial",
+    desc: "Resúmenes, mapas conceptuales y posibles preguntas."
+  },
+  {
+    emoji: "💼",
+    title: "Armá un CV profesional en 5 minutos",
+    desc: "Te pido tus datos y te devuelvo un modelo listo para usar."
+  },
+  {
+    emoji: "🍽️",
+    title: "Creá un plan semanal de comidas barato",
+    desc: "Ideas de desayunos, almuerzos y cenas para 7 días."
+  },
+  {
+    emoji: "🎬",
+    title: "Recomendame películas y series nuevas",
+    desc: "Basadas en lo que ya viste o te gusta."
+  },
+  {
+    emoji: "📊",
+    title: "Compará planes de celular en Argentina",
+    desc: "Analizamos compañías, gigas y precio final."
+  },
+  {
+    emoji: "🧠",
+    title: "Explicame un tema difícil como si tuviera 10 años",
+    desc: "Ideal para matemática, física, economía, etc."
+  }
+];
+
+function pickRandomSuggestions(n = 4) {
+  const pool = [...SUGGESTIONS_POOL];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, n);
+}
+
+function renderSuggestions() {
+  if (!suggestionsEl) return;
+  suggestionsEl.innerHTML = "";
+
+  const subset = pickRandomSuggestions(4);
+  subset.forEach(s => {
+    const item = document.createElement("div");
+    item.className = "suggestion-item";
+    item.innerHTML = `
+      <div class="suggestion-emoji">${s.emoji}</div>
+      <div class="suggestion-text">
+        <div class="suggestion-title">${s.title}</div>
+        <div class="suggestion-desc">${s.desc}</div>
+      </div>
+    `;
+    item.addEventListener("click", () => {
+      // Solo el texto (sin emoji) en el input
+      inputEl.value = s.title;
+      inputEl.focus();
+      inputEl.dispatchEvent(new Event("input"));
+    });
+    suggestionsEl.appendChild(item);
+  });
+}
+
+function updatePreChatMode() {
+  const hasMessages = messagesEl.querySelector(".msg");
+  document.body.classList.toggle("pre-chat", !hasMessages);
+}
+
+
 
 // ======= Backend chat normal =======
 async function askGeneric(text){
@@ -380,6 +468,9 @@ document.getElementById("newChatBtn").addEventListener("click", () => {
   inputEl.style.height = "auto";
   sendBtn.disabled = true;
   agentSessionId = null;
+
+  renderSuggestions();
+  updatePreChatMode();
 });
 
 // ===== BOTONES CENTRALES DE MODO =====
@@ -415,6 +506,9 @@ modeChatBtn.addEventListener("click", () => {
   agentSessionId = null;
   inputEl.value = "";
   sendBtn.disabled = true;
+  renderSuggestions();
+  updatePreChatMode();
+
 });
 
 // === modo AGENTE ===
@@ -432,6 +526,9 @@ modeAgentBtn.addEventListener("click", () => {
   agentSessionId = null;
   inputEl.value = "";
   sendBtn.disabled = true;
+  renderSuggestions();
+  updatePreChatMode();
+
 
   // activar modo agente
   currentModel = "agent";
@@ -526,6 +623,10 @@ addTextMsg = function(role, html){
 // activar al cargar la página
 updatePreChatMode();
 
+window.addEventListener("DOMContentLoaded", () => {
+  renderSuggestions();
+  updatePreChatMode();
+});
 
 
 
