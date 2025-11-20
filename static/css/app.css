@@ -675,8 +675,8 @@ body{
 
   /* Estado inicial: chat vacío */
   body.pre-chat .composer {
-    bottom: 50%;                 /* centrar en pantalla */
-    transform: translateY(50%);  /* corrección exacta */
+    bottom: 40%;                 /* centrar en pantalla */
+    transform: translateY(40%);  /* corrección exacta */
     transition: all 0.45s ease;
   }
 
@@ -812,6 +812,7 @@ body.pre-chat .suggestions {
     padding-left: 2px;
   }
 }
+
 
 
 
