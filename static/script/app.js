@@ -167,9 +167,10 @@ function renderSuggestions() {
     item.className = "suggestion-item";
     item.innerHTML = `
       <div class="suggestion-emoji">${s.emoji}</div>
-      <div class="suggestion-text">
-        <div class="suggestion-title">${s.title}</div>
-        <div class="suggestion-desc">${s.desc}</div>
+      <div class="suggestion-line">
+        <span class="suggestion-title">${s.title}</span>
+        <span class="suggestion-sep"> — </span>
+        <span class="suggestion-desc">${s.desc}</span>
       </div>
     `;
     item.addEventListener("click", () => {
@@ -627,6 +628,7 @@ window.addEventListener("DOMContentLoaded", () => {
   renderSuggestions();
   updatePreChatMode();
 });
+
 
 
 
