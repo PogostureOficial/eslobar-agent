@@ -752,7 +752,7 @@ body.pre-chat .suggestions {
 
 /* Emoji */
 .suggestion-emoji {
-  font-size: 18px;
+  font-size: 16px;
   flex-shrink: 0;
 }
 
@@ -768,9 +768,9 @@ body.pre-chat .suggestions {
 
 /* Título negro */
 .suggestion-title {
-  font-weight: 500;
+  font-weight: 400;
   color: #111;
-  white-space: normal;     /* ✔ permite multilínea */
+  white-space: nowrap;     /* ✔ permite multilínea */
   overflow: visible;       /* ✔ no lo corta */
   text-overflow: unset;    /* ✔ elimina los "..." */
 }
@@ -812,6 +812,7 @@ body.pre-chat .suggestions {
     padding-left: 2px;
   }
 }
+
 
 
 
