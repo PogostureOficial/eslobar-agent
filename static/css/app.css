@@ -837,7 +837,7 @@ body.pre-chat .suggestions {
   padding: 16px 14px;
   opacity: 0;
   pointer-events: none;
-  transition: 0.2s ease;
+  transition: 0s ease;
   z-index: 999;
 }
 
@@ -930,6 +930,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 400;
 }
+
 
 
 
