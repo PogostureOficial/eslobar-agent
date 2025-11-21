@@ -813,6 +813,96 @@ body.pre-chat .suggestions {
   }
 }
 
+/* ===== POPUP MAC STYLE ===== */
+.attach-menu {
+  position: absolute;
+  bottom: 70px;
+  left: 50px;
+  width: 230px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 12px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+  border: 1px solid #E5E5E5;
+
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  transition: all 0.22s cubic-bezier(.25,.6,.25,1);
+  pointer-events: none;
+  z-index: 999;
+}
+
+.attach-menu.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Flechita inferior */
+.attach-arrow {
+  position: absolute;
+  bottom: -8px;
+  left: 26px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-left: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+  transform: rotate(45deg);
+  border-bottom-left-radius: 4px;
+}
+
+/* Títulos */
+.attach-section-title {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+/* Opciones */
+.attach-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #111;
+}
+
+.attach-option:hover {
+  background: #f3f3f3;
+}
+
+/* Íconos */
+.attach-option .icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Separador */
+.attach-separator {
+  height: 1px;
+  background: #e7e7e7;
+  margin: 6px 0;
+}
+
+/* Tilde */
+.attach-option .tick {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  opacity: 0.9;
+}
+
+.attach-option.selected {
+  font-weight: 600;
+}
+
+
 
 
 
