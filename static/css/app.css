@@ -815,11 +815,19 @@ body.pre-chat .suggestions {
 
 /* ===== POPUP MAC STYLE ===== */
 /* ===== MENÚ DEL BOTÓN "+" ===== */
+/* Contenedor que agrupa botón y menú */
+.attach-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Menú */
 .attach-menu {
   position: absolute;
-  bottom: 60px;              /* SIEMPRE arriba del botón */
-  left: 50%;                 /* basado en el botón */
-  transform: translateX(-50%) translateY(8px);
+  bottom: 50px;  /* JUSTO arriba del botón */
+  left: 50%;
+  transform: translateX(-50%);
   width: 240px;
   background: #fff;
   border-radius: 14px;
@@ -832,27 +840,27 @@ body.pre-chat .suggestions {
   z-index: 999;
 }
 
-/* cuando está visible */
-.attach-menu.open {
+/* Cuando está visible */
+.attach-menu.show {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(-6px);
 }
 
-/* triangulito inferior estilo mac */
+/* Triangulito */
 .attach-menu::after {
   content: "";
   position: absolute;
-  bottom: -8px;
+  bottom: -7px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) rotate(45deg);
   width: 14px;
   height: 14px;
   background: #fff;
   border-left: 1px solid #e8e8e8;
   border-bottom: 1px solid #e8e8e8;
-  transform: translateX(-50%) rotate(45deg);
 }
+
 
 }
 
@@ -919,6 +927,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 500;
 }
+
 
 
 
