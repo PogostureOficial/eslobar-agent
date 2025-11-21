@@ -80,77 +80,71 @@
     </div>
 
 
-    <!-- Composer -->
     <div class="composer">
-      <div class="input-wrapper">
-        <button id="quickPlus" class="attach-btn" title="Acciones rápidas">
-          <img src="static/images/icon1.png" alt="Acciones" />
-        </button>
+  <div class="input-wrapper">
 
-        <textarea id="input" rows="1" placeholder="Enviar un mensaje a Eslobar"></textarea>
-        <!-- Nuevo botón de micrófono -->
-        <button id="micBtn" class="send-btn mic-btn">
-          <img src="static/images/microfono.png" alt="Voz" />
-        </button>
+    <div class="attach-container">
+      <button id="quickPlus" class="attach-btn" title="Acciones rápidas">
+        <img src="static/images/icon1.png" alt="Acciones" />
+      </button>
 
-        <button id="sendBtn" class="send-btn" disabled>
-          <img id="sendIcon" src="static/images/button1.png" alt="Enviar" />
-        </button>
-      </div>
+      <div id="attachMenu" class="attach-menu hidden">
 
-      <div id="suggestions" class="suggestions"></div>
-      
-      <p class="disclaimer"></p>
-      
-      <input type="file" id="fileInput" hidden />
-    </div>
-  </main>
+        <div class="attach-section-title">Modo de explicación</div>
+        <div class="attach-option" data-style="formal">Formal</div>
+        <div class="attach-option" data-style="avanzado">Avanzado</div>
 
-  <!-- Modal: no hay micrófono -->
-  <div id="noMicModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="noMicTitle">
-    <div class="modal-backdrop"></div>
-    <div class="modal-card">
-      <h3 id="noMicTitle">No se detectó un micrófono</h3>
-      <p>Verificá permisos del navegador y que tu dispositivo tenga un micrófono disponible.</p>
-      <div class="modal-actions">
-        <button id="noMicClose" class="btn-primary">Entendido</button>
-      </div>
-    </div>
-  </div>
+        <div class="attach-option selected" data-style="simple">
+          Simple <img src="static/images/tick.png" class="tick">
+        </div>
 
-  <div id="attachMenu" class="attach-menu hidden">
-  <div class="attach-arrow"></div>
+        <div class="attach-separator"></div>
 
-  <div class="attach-section-title">Modo de explicación</div>
-  <div class="attach-option" data-style="formal">Formal</div>
-  <div class="attach-option" data-style="avanzado">Avanzado</div>
-  <div class="attach-option selected" data-style="simple">
-    Simple <img src="static/images/tick.png" class="tick">
-  </div>
+        <div class="attach-option">
+          <img src="static/images/canva.png" class="icon"> Creame un canva
+        </div>
 
-  <div class="attach-separator"></div>
+        <div class="attach-option">
+          <img src="static/images/capcut.png" class="icon"> Edita este video
+        </div>
 
-  <div class="attach-option">
-    <img src="static/images/canva.png" class="icon"> Creame un canva
-  </div>
-  <div class="attach-option">
-    <img src="static/images/capcut.png" class="icon"> Edita este video
-  </div>
-  <div class="attach-option">
-    <img src="static/images/safari.png" class="icon"> Busca en internet
-  </div>
-  <div class="attach-option">
-    <img src="static/images/youtube.png" class="icon"> Buscame videos
-  </div>
+        <div class="attach-option">
+          <img src="static/images/safari.png" class="icon"> Busca en internet
+        </div>
 
-  <div class="attach-separator"></div>
+        <div class="attach-option">
+          <img src="static/images/youtube.png" class="icon"> Buscame videos
+        </div>
 
-  <div class="attach-option">
-    <img src="static/images/imagen.png" class="icon"> Adjuntar imagen
-  </div>
-  <div class="attach-option">
-    <img src="static/images/conexiones.png" class="icon"> Conexiones
-  </div>
+        <div class="attach-separator"></div>
+
+        <div class="attach-option">
+          <img src="static/images/imagen.png" class="icon"> Adjuntar imagen
+        </div>
+
+        <div class="attach-option">
+          <img src="static/images/conexiones.png" class="icon"> Conexiones
+        </div>
+
+      </div> <!-- attach-menu -->
+
+    </div> <!-- attach-container -->
+
+    <textarea id="input" rows="1" placeholder="Enviar un mensaje a Eslobar"></textarea>
+
+    <button id="micBtn" class="send-btn mic-btn">
+      <img src="static/images/microfono.png" alt="Voz" />
+    </button>
+
+    <button id="sendBtn" class="send-btn" disabled>
+      <img id="sendIcon" src="static/images/button1.png" alt="Enviar" />
+    </button>
+
+  </div> <!-- input-wrapper -->
+
+  <div id="suggestions" class="suggestions"></div>
+  <p class="disclaimer"></p>
+  <input type="file" id="fileInput" hidden />
 </div>
 
 
@@ -164,6 +158,7 @@
   <script src="static/script/respuesta.js"></script>
 </body>
 </html>
+
 
 
 
