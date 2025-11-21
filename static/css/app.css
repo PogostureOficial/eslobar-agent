@@ -938,10 +938,11 @@ body.pre-chat .suggestions {
 
 @media (max-width: 768px) {
   .composer {
-    background: #0d0d0f !important;   /* Fondo sólido */
+    background: #fff !important;   /* Fondo sólido */
     backdrop-filter: none !important; /* Sin blur */
   }
 }
+
 
 
 
