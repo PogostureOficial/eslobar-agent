@@ -845,7 +845,7 @@ body.pre-chat .suggestions {
 .attach-menu.show {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(calc(-50% + 12px)) translateY(0);
+  transform: translateX(calc(-50% + 65px)) translateY(0);
 }
 
 /* Flechita inferior */
@@ -929,6 +929,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 500;
 }
+
 
 
 
