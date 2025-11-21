@@ -823,43 +823,45 @@ body.pre-chat .suggestions {
 }
 
 /* Menú */
+/* MENU */
 .attach-menu {
   position: absolute;
-  bottom: 50px;  /* JUSTO arriba del botón */
+  bottom: 50px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 240px;
+  transform: translateX(calc(-50% + 12px)) translateY(8px);
+  width: 260px;   /* un poquito más ancho = más premium */
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 12px 28px rgba(0,0,0,0.18);
   border: 1px solid #e8e8e8;
-  padding: 14px 0;
+  padding: 16px 14px;
   opacity: 0;
   pointer-events: none;
   transition: 0.2s ease;
   z-index: 999;
 }
 
-/* Cuando está visible */
+/* Abrir */
 .attach-menu.show {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateX(calc(-50% + 12px)) translateY(0);
 }
 
-/* Triangulito */
+/* Flechita inferior */
 .attach-menu::after {
   content: "";
   position: absolute;
-  bottom: -7px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
+  bottom: -8px;
+  left: calc(50% - 24px); /* flecha más a la izquierda */
   width: 14px;
   height: 14px;
   background: #fff;
   border-left: 1px solid #e8e8e8;
   border-bottom: 1px solid #e8e8e8;
+  transform: rotate(45deg);
 }
+
 
 
 }
@@ -927,6 +929,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 500;
 }
+
 
 
 
