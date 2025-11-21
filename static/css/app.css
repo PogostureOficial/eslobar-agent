@@ -828,7 +828,7 @@ body.pre-chat .suggestions {
   position: absolute;
   bottom: 50px;
   left: 50%;
-  transform: translateX(calc(-50% + 12px)) translateY(8px);
+  transform: translateX(calc(-50% + 85px)) translateY(8px);
   width: 260px;   /* un poquito más ancho = más premium */
   background: #fff;
   border-radius: 14px;
@@ -845,7 +845,7 @@ body.pre-chat .suggestions {
 .attach-menu.show {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(calc(-50% + 65px)) translateY(0);
+  transform: translateX(calc(-50% + 85px)) translateY(0);
 }
 
 /* Flechita inferior */
@@ -853,7 +853,7 @@ body.pre-chat .suggestions {
   content: "";
   position: absolute;
   bottom: -8px;
-  left: calc(50% - 24px); /* flecha más a la izquierda */
+  left: calc(50% - 85px); /* flecha más a la izquierda */
   width: 14px;
   height: 14px;
   background: #fff;
@@ -929,6 +929,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 500;
 }
+
 
 
 
