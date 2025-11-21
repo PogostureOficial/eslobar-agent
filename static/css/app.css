@@ -335,7 +335,7 @@ body{
    ============================ */
 
 .msg.assistant {
-  font-size: 15.2px;
+  font-size: 16px;
   line-height: 1.45;
   color: #000;
   font-family: "Segoe UI", system-ui, sans-serif;
@@ -354,19 +354,19 @@ body{
 }
 
 .msg.assistant h1 {
-  font-size: 21px;
+  font-size: 29px;
   margin-top: 22px;
   margin-bottom: 10px;
 }
 
 .msg.assistant h2 {
-  font-size: 18px;
+  font-size: 24px;
   margin-top: 18px;
   margin-bottom: 8px;
 }
 
 .msg.assistant h3 {
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 14px;
   margin-bottom: 4px;
 }
@@ -930,6 +930,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 400;
 }
+
 
 
 
