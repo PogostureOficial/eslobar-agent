@@ -937,11 +937,4 @@ body.pre-chat .suggestions {
 }
 
 
-@media (max-width: 768px) {
-  .composer {
-    background: #fff !important;
-  }
-  .messages {
-    padding-bottom: 160px; 
-  }
-}
+
