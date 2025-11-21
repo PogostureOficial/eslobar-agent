@@ -857,7 +857,7 @@ body.pre-chat .suggestions {
   width: 14px;
   height: 14px;
   background: #fff;
-  border-left: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
   border-bottom: 1px solid #e8e8e8;
   transform: rotate(45deg);
 }
@@ -874,7 +874,7 @@ body.pre-chat .suggestions {
   width: 18px;
   height: 18px;
   background: #fff;
-  border-left: 1px solid #E5E5E5;
+  border-right: 1px solid #E5E5E5;
   border-bottom: 1px solid #E5E5E5;
   transform: rotate(45deg);
   border-bottom-left-radius: 4px;
@@ -930,6 +930,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 400;
 }
+
 
 
 
