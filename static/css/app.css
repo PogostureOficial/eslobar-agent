@@ -814,28 +814,46 @@ body.pre-chat .suggestions {
 }
 
 /* ===== POPUP MAC STYLE ===== */
+/* ===== MENÚ DEL BOTÓN "+" ===== */
 .attach-menu {
   position: absolute;
-  bottom: 70px;
-  left: 50px;
-  width: 230px;
+  bottom: 60px;              /* SIEMPRE arriba del botón */
+  left: 50%;                 /* basado en el botón */
+  transform: translateX(-50%) translateY(8px);
+  width: 240px;
   background: #fff;
-  border-radius: 16px;
-  padding: 14px 12px;
-  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
-  border: 1px solid #E5E5E5;
-
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  border: 1px solid #e8e8e8;
+  padding: 14px 0;
   opacity: 0;
-  transform: translateY(6px) scale(0.98);
-  transition: all 0.22s cubic-bezier(.25,.6,.25,1);
   pointer-events: none;
+  transition: 0.2s ease;
   z-index: 999;
 }
 
-.attach-menu.show {
+/* cuando está visible */
+.attach-menu.open {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0) scale(1);
+  transform: translateX(-50%) translateY(0);
+}
+
+/* triangulito inferior estilo mac */
+.attach-menu::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-left: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  transform: translateX(-50%) rotate(45deg);
+}
+
 }
 
 /* Flechita inferior */
@@ -901,6 +919,7 @@ body.pre-chat .suggestions {
 .attach-option.selected {
   font-weight: 500;
 }
+
 
 
 
