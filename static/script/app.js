@@ -629,6 +629,38 @@ window.addEventListener("DOMContentLoaded", () => {
   updatePreChatMode();
 });
 
+// === POPUP DEL BOTÓN "+" ===
+const attachBtn = document.querySelector(".attach-btn");
+const attachMenu = document.getElementById("attachMenu");
+
+attachBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  attachMenu.classList.toggle("show");
+});
+
+// Cerrar al hacer clic fuera
+document.addEventListener("click", () => {
+  attachMenu.classList.remove("show");
+});
+
+// Mantenerlo abierto si clickeás adentro
+attachMenu.addEventListener("click", (e) => e.stopPropagation());
+
+// Modo de explicación (marcar con tilde)
+document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
+  opt.addEventListener("click", () => {
+    document.querySelectorAll(".attach-option[data-style]")
+      .forEach(o => o.classList.remove("selected"));
+
+    opt.classList.add("selected");
+
+    // mover tick
+    document.querySelectorAll(".tick").forEach(t => t.remove());
+    opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
+  });
+});
+
+
 
 
 
