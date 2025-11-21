@@ -20,7 +20,7 @@ def assets(path):
 def ask():
     data = request.get_json(force=True)
     user_msg = data.get('message','').strip()
-    model = data.get('model', 'gpt-4')  # <- viene del selector
+    model = data.get('model', 'gpt-5')  # <- viene del selector
 
     if not user_msg:
         return jsonify({"reply":"(mensaje vacío)"}), 200
@@ -32,7 +32,7 @@ def ask():
             model=model,
             prompt={
                 "id": PROMPT_ID,
-                "version": "4"   # O la versión que quieras usar
+                "version": "5"   # O la versión que quieras usar
             },
             input=user_msg,
             temperature=0.4
@@ -68,6 +68,7 @@ def stt():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
