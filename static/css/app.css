@@ -832,7 +832,7 @@ body.pre-chat .suggestions {
   width: 260px;   /* un poquito más ancho = más premium */
   background: #fff;
   border-radius: 14px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  box-shadow: 0 12px 28px rgba(0,0,0,0);
   border: 1px solid #e8e8e8;
   padding: 16px 14px;
   opacity: 0;
@@ -884,8 +884,9 @@ body.pre-chat .suggestions {
 .attach-section-title {
   font-size: 14px;
   color: #555;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 3px;
+  margin-left: 5px;
 }
 
 /* Opciones */
@@ -927,8 +928,9 @@ body.pre-chat .suggestions {
 }
 
 .attach-option.selected {
-  font-weight: 500;
+  font-weight: 400;
 }
+
 
 
 
