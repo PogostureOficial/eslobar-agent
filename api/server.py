@@ -32,7 +32,7 @@ def ask():
             model=model,
             prompt={
                 "id": PROMPT_ID,
-                "version": "2"   # O la versión que quieras usar
+                "version": "3"   # O la versión que quieras usar
             },
             input=user_msg,
             temperature=0.4
@@ -68,6 +68,7 @@ def stt():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
