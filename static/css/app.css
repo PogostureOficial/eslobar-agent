@@ -939,16 +939,9 @@ body.pre-chat .suggestions {
 
 @media (max-width: 768px) {
   .composer {
-    background: #fff !important;   /* Fondo sólido */
-    backdrop-filter: none !important; /* Sin blur */
-    z-index: 3 !important;   /* suficientemente alto para estar arriba del fondo, pero atrás del texto */
+    background: #fff !important;
   }
-}
-
-.messages {
-  z-index: 5 !important;   /* ahora el texto SIEMPRE está por encima del composer */
-}
-
-.input-wrapper {
-  z-index: 10 !important;   /* ahora el texto SIEMPRE está por encima del composer */
+  .messages {
+    padding-bottom: 160px; 
+  }
 }
