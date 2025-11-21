@@ -361,13 +361,13 @@ body{
 .msg.assistant h1 {
   font-size: 29px;
   margin-top: 22px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .msg.assistant h2 {
   font-size: 24px;
   margin-top: 18px;
-  margin-bottom: 5px;
+  margin-bottom: 11px;
 }
 
 .msg.assistant h3 {
@@ -943,6 +943,7 @@ body.pre-chat .suggestions {
   margin-bottom: 10px;
 }
 }
+
 
 
 
