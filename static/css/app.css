@@ -936,6 +936,15 @@ body.pre-chat .suggestions {
   font-weight: 400;
 }
 
+@media (max-width: 768px) {
+  .composer {
+    background: #0d0d0f !important;   /* Fondo sólido */
+    backdrop-filter: none !important; /* Sin blur */
+  }
+}
+
+
+
 
 
 
