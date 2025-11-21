@@ -630,7 +630,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // === POPUP DEL BOTÓN "+" ===
-const attachBtn = document.querySelector(".attach-btn");
+const attachBtn = document.querySelector(".attach-container .attach-btn");
 const attachMenu = document.getElementById("attachMenu");
 
 attachBtn.addEventListener("click", (e) => {
@@ -659,6 +659,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
