@@ -108,43 +108,43 @@ function isAgentInstruction(text){
 const SUGGESTIONS_POOL = [
   {
     emoji: "📱",
-    title: "Compará los últimos iPhone y Samsung",
-    desc: "Te explico cámaras, batería, rendimiento y cuál conviene."
+    title: "Creame un power point en canva acerca de la primera guerra mundial",
+    desc: "Te diseño un power point en canva que trate sobre la primera guerra mundial"
   },
   {
     emoji: "📰",
-    title: "Haceme un resumen de las noticias de hoy",
-    desc: "Te doy los titulares más importantes en lenguaje simple."
+    title: "Edita este video y añadile subtitulos",
+    desc: "Recorto las tomas falsas de tu video y le añado subtitulos para que quede profecional en cuestion de segundos"
   },
   {
     emoji: "🎓",
-    title: "Ayudame a estudiar para un parcial",
-    desc: "Resúmenes, mapas conceptuales y posibles preguntas."
+    title: "Buscame videos sobre la segunda guerra mundial",
+    desc: "Te busco diferentes videos que expliquen la segunda guerra mundial de manera sencilla para que puedas estudiar para un examen"
   },
   {
     emoji: "💼",
-    title: "Armá un CV profesional en 5 minutos",
-    desc: "Te pido tus datos y te devuelvo un modelo listo para usar."
+    title: "Armame un folleto triptico en canva acerca del imperialismo",
+    desc: "Te armo un folleto en canva que trate sobre el imperialismo, con portada bonita, informacion completa, y listo para imprimir y entregar"
   },
   {
     emoji: "🍽️",
-    title: "Creá un plan semanal de comidas barato",
-    desc: "Ideas de desayunos, almuerzos y cenas para 7 días."
+    title: "Buscame informacion acerca de la revolucion rusa",
+    desc: "Busco informacion sobre la revolucion rusa en diferentes paginas y te digo toda la informacion que recopile y de donde la saque"
   },
   {
     emoji: "🎬",
-    title: "Recomendame películas y series nuevas",
-    desc: "Basadas en lo que ya viste o te gusta."
+    title: "Armame un mapa mental en canva sobre sobre los biomas",
+    desc: "Te diseño en canva un mapa mental con palabras clave que te ayude a estudiar los biomas de manera sencilla"
   },
   {
     emoji: "📊",
-    title: "Compará planes de celular en Argentina",
-    desc: "Analizamos compañías, gigas y precio final."
+    title: "Buscame videos que expliquen de manera sencilla las propiedades de las raices",
+    desc: "Te busco videos que expliquen de manera sencilla las propiedades de las raices para que las puedas entender facilmente"
   },
   {
     emoji: "🧠",
-    title: "Explicame un tema difícil como si tuviera 10 años",
-    desc: "Ideal para matemática, física, economía, etc."
+    title: "Buscame informacion acerca del genocidio armenio",
+    desc: "Te busco informacion sobre que fue el genocidio armenio y te digo de donde la saque"
   }
 ];
 
@@ -659,6 +659,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
