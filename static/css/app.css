@@ -941,8 +941,33 @@ body.pre-chat .suggestions {
   font-size: 24px;
   margin-top: 15px;
   margin-bottom: 3px;
+ }
 }
+
+/* Desktop: todo igual */
+@media (min-width: 769px) {
+  body {
+    background-attachment: fixed;
+  }
 }
+
+/* Móvil: NO usar background fijo y el fondo del composer sólido */
+@media (max-width: 768px) {
+
+  body {
+    background-attachment: scroll;   /* ← quita el origen del bug */
+  }
+
+  .composer {
+    background: #fff;                /* fondo sólido, sin transparencias raras */
+  }
+
+  .messages {
+    padding-bottom: 140px;           /* evita que los textos queden detrás del input */
+  }
+}
+
+
 
 
 
