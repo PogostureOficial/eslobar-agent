@@ -1149,6 +1149,29 @@ body {
   overflow-x: hidden;
 }
 
+.msg.assistant .markdown-body {
+  width: 100%;
+  max-width: 100%;
+}
+
+.msg.assistant pre,
+.msg.assistant code {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.msg.assistant pre code {
+  font-size: 16px !important;
+}
+
+@media (max-width: 700px) {
+  .msg.assistant pre code {
+    font-size: 16px !important;
+  }
+}
+
 
 
 
