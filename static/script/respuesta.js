@@ -45,7 +45,7 @@ function typeWriterFull(element, html, speed = 3) {
       const items = Array.from(node.childNodes);
 
       function processItem(j = 0) {
-        if (j >= items.length) return setTimeout(() => processNode(i + 1), 80);
+        if (j >= items.length) return setTimeout(() => {processNode(i + 1);applyHighlight(element);}, 80);
 
         const li = document.createElement("li");
         listClone.appendChild(li);
@@ -113,7 +113,7 @@ function typeWriterFull(element, html, speed = 3) {
         if (j <= text.length) {
           setTimeout(type, speed);
         } else {
-          setTimeout(() => processNode(i + 1), 80);
+          setTimeout(() => {processNode(i + 1);applyHighlight(element);}, 80);
         }
       }
 
@@ -122,6 +122,17 @@ function typeWriterFull(element, html, speed = 3) {
   }
 
   processNode();
+}
+
+// === Highlight automático al final de cada bloque ===
+function applyHighlight(el) {
+  el.querySelectorAll("pre code").forEach(block => {
+    try {
+      hljs.highlightElement(block);
+    } catch (err) {
+      console.warn("Highlight error:", err);
+    }
+  });
 }
 
 
@@ -177,6 +188,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
