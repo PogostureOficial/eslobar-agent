@@ -944,29 +944,35 @@ body.pre-chat .suggestions {
  }
 }
 
-/* Desktop: todo igual */
-@media (min-width: 769px) {
-  body {
-    background-attachment: fixed;
-  }
-}
 
-/* Móvil: NO usar background fijo y el fondo del composer sólido */
+/* Móvil: composer normal que no tapa texto */
 @media (max-width: 768px) {
 
+  /* Preparamos el layout para que el composer quede al final */
+  html, body {
+    height: 100%;
+  }
+
   body {
-    background-attachment: scroll;   /* ← quita el origen del bug */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main {
+    flex: 1;                 /* el chat ocupa todo lo que puede */
   }
 
   .composer {
-    background: #fff;                /* fondo sólido, sin transparencias raras */
+    position: static;        /* deja de ser fixed */
+    width: 100%;
+    background: #fff;        /* fondo sólido, sin rectángulo raro */
+    padding: 10px 0 6px;
   }
 
   .messages {
-    padding-bottom: 140px;           /* evita que los textos queden detrás del input */
+    padding-bottom: 16px;    /* un pelín de espacio para que no quede pegado */
   }
 }
-
 
 
 
