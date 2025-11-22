@@ -1033,14 +1033,14 @@ body.pre-chat .suggestions {
   background: #f4f4f4;              /* gris claro como ChatGPT */
   border: 0px solid #e4e4e7;
   overflow-x: auto;                 /* scroll interno si hace falta */
-  max-width: 100%;
+  max-width: 40%;
   box-sizing: border-box;
 }
 
 .markdown-body pre code {
   font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace,
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.9em;
+  font-size: 0.7em;
   color: #000;                   /* texto oscuro tipo editor claro */
 }
 
@@ -1149,18 +1149,7 @@ body {
   overflow-x: hidden;
 }
 
-.msg.assistant .markdown-body {
-  width: 100%;
-  max-width: 100%;
-}
 
-.msg.assistant pre,
-.msg.assistant code {
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: auto;
-}
 
 .msg.assistant pre code {
   font-size: 16px !important;
@@ -1171,6 +1160,7 @@ body {
     font-size: 16px !important;
   }
 }
+
 
 
 
