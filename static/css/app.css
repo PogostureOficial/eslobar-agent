@@ -75,8 +75,8 @@ body{
   background:none;border:0px solid var(--line);padding:8px 12px;border-radius: 30px;
   max-width:680px;white-space:pre-wrap;line-height:1.5;
 }
-.msg.user{align-self:flex-end;background:#f4f4f4}
-.msg.assistant{align-self:flex-start;background:none}
+.msg.user{align-self:flex-end;background:#f4f4f4;margin-right: 4px;max-width: 380px}
+.msg.assistant{align-self:flex-start;background:none;margin-top: 6px}
 
 /* Bienvenida */
 .welcome{position:absolute;top:50%;width:100%;text-align:center;color: #fff;pointer-events:none}
@@ -965,6 +965,7 @@ body.pre-chat .suggestions {
   background: #fff;
   pointer-events: none;
 }
+
 
 
 
