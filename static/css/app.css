@@ -476,22 +476,7 @@ body{
 }
 
 /* Composer */
-.composer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0) 35%,
-    rgba(255,255,255,0) 100%
-  );
-  padding: 10px 0 6px;
-  display: flex;
-  flex-direction: column; /* IMPORTANTE */
-  align-items: center;
-  gap: 4px;
-}
+
 
 .input-wrapper {
   background: #fff;
@@ -943,6 +928,7 @@ body.pre-chat .suggestions {
   margin-bottom: 3px;
  }
 }
+
 
 
 
