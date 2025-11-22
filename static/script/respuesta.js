@@ -154,7 +154,7 @@ function applyHighlight(el) {
 }
 
 // Typewriter simple para una sola línea / párrafo de texto
-function typeWriterText(element, text, speed = 15) {
+function typeWriterText(element, text, speed = 3) {
   let i = 0;
 
   function step() {
@@ -197,7 +197,7 @@ function showLoadingBubble(userMsg) {
 
     thinkingEl = document.createElement("span");
     thinkingEl.className = "thinking-text";
-    thinkingEl.textContent = "Pensando...";
+    thinkingEl.textContent = "Pensando";
     div.appendChild(thinkingEl);
     smartScroll();
 
@@ -211,7 +211,7 @@ function showLoadingBubble(userMsg) {
       .then(data => {
         if (!div.isConnected) return;
 
-        const shortText = data.action || "Procesando…";
+        const shortText = data.action || "Procesando";
         const descText  = data.description || "";
 
         // Frase corta (arriba)
@@ -275,6 +275,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
