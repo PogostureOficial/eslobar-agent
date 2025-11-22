@@ -65,51 +65,43 @@ def stt():
         print("STT Error:", e)
         return jsonify({"error": "Transcription failed"}), 500
 
-
 @app.route('/action', methods=['POST'])
 def action():
-    data = request.get_json(force=True)
-    user_msg = data.get("message", "").strip()
-
-    if not user_msg:
-        return jsonify({"action": "Procesando…"}), 200
-
-    prompt_action = f """
-    El usuario pidió lo siguiente: "{user_msg}"
-
-    Quiero que generes una frase corta (máximo 8 palabras),
-    que describa qué acción está realizando la IA.
-
-    Debe comenzar con un gerundio:
-    - Explicando ...
-    - Generando ...
-    - Buscando ...
-    - Analizando ...
-    - Preparando ...
-    """
-
     try:
-        resp = client.chat.completions.create(
+        data = request.get_json(force=True)
+        user_msg = data.get("message", "").strip()
+
+        if not user_msg:
+            return jsonify({"action": "Procesando…"}), 200
+
+        prompt_action = f """
+        El usuario pidió lo siguiente: "{user_msg}"
+
+        Genera una frase corta y natural (máximo 8 palabras)
+        que describa la acción que la IA está realizando.
+        
+        Debe iniciar con un verbo en gerundio.
+        
+        Responde SOLO con la frase.
+        """
+
+        resp = client.responses.create(
             model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "Generá frases cortas que describen lo que la IA está haciendo."},
-                {"role": "user", "content": prompt_action}
-            ],
+            input=prompt_action,
             temperature=0.2
         )
 
-        action_text = resp.choices[0].message["content"].strip()
-        return jsonify({"action": action_text})
+        action_text = resp.output_text.strip()
+        return jsonify({"action": action_text}), 200
 
     except Exception as e:
-        print("ACTION ERROR:", e)
-        return jsonify({"action": "Procesando…"})
-
-
+        print("ERROR /action:", e)  # <-- para ver logs en vercel
+        return jsonify({"action": "Procesando…"}), 200
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
