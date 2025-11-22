@@ -1171,7 +1171,7 @@ body {
   background: #f4f4f4;
   border: 0px solid #e4e4e7;
   overflow-x: auto;
-  max-width: 100%;
+  max-width: 70%;
   box-sizing: border-box;
 }
 
@@ -1180,7 +1180,7 @@ body {
 .msg.assistant .msg-content pre code,
 .msg-content pre code {
   font-family: "JetBrains Mono", monospace;
-  font-size: 16px !important;
+  font-size: 14px !important;
   line-height: 1.45;
   color: #000;
 }
@@ -1191,12 +1191,8 @@ body {
   color: #000 !important;              /* texto oscuro */
 }
 
-@media (max-width: 768px) {
-  .msg.assistant pre,
-.msg.assistant .msg-content pre,
-.msg-content pre {
-  max-width: 70%;
-}
+
+
 
 
 
