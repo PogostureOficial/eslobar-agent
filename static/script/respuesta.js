@@ -224,7 +224,7 @@ function showLoadingBubble(userMsg) {
           div.appendChild(detailEl);
 
           // animación tipo ChatGPT
-          typeWriterText(detailEl, descText, 12);
+          typeWriterText(detailEl, descText, 3);
         }
       })
       .catch(() => {
@@ -275,6 +275,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
