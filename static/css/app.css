@@ -481,7 +481,7 @@ body{
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #fff;
+  background: none;
   padding: 10px 0 6px;
   display: flex;
   flex-direction: column; /* IMPORTANTE */
@@ -939,6 +939,7 @@ body.pre-chat .suggestions {
   margin-bottom: 3px;
  }
 }
+
 
 
 
