@@ -178,7 +178,7 @@ function showLoadingBubble() {
 
     const thinking = document.createElement("span");
     thinking.className = "thinking-text";
-    thinking.textContent = "Pensando...";
+    thinking.textContent = "Pensando";
 
     div.appendChild(thinking);
     smartScroll();
@@ -224,6 +224,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
