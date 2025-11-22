@@ -158,7 +158,7 @@ function applyHighlight(el) {
 /**
  * Muestra burbuja de carga de la IA
  */
-function showLoadingBubble() {
+function showLoadingBubble(userMsg) {
   const div = document.createElement("div");
   div.className = "msg assistant";
 
@@ -170,18 +170,36 @@ function showLoadingBubble() {
   messagesEl.appendChild(div);
   smartScroll();
 
-  // Cambiar después de 4s
+  let thinkingEl = null;
+
+  // === 1) A los 4 segundos → mostrar ("Pensando...")
   setTimeout(() => {
-    if (!div.isConnected) return; // por si ya respondió
+    if (!div.isConnected) return;
 
-    bubble.remove(); // quitar el punto
+    bubble.remove();
 
-    const thinking = document.createElement("span");
-    thinking.className = "thinking-text";
-    thinking.textContent = "Pensando";
-
-    div.appendChild(thinking);
+    thinkingEl = document.createElement("span");
+    thinkingEl.className = "thinking-text";
+    thinkingEl.textContent = "Pensando...";
+    div.appendChild(thinkingEl);
     smartScroll();
+
+    // === 2) Pedir al servidor la frase inteligente
+    fetch("/action", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ message: userMsg })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (!div.isConnected) return;
+        thinkingEl.textContent = data.action || "Procesando…";
+      })
+      .catch(() => {
+        if (!div.isConnected) return;
+        thinkingEl.textContent = "Procesando…";
+      });
+
   }, 4000);
 
   return div;
@@ -224,6 +242,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
