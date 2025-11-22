@@ -180,7 +180,7 @@ function showLoadingBubble(userMsg) {
 
     thinkingEl = document.createElement("span");
     thinkingEl.className = "thinking-text";
-    thinkingEl.textContent = "Pensando...";
+    thinkingEl.textContent = "Pensando";
     div.appendChild(thinkingEl);
     smartScroll();
 
@@ -193,11 +193,11 @@ function showLoadingBubble(userMsg) {
       .then(res => res.json())
       .then(data => {
         if (!div.isConnected) return;
-        thinkingEl.textContent = data.action || "Procesando…";
+        thinkingEl.textContent = data.action || "Procesando";
       })
       .catch(() => {
         if (!div.isConnected) return;
-        thinkingEl.textContent = "Procesando…";
+        thinkingEl.textContent = "Procesando";
       });
 
   }, 4000);
@@ -242,6 +242,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
