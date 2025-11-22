@@ -1264,7 +1264,33 @@ body {
 }
 
 
+/* ================================
+   Texto "Pensando…" estilo ChatGPT
+   ================================ */
+.ai-thinking {
+  font-size: 13px;
+  color: #6b6b6b;
+  margin-top: 4px;
+  margin-left: 4px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 200, 200, 0.1) 0%,
+    rgba(150, 150, 150, 0.4) 50%,
+    rgba(200, 200, 200, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: thinkingShimmer 1.6s linear infinite;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
 
+@keyframes thinkingShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
 
 
 
