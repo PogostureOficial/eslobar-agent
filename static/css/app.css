@@ -427,7 +427,7 @@ body{
 .msg.assistant p { margin: -15px 0 6px; line-height: 1.42; }
 
 .msg.assistant ul,
-.msg.assistant ol { margin: 4px 0 6px 1px; padding: 0; }
+.msg.assistant ol { margin: 4px 0 6px 10px; padding: 0; }
 .msg.assistant li { margin: 2px 0; line-height: 1.36; }
 
 .msg.assistant hr { margin: 10px 0; }
@@ -965,6 +965,7 @@ body.pre-chat .suggestions {
   background: #fff;
   pointer-events: none;
 }
+
 
 
 
