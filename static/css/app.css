@@ -1345,7 +1345,7 @@ body {
     flex: 1;
     overflow-y: auto;  /* ahora el scroll es solo del chat */
     overflow-x: hidden;
-    padding-bottom: 110px; /* espacio para el composer (input) + margen */
+    padding-bottom: 40px; /* espacio para el composer (input) + margen */
   }
 
   /* Ya no necesitamos la máscara fija en móvil */
@@ -1353,6 +1353,7 @@ body {
     display: none;
   }
 }
+
 
 
 
