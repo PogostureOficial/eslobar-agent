@@ -25,6 +25,24 @@ function typeWriterFull(element, html, speed = 3) {
 
     const node = nodes[i];
 
+    // -----------------------------------------
+    // BLOQUES DE CÓDIGO <pre><code>
+    // Se insertan completos y se colorean
+    // -----------------------------------------
+    if (node.tagName === "PRE") {
+      const clone = node.cloneNode(true);
+      element.appendChild(clone);
+      smartScroll();
+
+      // highlight automático
+      clone.querySelectorAll("code").forEach(block => {
+        try { hljs.highlightElement(block); } catch(e) {}
+      });
+
+      return setTimeout(() => processNode(i + 1), 120);
+    }
+
+
     // ------------------------------
     // HR → aparece instantáneo
     // ------------------------------
@@ -188,6 +206,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
