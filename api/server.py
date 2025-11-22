@@ -42,6 +42,59 @@ def ask():
     except Exception as e:
         return jsonify({"reply": f"Error: {e}"}), 500
 
+
+# =============================
+# NUEVA RUTA: /action
+# Genera la frase corta tipo:
+# "explicando la revolución rusa"
+# =============================
+@app.route('/action', methods=['POST'])
+def action():
+    data = request.get_json(force=True)
+    user_msg = data.get("message", "").strip()
+
+    if not user_msg:
+        # Por si llega vacío
+        return jsonify({"action": "Procesando…"}), 200
+
+    try:
+        # Prompt súper simple: una sola llamada al modelo mini
+        action_prompt = (
+            "Eres una IA que resume la TAREA que vas a realizar "
+            "a partir del mensaje del usuario.\n\n"
+            "REGLAS:\n"
+            "- Responde en español.\n"
+            "- Máximo 8 palabras.\n"
+            "- Usa gerundio: 'explicando...', 'resumiendo...', 'buscando...', etc.\n"
+            "- No uses comillas, ni emojis, ni punto final.\n\n"
+            f"Mensaje del usuario: \"{user_msg}\"\n\n"
+            "Responde SOLO con la frase corta."
+        )
+
+        resp = client.responses.create(
+            model="gpt-4o-mini",  # modelo rápido y barato para esto
+            input=action_prompt,
+            temperature=0.2
+        )
+
+        text = (resp.output_text or "").strip()
+
+        # Por seguridad, recortamos a 8 palabras máximo
+        words = text.split()
+        if len(words) > 8:
+            text = " ".join(words[:8])
+
+        if not text:
+            text = "Procesando tu pedido…"
+
+        return jsonify({"action": text}), 200
+
+    except Exception as e:
+        print("ACTION ERROR:", e)
+        # Si falla la IA, que no rompa nada:
+        return jsonify({"action": "Procesando…"}), 200
+
+
 @app.route('/stt', methods=['POST'])
 def stt():
     if "audio" not in request.files:
@@ -68,6 +121,7 @@ def stt():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
