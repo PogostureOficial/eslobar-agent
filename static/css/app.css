@@ -1275,6 +1275,7 @@ body {
   user-select: none;
   animation: fadeInThinking 0.4s ease forwards;
   position: relative;
+  margin-top: -4px;
 }
 
 /* Brillo que cruza el texto */
@@ -1304,6 +1305,7 @@ body {
   0%   { left: -100%; }
   100% { left: 100%; }
 }
+
 
 
 
