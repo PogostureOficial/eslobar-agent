@@ -74,42 +74,43 @@ def action():
     if not user_msg:
         return jsonify({"action": "Procesando…"}), 200
 
-    # Prompt que produce textos super naturales como ChatGPT
     prompt_action = f """
     El usuario pidió lo siguiente: "{user_msg}"
 
-    Quiero que generes una frase corta (máximo 8 palabras), en tono natural,
+    Quiero que generes una frase corta (máximo 8 palabras),
     que describa qué acción está realizando la IA.
 
-    Debe comenzar con un verbo en gerundio natural:
-    Ejemplos:
-    - "Explicando ..."
-    - "Generando ..."
-    - "Buscando ..."
-    - "Analizando ..."
-    - "Preparando respuesta sobre ..."
-
-    IMPORTANTE:
-    - No respondas con nada más que la frase.
-    - No uses comillas.
+    Debe comenzar con un gerundio:
+    - Explicando ...
+    - Generando ...
+    - Buscando ...
+    - Analizando ...
+    - Preparando ...
     """
 
     try:
-        resp = client.responses.create(
-            model="gpt-4o-mini",  # rápido y barato
-            input=prompt_action,
+        resp = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "Generá frases cortas que describen lo que la IA está haciendo."},
+                {"role": "user", "content": prompt_action}
+            ],
             temperature=0.2
         )
-        action_text = resp.output_text.strip()
+
+        action_text = resp.choices[0].message["content"].strip()
         return jsonify({"action": action_text})
 
     except Exception as e:
-        return jsonify({"action": "Procesando…"}), 200
+        print("ACTION ERROR:", e)
+        return jsonify({"action": "Procesando…"})
+
 
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
