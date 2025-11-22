@@ -3,6 +3,13 @@ from flask_cors import CORS
 from openai import OpenAI
 import os
 
+# ===========================
+# MEMORIA DE CONVERSACIÓN (últimos 10 mensajes)
+# ===========================
+conversation_history = []  # lista de dicts: {"role": "user"/"assistant", "content": "..."}
+MAX_HISTORY = 10
+
+
 app = Flask(__name__, static_folder='static')
 CORS(app)
 
@@ -16,29 +23,50 @@ def root():
 
 @app.route('/ask', methods=['POST'])
 def ask():
+    global conversation_history
+
     data = request.get_json(force=True)
     user_msg = data.get('message', '').strip()
-    model = data.get('model', 'gpt-5')  # <- viene del selector
+    model = data.get('model', 'gpt-5')
 
     if not user_msg:
         return jsonify({"reply": "(mensaje vacío)"}), 200
 
     try:
-        PROMPT_ID = "pmpt_691b7fed2d988197b948b6e5bee1bcde0c795e0d75914fa9"  # <-- tu ID
+        # 1) Guardamos el mensaje del usuario en la memoria
+        conversation_history.append({"role": "user", "content": user_msg})
+        conversation_history = conversation_history[-MAX_HISTORY:]
 
+        # 2) Armamos la conversación para el modelo
+        messages_for_model = []
+        for m in conversation_history:
+            messages_for_model.append({
+                "role": m["role"],
+                "content": m["content"]
+            })
+
+        # 3) Llamamos al modelo con contexto
         resp = client.responses.create(
             model=model,
             prompt={
-                "id": PROMPT_ID,
-                "version": "5"   # O la versión que quieras usar
+                "id": "pmpt_691b7fed2d988197b948b6e5bee1bcde0c795e0d75914fa9",
+                "version": "5"
             },
-            input=user_msg,
+            input=messages_for_model,
             temperature=0.4
         )
+
         reply = resp.output_text
+
+        # 4) Guardamos también la respuesta de la IA
+        conversation_history.append({"role": "assistant", "content": reply})
+        conversation_history = conversation_history[-MAX_HISTORY:]
+
         return jsonify({"reply": reply})
+
     except Exception as e:
         return jsonify({"reply": f"Error: {e}"}), 500
+
 
 
 # =============================
@@ -147,5 +175,6 @@ def assets(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
