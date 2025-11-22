@@ -79,7 +79,7 @@ body{
 .msg.assistant{align-self:flex-start;background:none}
 
 /* Bienvenida */
-.welcome{position:absolute;top:35%;width:100%;text-align:center;color: #fff;pointer-events:none}
+.welcome{position:absolute;top:50%;width:100%;text-align:center;color: #fff;pointer-events:none}
 .welcome h1{font-size:32px;font-weight:400}
 
 /* Composer ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -483,9 +483,9 @@ body{
   width: 100%;
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.1) 0%,
-    rgba(255,255,255,0.2) 35%,
-    rgba(255,255,255,0.3) 100%
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0) 35%,
+    rgba(255,255,255,0) 100%
   );
   padding: 10px 0 6px;
   display: flex;
@@ -949,6 +949,7 @@ body.pre-chat .suggestions {
     background-attachment: scroll !important;
   }
 }
+
 
 
 
