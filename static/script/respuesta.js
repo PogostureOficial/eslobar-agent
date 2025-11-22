@@ -159,32 +159,34 @@ function applyHighlight(el) {
  * Muestra burbuja de carga de la IA
  */
 function showLoadingBubble() {
-  const div = document.createElement('div');
+  const div = document.createElement("div");
   div.className = "msg assistant";
 
-  const loading = document.createElement('div');
-  loading.className = "ai-loading";
-  div.appendChild(loading);
-
-  // Contenedor del texto "Pensando…"
-  const thinking = document.createElement('div');
-  thinking.className = "ai-thinking";
-  thinking.textContent = "Pensando…";
-  thinking.style.display = "none"; // oculto al inicio
-  div.appendChild(thinking);
+  // Puntito inicial
+  const bubble = document.createElement("div");
+  bubble.className = "ai-loading";
+  div.appendChild(bubble);
 
   messagesEl.appendChild(div);
   smartScroll();
 
-  // Mostrar “Pensando…” después de 4 segundos
+  // Cambiar después de 4s
   setTimeout(() => {
-    if (div.isConnected) {
-      thinking.style.display = "inline-block";
-    }
+    if (!div.isConnected) return; // por si ya respondió
+
+    bubble.remove(); // quitar el punto
+
+    const thinking = document.createElement("span");
+    thinking.className = "thinking-text";
+    thinking.textContent = "Pensando...";
+
+    div.appendChild(thinking);
+    smartScroll();
   }, 4000);
 
   return div;
 }
+
 
 
 // ============= PATCH a askGeneric para integrar la UI =============
@@ -222,6 +224,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
