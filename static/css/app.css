@@ -481,14 +481,18 @@ body{
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: fff;
-  padding: 3px 0 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.2) 35%,
+    rgba(255,255,255,0.3) 100%
+  );
+  padding: 10px 0 6px;
   display: flex;
   flex-direction: column; /* IMPORTANTE */
   align-items: center;
   gap: 4px;
 }
-
 .input-wrapper {
   background: #fff;
   width: min(780px, 95%);
@@ -939,6 +943,7 @@ body.pre-chat .suggestions {
   margin-bottom: 3px;
  }
 }
+
 
 
 
