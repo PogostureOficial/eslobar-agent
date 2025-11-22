@@ -1171,7 +1171,7 @@ body {
   background: #f4f4f4;
   border: 0px solid #e4e4e7;
   overflow-x: auto;
-  max-width: 45%;
+  max-width: 55%;
   box-sizing: border-box;
 }
 
@@ -1262,6 +1262,7 @@ body {
 .hljs-selector-id {
   color: #e06c75 !important;
 }
+
 
 
 
