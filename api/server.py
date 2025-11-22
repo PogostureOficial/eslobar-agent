@@ -58,20 +58,24 @@ def action():
 
     if not user_msg:
         # Por si llega vacío
-        return jsonify({"action": "Procesando…"}), 200
+        return jsonify({"action": "Procesando…", "description": ""}), 200
 
     try:
-        # Prompt súper simple: una sola llamada al modelo mini
+        # Prompt: pedimos 2 líneas, una corta y una descripción
         action_prompt = (
-            "Eres una IA que resume la TAREA que vas a realizar "
-            "a partir del mensaje del usuario.\n\n"
+            "Eres una IA que, a partir del mensaje del usuario, genera:\n"
+            "1) Una frase muy corta que describa la tarea que realizarás,\n"
+            "   en GERUNDIO (explicando, resumiendo, analizando...), máximo 8 palabras.\n"
+            "2) Una breve descripción de lo que vas a hacer, en una o dos oraciones, "
+            "   como si explicaras tu plan de trabajo.\n\n"
             "REGLAS:\n"
             "- Responde en español.\n"
-            "- Máximo 8 palabras.\n"
-            "- Usa gerundio: 'Explicando...', 'Resumiendo...', 'Buscando...', etc.\n"
-            "- No uses comillas, ni emojis, ni punto final.\n\n"
+            "- NO uses comillas ni emojis.\n"
+            "- Primera línea: SOLO la frase corta.\n"
+            "- Segunda línea: SOLO la descripción breve.\n"
+            "- Exactamente dos líneas y nada más.\n\n"
             f"Mensaje del usuario: \"{user_msg}\"\n\n"
-            "Responde SOLO con la frase corta."
+            "Devuelve solo las dos líneas."
         )
 
         resp = client.responses.create(
@@ -80,22 +84,35 @@ def action():
             temperature=0.2
         )
 
-        text = (resp.output_text or "").strip()
+        full_text = (resp.output_text or "").strip()
 
-        # Por seguridad, recortamos a 8 palabras máximo
-        words = text.split()
-        if len(words) > 8:
-            text = " ".join(words[:8])
+        # Separamos líneas y limpiamos
+        lines = [l.strip() for l in full_text.splitlines() if l.strip()]
+        short = lines[0] if len(lines) >= 1 else ""
+        desc  = lines[1] if len(lines) >= 2 else ""
 
-        if not text:
-            text = "Procesando tu pedido…"
+        # Limitamos la frase corta a 8 palabras por seguridad
+        if short:
+            words = short.split()
+            if len(words) > 8:
+                short = " ".join(words[:8])
+        else:
+            short = "Procesando…"
 
-        return jsonify({"action": text}), 200
+        if not desc:
+            # Fallback simple si no vino descripción
+            desc = f"El usuario pide: {user_msg[:120]}"
+
+        return jsonify({"action": short, "description": desc}), 200
 
     except Exception as e:
         print("ACTION ERROR:", e)
         # Si falla la IA, que no rompa nada:
-        return jsonify({"action": "Procesando…"}), 200
+        return jsonify({
+            "action": "Procesando…",
+            "description": ""
+        }), 200
+
 
 
 @app.route('/stt', methods=['POST'])
@@ -130,4 +147,5 @@ def assets(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
