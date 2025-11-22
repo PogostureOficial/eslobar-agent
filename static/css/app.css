@@ -1227,41 +1227,42 @@ body {
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-literal {
-  color: #c678dd !important;
+  color: #986801 !important;
 }
 
 /* Strings */
 .hljs-string,
 .hljs-title.class_.hljs-string,
 .hljs-meta .hljs-string {
-  color: #98c379 !important;
+  color: #50a14f !important;
 }
 
 /* Números, símbolos */
 .hljs-number,
 .hljs-symbol,
 .hljs-bullet {
-  color: #d19a66 !important;
+  color: #986801 !important;
 }
 
 /* Booleanos / literals */
 .hljs-literal,
 .hljs-attr {
-  color: #56b6c2 !important;
+  color: #986801 !important;
 }
 
 /* Funciones */
 .hljs-function .hljs-title,
 .hljs-title.function_ {
-  color: #61afef !important;
+  color: #4078f2 !important;
 }
 
 /* Tags HTML */
 .hljs-tag,
 .hljs-name,
 .hljs-selector-id {
-  color: #e06c75 !important;
+  color: #e85649 !important;
 }
+
 
 
 
