@@ -84,7 +84,7 @@ body{
 
 /* Composer ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 .composer{
-  position:fixed;bottom:0;width:120%;
+  position:fixed;bottom:0;width:100%;
   background: #fff;padding:10px 0;
   display:flex;justify-content:center;
 }
@@ -943,6 +943,14 @@ body.pre-chat .suggestions {
   margin-bottom: 3px;
  }
 }
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+}
+
+
 
 
 
