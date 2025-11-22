@@ -1171,7 +1171,7 @@ body {
   background: #f4f4f4;
   border: 0px solid #e4e4e7;
   overflow-x: auto;
-  max-width: 100%;
+  max-width: 30%;
   box-sizing: border-box;
 }
 
@@ -1183,6 +1183,12 @@ body {
   font-size: 13px !important;
   line-height: 1.45;
   color: #000;
+}
+
+/* ==== Override de highlight.js dentro de la respuesta de la IA ==== */
+.msg.assistant pre code.hljs {
+  background: transparent !important;  /* usamos el fondo del <pre> */
+  color: #000 !important;              /* texto oscuro */
 }
 
 
