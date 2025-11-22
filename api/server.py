@@ -68,7 +68,7 @@ def action():
             "REGLAS:\n"
             "- Responde en español.\n"
             "- Máximo 8 palabras.\n"
-            "- Usa gerundio: 'explicando...', 'resumiendo...', 'buscando...', etc.\n"
+            "- Usa gerundio: 'Explicando...', 'Resumiendo...', 'Buscando...', etc.\n"
             "- No uses comillas, ni emojis, ni punto final.\n\n"
             f"Mensaje del usuario: \"{user_msg}\"\n\n"
             "Responde SOLO con la frase corta."
@@ -130,3 +130,4 @@ def assets(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
