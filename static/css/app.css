@@ -945,34 +945,7 @@ body.pre-chat .suggestions {
 }
 
 
-/* Móvil: composer normal que no tapa texto */
-@media (max-width: 768px) {
 
-  /* Preparamos el layout para que el composer quede al final */
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .main {
-    flex: 1;                 /* el chat ocupa todo lo que puede */
-  }
-
-  .composer {
-    position: static;        /* deja de ser fixed */
-    width: 100%;
-    background: #fff;        /* fondo sólido, sin rectángulo raro */
-    padding: 10px 0 6px;
-  }
-
-  .messages {
-    padding-bottom: 16px;    /* un pelín de espacio para que no quede pegado */
-  }
-}
 
 
 
