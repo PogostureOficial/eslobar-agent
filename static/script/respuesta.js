@@ -216,7 +216,7 @@ const originalAskGeneric = askGeneric;
 askGeneric = async function(text) {
   addTextMsg('user', text);
 
-  const loadingEl = showLoadingBubble();
+  const loadingEl = showLoadingBubble(text);
 
   try {
     const res = await fetch('/ask', {
@@ -242,6 +242,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
