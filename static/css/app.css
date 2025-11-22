@@ -72,7 +72,7 @@ body{
   display:flex;flex-direction:column;gap:14px;overflow:visible;
 }
 .msg{
-  background:none;border:0px solid var(--line);padding:8px 12px;border-radius: 30px;
+  background:none;border:0px solid var(--line);padding:16px 20px;border-radius: 16px;
   max-width:680px;white-space:pre-wrap;line-height:1.5;margin-top: 16px;
 }
 .msg.user{align-self:flex-end;background:#f4f4f4;margin-right: 8px;max-width: 270px}
@@ -965,6 +965,7 @@ body.pre-chat .suggestions {
   background: #fff;
   pointer-events: none;
 }
+
 
 
 
