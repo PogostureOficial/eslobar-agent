@@ -7,6 +7,8 @@
   ],
   "routes": [
     { "src": "/ask", "dest": "/api/server.py" },
+    { "src": "/action", "dest": "/api/server.py" },
+    { "src": "/stt", "dest": "/api/server.py" },
 
     { "src": "/static/(.*)", "dest": "/static/$1" },
     { "src": "/manifest.json", "dest": "/manifest.json" },
@@ -15,3 +17,4 @@
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
+
