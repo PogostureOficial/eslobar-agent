@@ -8,22 +8,20 @@ CORS(app)
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+
 @app.route('/')
 def root():
     return send_from_directory('.', 'index.html')
 
-@app.route('/<path:path>')
-def assets(path):
-    return send_from_directory('.', path)
 
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.get_json(force=True)
-    user_msg = data.get('message','').strip()
+    user_msg = data.get('message', '').strip()
     model = data.get('model', 'gpt-5')  # <- viene del selector
 
     if not user_msg:
-        return jsonify({"reply":"(mensaje vacío)"}), 200
+        return jsonify({"reply": "(mensaje vacío)"}), 200
 
     try:
         PROMPT_ID = "pmpt_691b7fed2d988197b948b6e5bee1bcde0c795e0d75914fa9"  # <-- tu ID
@@ -48,9 +46,14 @@ def ask():
 # Genera la frase corta tipo:
 # "explicando la revolución rusa"
 # =============================
-@app.route('/action', methods=['POST'])
+@app.route('/action', methods=['POST', 'OPTIONS'])
 def action():
-    data = request.get_json(force=True)
+    # Preflight CORS: el navegador manda OPTIONS antes del POST
+    if request.method == 'OPTIONS':
+        # Flask-CORS ya mete los headers, devolvemos 200 vacío
+        return ('', 200)
+
+    data = request.get_json(silent=True) or {}
     user_msg = data.get("message", "").strip()
 
     if not user_msg:
@@ -119,25 +122,11 @@ def stt():
         return jsonify({"error": "Transcription failed"}), 500
 
 
+# 🔻 CATCH-ALL PARA ESTÁTICOS (AL FINAL SIEMPRE)
+@app.route('/<path:path>', methods=['GET'])
+def assets(path):
+    return send_from_directory('.', path)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
