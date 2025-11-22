@@ -153,6 +153,22 @@ function applyHighlight(el) {
   });
 }
 
+// Typewriter simple para una sola línea / párrafo de texto
+function typeWriterText(element, text, speed = 15) {
+  let i = 0;
+
+  function step() {
+    if (!element.isConnected) return; // si se borró el loader, frenamos
+    element.textContent = text.slice(0, i++);
+    smartScroll();
+
+    if (i <= text.length) {
+      setTimeout(step, speed);
+    }
+  }
+
+  step();
+}
 
 
 /**
@@ -171,6 +187,7 @@ function showLoadingBubble(userMsg) {
   smartScroll();
 
   let thinkingEl = null;
+  let detailEl = null;
 
   // === 1) A los 4 segundos → mostrar ("Pensando...")
   setTimeout(() => {
@@ -180,11 +197,11 @@ function showLoadingBubble(userMsg) {
 
     thinkingEl = document.createElement("span");
     thinkingEl.className = "thinking-text";
-    thinkingEl.textContent = "Pensando";
+    thinkingEl.textContent = "Pensando...";
     div.appendChild(thinkingEl);
     smartScroll();
 
-    // === 2) Pedir al servidor la frase inteligente
+    // === 2) Pedir al servidor la frase inteligente + descripción
     fetch("/action", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -193,17 +210,33 @@ function showLoadingBubble(userMsg) {
       .then(res => res.json())
       .then(data => {
         if (!div.isConnected) return;
-        thinkingEl.textContent = data.action || "Procesando";
+
+        const shortText = data.action || "Procesando…";
+        const descText  = data.description || "";
+
+        // Frase corta (arriba)
+        thinkingEl.textContent = shortText;
+
+        // Descripción (abajo) con typewriter
+        if (descText) {
+          detailEl = document.createElement("div");
+          detailEl.className = "thinking-detail";
+          div.appendChild(detailEl);
+
+          // animación tipo ChatGPT
+          typeWriterText(detailEl, descText, 12);
+        }
       })
       .catch(() => {
         if (!div.isConnected) return;
-        thinkingEl.textContent = "Procesando";
+        thinkingEl.textContent = "Procesando…";
       });
 
   }, 4000);
 
   return div;
 }
+
 
 
 
@@ -242,6 +275,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
