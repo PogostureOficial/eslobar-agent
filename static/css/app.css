@@ -1317,6 +1317,43 @@ body {
 }
 
 
+/* ===========================
+   FIX REBOTE EN MÓVIL
+   =========================== */
+@media (max-width: 768px) {
+  html,
+  body {
+    height: 100%;
+    min-height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;  /* el scroll pasa a .messages */
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;     /* MUY IMPORTANTE: permite que .messages maneje el scroll */
+    position: relative;
+  }
+
+  .messages {
+    flex: 1;
+    overflow-y: auto;  /* ahora el scroll es solo del chat */
+    overflow-x: hidden;
+    padding-bottom: 110px; /* espacio para el composer (input) + margen */
+  }
+
+  /* Ya no necesitamos la máscara fija en móvil */
+  .bottom-mask {
+    display: none;
+  }
+}
+
 
 
 
