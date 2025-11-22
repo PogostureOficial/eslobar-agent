@@ -942,6 +942,12 @@ body.pre-chat .suggestions {
   margin-top: 15px;
   margin-bottom: 3px;
  }
+
+  .msg.assistant h2 {
+  font-size: 21px;
+  margin-top: 18px;
+  margin-bottom: 11px;
+ }
 }
 
 @media (max-width: 768px) {
@@ -949,6 +955,20 @@ body.pre-chat .suggestions {
     background-attachment: scroll !important;
   }
 }
+
+/* Fondo blanco debajo del input para cubrir el texto */
+.bottom-cover {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px; /* ajustable según el alto del composer */
+  background: white;
+  pointer-events: none;
+  z-index: 1; /* solo por encima del texto, NO tapa el input */
+}
+
+
 
 
 
