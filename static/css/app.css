@@ -968,6 +968,166 @@ body.pre-chat .suggestions {
 
 
 
+/* =========================================================================================================== MARKDOWN: RENDERIZADO DE TEXTO =================================================================================================================================== */
+
+.markdown-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Encabezados */
+.markdown-body h1 {
+  font-size: 1.5rem;
+  margin: 1.2rem 0 0.6rem;
+}
+.markdown-body h2 {
+  font-size: 1.35rem;
+  margin: 1.1rem 0 0.5rem;
+}
+.markdown-body h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.4rem;
+}
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-size: 1rem;
+  margin: 0.8rem 0 0.3rem;
+  opacity: 0.9;
+}
+
+/* Párrafos */
+.markdown-body p {
+  margin: 0.2rem 0 0.4rem;
+}
+
+/* Negrita / cursiva / tachado */
+.markdown-body strong {
+  font-weight: 600;
+}
+.markdown-body em {
+  font-style: italic;
+}
+.markdown-body del {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+/* Código en línea */
+.markdown-body code.code-inline {
+  font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, SFMono-Regular,
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9em;
+  padding: 0.15rem 0.3rem;
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Bloques de código */
+.markdown-body pre {
+  margin: 0.7rem 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.75rem;
+  background: var(--surface-2, #111214);
+  overflow-x: auto;
+}
+.markdown-body pre code {
+  font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, SFMono-Regular,
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+/* Blockquotes (cuadros) */
+.markdown-body blockquote {
+  margin: 0.7rem 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.75rem;
+  border-left: 3px solid var(--accent, #8ab4ff);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted, #9b9ba1);
+}
+
+/* Listas */
+.markdown-body ul,
+.markdown-body ol {
+  margin: 0.4rem 0 0.5rem;
+  padding-left: 1.1rem;
+}
+.markdown-body li {
+  margin: 0.15rem 0;
+}
+
+/* Checklists */
+.markdown-body ul.task-list {
+  list-style: none;
+  padding-left: 0;
+}
+.markdown-body ul.task-list li.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.markdown-body ul.task-list li.task-item input[type="checkbox"] {
+  transform: scale(0.9);
+  accent-color: var(--accent, #8ab4ff);
+}
+
+/* Separadores */
+.markdown-body hr {
+  border: none;
+  border-bottom: 1px solid var(--line, #26272e);
+  margin: 0.9rem 0;
+}
+
+/* Tablas */
+.markdown-body table.md-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.6rem 0;
+  font-size: 0.9rem;
+}
+.markdown-body table.md-table th,
+.markdown-body table.md-table td {
+  border: 1px solid var(--line, #26272e);
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+}
+.markdown-body table.md-table thead {
+  background: rgba(255, 255, 255, 0.02);
+  font-weight: 600;
+}
+
+/* Links */
+.markdown-body a {
+  color: var(--accent, #8ab4ff);
+  text-decoration: none;
+}
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+/* Imágenes */
+.markdown-body img {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  margin: 0.6rem 0;
+  display: block;
+}
+
+/* Matemáticas */
+.markdown-body .math-inline {
+  font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+  font-style: italic;
+}
+.markdown-body .math-block {
+  font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+  text-align: center;
+  margin: 0.7rem 0;
+}
+
+
+
 
 
 
