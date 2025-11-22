@@ -1171,7 +1171,7 @@ body {
   background: #f4f4f4;
   border: 0px solid #e4e4e7;
   overflow-x: auto;
-  max-width: 70%;
+  max-width: 45%;
   box-sizing: border-box;
 }
 
@@ -1190,6 +1190,7 @@ body {
   background: transparent !important;  /* usamos el fondo del <pre> */
   color: #000 !important;              /* texto oscuro */
 }
+
 
 
 
