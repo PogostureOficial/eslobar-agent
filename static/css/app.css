@@ -1025,18 +1025,25 @@ body.pre-chat .suggestions {
 }
 
 /* Bloques de código */
+/* Bloques de código estilo ChatGPT */
 .markdown-body pre {
   margin: 0.7rem 0;
-  padding: 0.75rem 0.9rem;
-  border-radius: 0.75rem;
-  background: var(--surface-2, #111214);
-  overflow-x: auto;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: #f4f4f4;              /* gris claro como ChatGPT */
+  border: 0px solid #e4e4e7;
+  overflow-x: auto;                 /* scroll interno si hace falta */
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
 .markdown-body pre code {
-  font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, SFMono-Regular,
+  font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace,
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.9em;
+  color: #000;                   /* texto oscuro tipo editor claro */
 }
+
 
 /* Blockquotes (cuadros) */
 .markdown-body blockquote {
@@ -1125,6 +1132,24 @@ body.pre-chat .suggestions {
   text-align: center;
   margin: 0.7rem 0;
 }
+
+/* Evitar que el código haga más ancho al mensaje */
+.msg.assistant .markdown-body {
+  max-width: 100%;
+  width: 100%;
+}
+
+.msg.assistant .markdown-body pre {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Por si acaso, sin scroll horizontal de toda la página */
+body {
+  overflow-x: hidden;
+}
+
+
 
 
 
