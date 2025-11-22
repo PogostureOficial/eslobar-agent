@@ -162,14 +162,30 @@ function showLoadingBubble() {
   const div = document.createElement('div');
   div.className = "msg assistant";
 
-  const bubble = document.createElement('div');
-  bubble.className = "ai-loading";
+  const loading = document.createElement('div');
+  loading.className = "ai-loading";
+  div.appendChild(loading);
 
-  div.appendChild(bubble);
+  // Contenedor del texto "Pensando…"
+  const thinking = document.createElement('div');
+  thinking.className = "ai-thinking";
+  thinking.textContent = "Pensando…";
+  thinking.style.display = "none"; // oculto al inicio
+  div.appendChild(thinking);
+
   messagesEl.appendChild(div);
   smartScroll();
+
+  // Mostrar “Pensando…” después de 4 segundos
+  setTimeout(() => {
+    if (div.isConnected) {
+      thinking.style.display = "inline-block";
+    }
+  }, 4000);
+
   return div;
 }
+
 
 // ============= PATCH a askGeneric para integrar la UI =============
 
@@ -206,6 +222,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
