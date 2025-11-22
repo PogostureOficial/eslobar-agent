@@ -1191,6 +1191,78 @@ body {
   color: #000 !important;              /* texto oscuro */
 }
 
+/* ==========================================================
+   TEMA CHATGPT PARA CÓDIGO (Highlight.js + fondo claro)
+   ========================================================== */
+
+/* Fondo del bloque de código */
+.msg.assistant pre,
+.msg.assistant .msg-content pre {
+  background: #f4f4f4 !important;
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  overflow-x: auto;
+  border: none;
+}
+
+/* Reset del theme para usar nuestros colores */
+.hljs {
+  background: transparent !important;
+  color: #abb2bf !important; /* texto base */
+  font-size: 13px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  line-height: 1.45;
+}
+
+/* ======== Colores ChatGPT (Atom One Dark) ======== */
+
+/* Comentarios */
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370 !important;
+  font-style: italic;
+}
+
+/* Palabras clave */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+  color: #c678dd !important;
+}
+
+/* Strings */
+.hljs-string,
+.hljs-title.class_.hljs-string,
+.hljs-meta .hljs-string {
+  color: #98c379 !important;
+}
+
+/* Números, símbolos */
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet {
+  color: #d19a66 !important;
+}
+
+/* Booleanos / literals */
+.hljs-literal,
+.hljs-attr {
+  color: #56b6c2 !important;
+}
+
+/* Funciones */
+.hljs-function .hljs-title,
+.hljs-title.function_ {
+  color: #61afef !important;
+}
+
+/* Tags HTML */
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id {
+  color: #e06c75 !important;
+}
+
 
 
 
