@@ -1161,6 +1161,32 @@ body {
   }
 }
 
+/* Bloques de código DENTRO de respuestas */
+.msg.assistant pre,
+.msg.assistant .msg-content pre,
+.msg-content pre {
+  margin: 0.7rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: #f4f4f4;
+  border: 0px solid #e4e4e7;
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Texto del código reducido */
+.msg.assistant pre code,
+.msg.assistant .msg-content pre code,
+.msg-content pre code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px !important;
+  line-height: 1.45;
+  color: #000;
+}
+
+
+
 
 
 
