@@ -1356,7 +1356,7 @@ body {
 
 @media (max-width: 768px) {
   .input-wrapper {
-  background: #F2F2F2;
+  background: #fff;
   width: min(780px, 95%);
   border-radius: 30px;
   display: flex;
@@ -1371,9 +1371,14 @@ body {
   font-size: 17px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", system-ui, sans-serif;
   font-weight:400;
-  margin-left: -15px;
+  margin-left: -55px;
+ }
+
+  body{
+   background: #F2F2F2;
  }
 }
   
+
 
 
