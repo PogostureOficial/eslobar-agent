@@ -1373,8 +1373,8 @@ body {
    ========================= */
 .token-dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
   background: #000;
   margin-left: 6px;           /* ahora va después del texto */
@@ -1392,6 +1392,7 @@ body {
 
 
   
+
 
 
 
