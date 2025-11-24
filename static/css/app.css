@@ -694,12 +694,12 @@ body{
   body.pre-chat .composer {
     bottom: 40%;                 /* centrar en pantalla */
     transform: translateY(40%);  /* corrección exacta */
-    transition: all 0.45s ease;
+    transition: all 0s ease;
   }
 
   body.pre-chat .welcome-img {
     margin-top: 200px;           /* subir un poco el logo */
-    transition: all 0.45s ease;
+    transition: all 0s ease;
   }
 
   /* Cuando aparece el primer mensaje → posición normal */
@@ -1465,6 +1465,7 @@ body {
 /* Asegurar que el bloque completo no meta márgenes extra */
 .msg.assistant > :first-child { margin-top: 0; }
 .msg.assistant > :last-child  { margin-bottom: 0; }
+
 
 
 
