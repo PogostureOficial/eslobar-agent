@@ -1366,8 +1366,16 @@ body {
   border: 0px solid #CCCCCC;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
  }
+  #input::placeholder {
+  color: #878787;         /* color gris suave */                /* hace que no sea tan fuerte */
+  font-size: 19px;             /* mismo tamaño que el input */
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-weight:400;
+  margin-right: 10px;
+ }
 }
   
+
 
 
 
