@@ -1354,6 +1354,20 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .input-wrapper {
+  background: #CCCCCC;
+  width: min(780px, 95%);
+  border-radius: 30px;
+  display: flex;
+  align-items: flex-end; /* Fuerza iconos abajo */
+  padding: 8px 12px;
+  gap: 6px;
+  border: 0px solid #CCCCCC;
+  /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
+ }
+}
+  
 
 
 
