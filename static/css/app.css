@@ -1467,6 +1467,14 @@ body {
 .msg.assistant > :last-child  { margin-bottom: 0; }
 
 
+@media (min-width: 800px) {
+
+  /* Estado inicial: chat vacío */
+  .composer {
+    bottom: 5%;                 /* centrar en pantalla */
+  }
+
+}
 
 
 
