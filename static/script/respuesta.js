@@ -10,139 +10,184 @@ function smartScroll() {
 }
 
 /**
- * Typewriter SMART: respeta HTML
- * - Títulos, listas, hr → aparecen instantáneo
- * - Párrafos → animados
+ * Typewriter SMART token x token (tipo ChatGPT)
+ * - Respeta bloques: <pre>, <ul>/<ol>, <hr>
+ * - Texto normal (p, div, h1, h2, h3, etc.) → palabra por palabra
+ * - Si el HTML viene envuelto en .markdown-body, se mantiene esa clase
+ * - onDone se llama cuando terminó TODO el mensaje
  */
-function typeWriterFull(element, html, speed = 3) {
+function typeWriterFull(element, html, tokenDelay = 30, onDone) {
   const temp = document.createElement("div");
   temp.innerHTML = html.trim();
 
-  const nodes = Array.from(temp.childNodes);
+  let rootContainer = element;
+  let nodes;
+
+  // Si viene envuelto en <div class="markdown-body">, preservamos el wrapper
+  const firstElem = temp.firstElementChild;
+  if (
+    firstElem &&
+    firstElem.classList &&
+    firstElem.classList.contains("markdown-body") &&
+    temp.childElementCount === 1
+  ) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "markdown-body";
+    element.appendChild(wrapper);
+    rootContainer = wrapper;
+    nodes = Array.from(firstElem.childNodes);
+  } else {
+    nodes = Array.from(temp.childNodes);
+  }
+
+  let cursorDot = null; // círculo negro que aparece mientras se genera
+
+  function finishAll() {
+    // Highlight final por si quedó algo sin colorear
+    applyHighlight(element);
+
+    // Apagar círculo cuando termina todo
+    if (cursorDot) {
+      cursorDot.classList.add("done");
+    }
+
+    if (typeof onDone === "function") onDone();
+  }
 
   function processNode(i = 0) {
-    if (i >= nodes.length) return;
+    if (i >= nodes.length) {
+      return finishAll();
+    }
 
     const node = nodes[i];
 
-    // -----------------------------------------
-    // BLOQUES DE CÓDIGO <pre><code>
-    // Se insertan completos y se colorean
-    // -----------------------------------------
-    if (node.tagName === "PRE") {
-      const clone = node.cloneNode(true);
-      element.appendChild(clone);
-      smartScroll();
-
-      // highlight automático
-      clone.querySelectorAll("code").forEach(block => {
-        try { hljs.highlightElement(block); } catch(e) {}
-      });
-
-      return setTimeout(() => processNode(i + 1), 120);
-    }
-
-
-    // ------------------------------
-    // HR → aparece instantáneo
-    // ------------------------------
-    if (node.tagName === "HR") {
-      element.appendChild(node);
-      smartScroll();
-      return setTimeout(() => processNode(i + 1), 120);
-    }
-
-    // -----------------------------------------
-    // LISTAS → UL/OL aparecen instantáneas
-    //   pero CADA <li> se escribe letra por letra
-    // -----------------------------------------
-    if (node.tagName === "UL" || node.tagName === "OL") {
-      const listClone = node.cloneNode(false);
-      element.appendChild(listClone);
-
-      const items = Array.from(node.childNodes);
-
-      function processItem(j = 0) {
-        if (j >= items.length) return setTimeout(() => {processNode(i + 1);applyHighlight(element);}, 80);
-
-        const li = document.createElement("li");
-        listClone.appendChild(li);
-
-        const text = items[j].textContent || "";
-        let k = 0;
-
-        function typeItem() {
-          li.textContent = text.slice(0, k++);
-          smartScroll();
-
-          if (k <= text.length) {
-            setTimeout(typeItem, speed);
-          } else {
-            setTimeout(() => processItem(j + 1), 60);
-          }
-        }
-
-        typeItem();
+    // Saltar textos vacíos
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = (node.textContent || "").trim();
+      if (!text) {
+        return processNode(i + 1);
       }
-
-      return processItem();
+      return streamBlock("p", text, () => processNode(i + 1));
     }
 
-    // -----------------------------------------
-    // TITULOS (H1 / H2 / H3) → letra por letra
-    // -----------------------------------------
-    if (node.tagName === "H1" || node.tagName === "H2" || node.tagName === "H3") {
-      const newEl = document.createElement(node.tagName.toLowerCase());
-      element.appendChild(newEl);
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const tag = node.tagName.toUpperCase();
 
-      const text = node.textContent;
-      let k = 0;
-
-      function typeTitle() {
-        newEl.textContent = text.slice(0, k++);
+      // === Bloques de código: se insertan enteros y se colorean ===
+      if (tag === "PRE") {
+        const clone = node.cloneNode(true);
+        rootContainer.appendChild(clone);
         smartScroll();
 
-        if (k <= text.length) {
-          setTimeout(typeTitle, speed);
-        } else {
-          setTimeout(() => processNode(i + 1), 120);
-        }
+        clone.querySelectorAll("code").forEach(block => {
+          try { hljs.highlightElement(block); } catch (e) {}
+        });
+
+        return setTimeout(() => processNode(i + 1), 120);
       }
 
-      return typeTitle();
-    }
-
-    // -----------------------------------------
-    // TEXTO / PÁRRAFOS / SPAN / DIV → letra x letra
-    // -----------------------------------------
-    if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
-      const text = node.textContent || "";
-      const tag = node.tagName ? node.tagName.toLowerCase() : "p";
-
-      const newEl = document.createElement(tag);
-      element.appendChild(newEl);
-
-      let j = 0;
-
-      function type() {
-        newEl.textContent = text.slice(0, j++);
+      // === HR: separador directo ===
+      if (tag === "HR") {
+        const hr = document.createElement("hr");
+        rootContainer.appendChild(hr);
         smartScroll();
-
-        if (j <= text.length) {
-          setTimeout(type, speed);
-        } else {
-          setTimeout(() => {processNode(i + 1);applyHighlight(element);}, 80);
-        }
+        return setTimeout(() => processNode(i + 1), 80);
       }
 
-      return type();
+      // === Listas UL / OL ===
+      if (tag === "UL" || tag === "OL") {
+        return streamList(node, () => processNode(i + 1));
+      }
+
+      // === Cualquier otro elemento textual (p, div, h1, h2, h3, etc.) ===
+      const text = (node.textContent || "").trim();
+      if (!text) {
+        return processNode(i + 1);
+      }
+      return streamBlock(node.tagName.toLowerCase(), text, () => processNode(i + 1));
     }
+
+    // Si no es texto ni elemento, seguimos
+    processNode(i + 1);
   }
 
+  // ---- Stream de un bloque de texto (p, div, h1, h2, h3...) token x token ----
+  function streamBlock(tagName, text, done) {
+    const blockEl = document.createElement(tagName);
+    const textSpan = document.createElement("span");
+    textSpan.className = "token-stream";
+
+    // Solo el PRIMER bloque lleva el círculo negro al estilo ChatGPT
+    if (!cursorDot) {
+      cursorDot = document.createElement("span");
+      cursorDot.className = "token-dot";
+      blockEl.appendChild(cursorDot);
+    }
+
+    blockEl.appendChild(textSpan);
+    rootContainer.appendChild(blockEl);
+    smartScroll();
+
+    const tokens = text.split(/(\s+)/); // conserva espacios
+    let idx = 0;
+
+    function step() {
+      if (idx >= tokens.length) {
+        return setTimeout(done, 60);
+      }
+      textSpan.textContent += tokens[idx++];
+      smartScroll();
+      setTimeout(step, tokenDelay);
+    }
+
+    step();
+  }
+
+  // ---- Stream de listas UL/OL, cada <li> también token x token ----
+  function streamList(listNode, done) {
+    const listEl = document.createElement(listNode.tagName.toLowerCase());
+    rootContainer.appendChild(listEl);
+
+    const items = Array.from(listNode.children).filter(
+      child => child.tagName && child.tagName.toUpperCase() === "LI"
+    );
+
+    function processItem(itemIndex) {
+      if (itemIndex >= items.length) {
+        return setTimeout(done, 60);
+      }
+
+      const liEl = document.createElement("li");
+      const textSpan = document.createElement("span");
+      textSpan.className = "token-stream";
+      liEl.appendChild(textSpan);
+      listEl.appendChild(liEl);
+      smartScroll();
+
+      const txt = (items[itemIndex].textContent || "").trim();
+      const tokens = txt.split(/(\s+)/);
+      let tIndex = 0;
+
+      function stepToken() {
+        if (tIndex >= tokens.length) {
+          return setTimeout(() => processItem(itemIndex + 1), 40);
+        }
+        textSpan.textContent += tokens[tIndex++];
+        smartScroll();
+        setTimeout(stepToken, tokenDelay);
+      }
+
+      stepToken();
+    }
+
+    processItem(0);
+  }
+
+  // Empezar
   processNode();
 }
 
-// === Highlight automático al final de cada bloque ===
+// Highlight automático (como ya lo tenías)
 function applyHighlight(el) {
   el.querySelectorAll("pre code").forEach(block => {
     try {
@@ -152,6 +197,7 @@ function applyHighlight(el) {
     }
   });
 }
+
 
 // Typewriter simple para una sola línea / párrafo de texto
 function typeWriterText(element, text, speed = 3) {
@@ -242,48 +288,58 @@ function showLoadingBubble(userMsg) {
 
 // ============= PATCH a askGeneric para integrar la UI =============
 
-// Guardamos la función original
+// ============= PATCH a askGeneric para integrar la UI =============
+
+// Guardamos la función original (por si la querés usar en otro lado)
 const originalAskGeneric = askGeneric;
 
 // Sobrescribimos askGeneric con UI mejorada
-askGeneric = async function(text) {
-  addTextMsg('user', text);
+askGeneric = async function (text) {
+  addTextMsg("user", text);
 
   const loadingEl = showLoadingBubble(text);
 
   try {
-    const res = await fetch('/ask', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ message:text, model: currentModel })
+    const res = await fetch("/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, model: currentModel }),
     });
 
     const data = await res.json();
 
+    // Sacar la burbuja de "Pensando..."
     loadingEl.remove();
 
-    const aiDiv = addTextMsg('assistant', "");
+    // Crear el contenedor vacío de la IA
+    const aiDiv = addTextMsg("assistant", "");
     const html = markdownToHTML(data.reply || "(sin respuesta)");
-    typeWriterFull(aiDiv, html);
 
-    // === NUEVO: mostrar botones al terminar el typewriter ===
-    setTimeout(() => {
+    // Typewriter token x token
+    typeWriterFull(aiDiv, html, 30, () => {
+      // Cuando termina TODO el mensaje:
       const actions = aiDiv.parentElement.querySelector(".msg-actions");
       if (actions) {
         actions.style.display = "flex";
         requestAnimationFrame(() => actions.classList.add("show"));
       }
-    }, 10);
-
-
+    });
   } catch (err) {
     loadingEl.remove();
     console.error("ERROR EN RESPUESTA.JS:", err);
-    const aiDiv = addTextMsg('assistant', "");
+    const aiDiv = addTextMsg("assistant", "");
     aiDiv.innerText = "⚠️ Error en cliente: " + err;
-  }
 
+    // Si querés, también mostrar botones en caso de error
+    const actions = aiDiv.parentElement.querySelector(".msg-actions");
+    if (actions) {
+      actions.style.display = "flex";
+      requestAnimationFrame(() => actions.classList.add("show"));
+    }
+  }
 };
+
+
 
 
 
