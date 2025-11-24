@@ -1363,7 +1363,7 @@ body {
   align-items: flex-end; /* Fuerza iconos abajo */
   padding: 5px 9px;
   gap: 6px;
-  border: 0px solid #CCCCCC;
+  border: 1px solid #CCCCCC;
   /*box-shadow: 0px 2px 15px -10px #D4D4D4;*/
  }
   #input::placeholder {
@@ -1375,10 +1375,11 @@ body {
  }
 
   body{
-   background: #F2F2F2;
+   background: #fff;
  }
 }
   
+
 
 
 
