@@ -43,6 +43,10 @@ function addTextMsg(role, html) {
       <img class="btn-retry" src="static/images/regenerar.png" alt="regenerar">
     `;
 
+    actions.classList.remove("show");
+    actions.style.display = "none";   // <-- NUEVO
+
+
     div.appendChild(actions);
 
     // Eventos de botones
@@ -659,6 +663,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
