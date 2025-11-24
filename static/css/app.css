@@ -1356,7 +1356,7 @@ body {
 
 @media (max-width: 768px) {
   .input-wrapper {
-  background: #fff;
+  background: #F5F5F5;
   width: min(780px, 95%);
   border-radius: 30px;
   display: flex;
@@ -1376,10 +1376,12 @@ body {
  }
 
   body{
-   background: #FAFAFA;
+   background: #fff;
  }
+  .send-btn img{width:30px;height:30px;opacity:.1;transition:var(--t)}
 }
   
+
 
 
 
