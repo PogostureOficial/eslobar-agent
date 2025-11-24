@@ -266,6 +266,15 @@ askGeneric = async function(text) {
     const html = markdownToHTML(data.reply || "(sin respuesta)");
     typeWriterFull(aiDiv, html);
 
+    // === NUEVO: mostrar botones al terminar el typewriter ===
+    setTimeout(() => {
+      const actions = aiDiv.parentElement.querySelector(".msg-actions");
+      if (actions) {
+        actions.style.display = "flex";
+        requestAnimationFrame(() => actions.classList.add("show"));
+      }
+    }, 10);
+
 
   } catch (err) {
     loadingEl.remove();
@@ -275,6 +284,7 @@ askGeneric = async function(text) {
   }
 
 };
+
 
 
 
