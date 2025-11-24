@@ -1354,8 +1354,18 @@ body {
   }
 }
 
+.msg-actions {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: 0.35s ease;
+}
+.msg-actions.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
   
+
 
 
 
