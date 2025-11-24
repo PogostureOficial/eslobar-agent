@@ -1372,7 +1372,6 @@ body {
   font-size: 17px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", system-ui, sans-serif;
   font-weight:400;
-  margin-left: -55px;
   overflow:hidden;
  }
 
@@ -1388,6 +1387,7 @@ body {
  }
 }
   
+
 
 
 
