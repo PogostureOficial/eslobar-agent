@@ -1373,6 +1373,7 @@ body {
   font-family: "Segoe UI", system-ui, sans-serif;
   font-weight:400;
   margin-left: -55px;
+  overflow:hidden;
  }
 
   body{
@@ -1381,6 +1382,7 @@ body {
   .send-btn img{width:35px;height:35px;opacity:.1;transition:var(--t)}
 }
   
+
 
 
 
