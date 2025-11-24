@@ -1364,7 +1364,32 @@ body {
   transform: translateY(0);
 }
 
+/* =========================
+   CURSOR TOKEN X TOKEN (ChatGPT-like)
+   ========================= */
+
+.token-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #000;
+  margin-right: 8px;
+  transform: translateY(1px);
+}
+
+/* Cuando termina de generar, el punto se apaga */
+.token-dot.done {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.token-stream {
+  white-space: pre-wrap; /* para respetar saltos y espacios */
+}
+
   
+
 
 
 
