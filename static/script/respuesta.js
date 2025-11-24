@@ -111,20 +111,23 @@ function typeWriterFull(element, html, tokenDelay = 30, onDone) {
     processNode(i + 1);
   }
 
-  // ---- Stream de un bloque de texto (p, div, h1, h2, h3...) token x token ----
+   // ---- Stream de un bloque de texto (p, div, h1, h2, h3...) token x token ----
   function streamBlock(tagName, text, done) {
     const blockEl = document.createElement(tagName);
     const textSpan = document.createElement("span");
     textSpan.className = "token-stream";
 
-    // Solo el PRIMER bloque lleva el círculo negro al estilo ChatGPT
+    // Crear el cursor si no existe
     if (!cursorDot) {
       cursorDot = document.createElement("span");
       cursorDot.className = "token-dot";
-      blockEl.appendChild(cursorDot);
     }
 
+    // Siempre re-enganchar el cursor al bloque actual,
+    // después del texto → "Hola, ¿en qué●"
     blockEl.appendChild(textSpan);
+    blockEl.appendChild(cursorDot);
+
     rootContainer.appendChild(blockEl);
     smartScroll();
 
@@ -143,7 +146,7 @@ function typeWriterFull(element, html, tokenDelay = 30, onDone) {
     step();
   }
 
-  // ---- Stream de listas UL/OL, cada <li> también token x token ----
+  // ---- Stream de listas UL/OL, cada <li> token x token ----
   function streamList(listNode, done) {
     const listEl = document.createElement(listNode.tagName.toLowerCase());
     rootContainer.appendChild(listEl);
@@ -160,7 +163,15 @@ function typeWriterFull(element, html, tokenDelay = 30, onDone) {
       const liEl = document.createElement("li");
       const textSpan = document.createElement("span");
       textSpan.className = "token-stream";
+
+      // Crear cursor si no existe y moverlo a este <li>
+      if (!cursorDot) {
+        cursorDot = document.createElement("span");
+        cursorDot.className = "token-dot";
+      }
+
       liEl.appendChild(textSpan);
+      liEl.appendChild(cursorDot); // el punto va al final de la línea
       listEl.appendChild(liEl);
       smartScroll();
 
@@ -338,6 +349,7 @@ askGeneric = async function (text) {
     }
   }
 };
+
 
 
 
