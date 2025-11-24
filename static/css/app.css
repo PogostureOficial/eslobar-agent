@@ -1368,13 +1368,14 @@ body {
  }
   #input::placeholder {
   color: #878787;         /* color gris suave */                /* hace que no sea tan fuerte */
-  font-size: 19px;             /* mismo tamaño que el input */
+  font-size: 17px;             /* mismo tamaño que el input */
   font-family: "Segoe UI", system-ui, sans-serif;
   font-weight:400;
-  margin-right: 10px;
+  margin-left: -15px;
  }
 }
   
+
 
 
 
