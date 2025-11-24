@@ -1378,9 +1378,10 @@ body {
   body{
    background: #fff;
  }
-  .send-btn img{width:30px;height:30px;opacity:.1;transition:var(--t)}
+  .send-btn img{width:35px;height:35px;opacity:.1;transition:var(--t)}
 }
   
+
 
 
 
