@@ -698,7 +698,7 @@ body{
   }
 
   body.pre-chat .welcome-img {
-    margin-top: -120px;           /* subir un poco el logo */
+    margin-top: 120px;           /* subir un poco el logo */
     transition: all 0.45s ease;
   }
 
@@ -1465,6 +1465,7 @@ body {
 /* Asegurar que el bloque completo no meta márgenes extra */
 .msg.assistant > :first-child { margin-top: 0; }
 .msg.assistant > :last-child  { margin-bottom: 0; }
+
 
 
 
