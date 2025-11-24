@@ -1356,7 +1356,7 @@ body {
 
 @media (max-width: 768px) {
   .input-wrapper {
-  background: #CCCCCC;
+  background: #F2F2F2;
   width: min(780px, 95%);
   border-radius: 30px;
   display: flex;
@@ -1368,6 +1368,7 @@ body {
  }
 }
   
+
 
 
 
