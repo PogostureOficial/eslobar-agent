@@ -420,17 +420,29 @@ body{
 }
 
 /* --- Compactar el espacio vertical dentro de la respuesta de la IA --- */
-.msg.assistant h1 { margin: 10px 0 6px; }
-.msg.assistant h2 { margin: 8px 0 4px; }
-.msg.assistant h3 { margin: 6px 0 4px; }
+/* --- Espaciado base dentro de la respuesta de la IA --- */
+.msg.assistant h1 { margin: 14px 0 6px; }
+.msg.assistant h2 { margin: 12px 0 6px; }
+.msg.assistant h3 { margin: 10px 0 6px; }
 
-.msg.assistant p { margin: -15px 0 6px; line-height: 1.42; }
+.msg.assistant p {
+  margin: 4px 0;
+  line-height: 1.45;
+}
 
 .msg.assistant ul,
-.msg.assistant ol { margin: 4px 0 6px 10px; padding: 0; }
-.msg.assistant li { margin: 2px 0; line-height: 1.36; }
+.msg.assistant ol {
+  margin: 4px 0;
+  padding-left: 1.1rem;  /* misma sangría para todas las listas */
+}
+
+.msg.assistant li {
+  margin: 2px 0;
+  line-height: 1.4;
+}
 
 .msg.assistant hr { margin: 10px 0; }
+
 
 /* Quitar márgenes extra en el primer y último elemento del bloque */
 .msg.assistant > :first-child { margin-top: 0; }
@@ -1392,6 +1404,7 @@ body {
 
 
   
+
 
 
 
