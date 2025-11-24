@@ -50,7 +50,7 @@ def ask():
             model=model,
             prompt={
                 "id": "pmpt_691b7fed2d988197b948b6e5bee1bcde0c795e0d75914fa9",
-                "version": "5"
+                "version": "6"
             },
             input=messages_for_model,
             temperature=0.4
@@ -175,6 +175,7 @@ def assets(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
