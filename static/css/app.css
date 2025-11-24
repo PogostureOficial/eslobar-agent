@@ -1356,7 +1356,7 @@ body {
 
 @media (max-width: 768px) {
   .input-wrapper {
-  background: #F5F5F5;
+  background: #fff;
   width: min(780px, 95%);
   border-radius: 30px;
   display: flex;
@@ -1377,11 +1377,18 @@ body {
  }
 
   body{
-   background: #fff;
+   background: #F7F7F7;
  }
   .send-btn img{width:35px;height:35px;opacity:.1;transition:var(--t)}
+  
+  .top-nav{
+  height:62px;background: #F7F7F7;border-bottom:0px solid #E8E8E8;
+  display:flex;align-items:center;justify-content:space-between;padding:0 14px;
+  position:sticky;top:0;z-index:10;flex-shrink: 0;
+ }
 }
   
+
 
 
 
