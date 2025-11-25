@@ -1477,6 +1477,13 @@ body {
 
 }
 
+@media (min-width: 800px) {
+  .top-nav{
+  height:62px;background: rgba(255,255,255,0);border-bottom:0px solid #E8E8E8;
+  display:flex;align-items:center;justify-content:space-between;padding:0 14px;
+  position:sticky;top:0;z-index:10;flex-shrink: 0;
+ }
+}
 
 
 
