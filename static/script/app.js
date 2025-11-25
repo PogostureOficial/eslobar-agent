@@ -478,14 +478,20 @@ document.getElementById("newChatBtn").addEventListener("click", () => {
   updatePreChatMode();
 });
 
-// ===== BOTONES CENTRALES REMOVIDOS =====
-// Este bloque evita errores cuando los elementos ya no existen.
-const modeChatBtn  = null;
-const modeAgentBtn = null;
-const underline    = null;
+// ===== BOTONES CENTRALES DE MODO =====
+const modeChatBtn  = document.getElementById("modeChatBtn");
+const modeAgentBtn = document.getElementById("modeAgentBtn");
+const underline    = document.querySelector(".mode-underline");
 
-// “Funciones vacías” para evitar errores si algo las llama.
-function moveUnderline() {}
+function moveUnderline(btn) {
+  const rect = btn.getBoundingClientRect();
+  const parent = btn.parentElement.getBoundingClientRect();
+
+  const btnCenter = rect.left - parent.left + rect.width / 2;
+  const underlineWidth = underline.offsetWidth;
+
+  underline.style.left = (btnCenter - underlineWidth / 2) + "px";
+}
 
 
 
@@ -656,6 +662,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
