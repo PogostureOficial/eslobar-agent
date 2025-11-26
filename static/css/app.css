@@ -1492,11 +1492,14 @@ body {
 
 @media (max-width: 768px) {
   .msg.assistant {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.6;
   color: #000;
  }
+
+  .msg.user{align-self:flex-end;background:#f4f4f4;font-size: 20px;margin-right: 8px;max-width: 270px}
 }
+
 
 
 
