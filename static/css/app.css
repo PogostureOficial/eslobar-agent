@@ -1491,12 +1491,13 @@ body {
 }
 
 @media (max-width: 768px) {
-  .msg.assistant .markdown-body {
-  font-size: 19px;
+  .msg.assistant {
+  font-size: 24px;
   line-height: 1.6;
   color: #000;
  }
 }
+
 
 
 
