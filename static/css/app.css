@@ -699,7 +699,6 @@ body{
   }
 
   body.pre-chat .welcome-img {
-    margin-top: 200px;           /* subir un poco el logo */
     transition: all 0s ease;
   }
 
@@ -1535,6 +1534,7 @@ body {
  }
 
 }
+
 
 
 
