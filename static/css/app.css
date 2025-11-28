@@ -80,7 +80,7 @@ body{
 
 /* Bienvenida */
 .welcome{position:absolute;top:50%;width:100%;text-align:center;color: #fff;pointer-events:none}
-.welcome h1{font-size:32px;font-weight:400}
+.welcome h1{font-size:32px;font-weight:400}f
 
 /* Composer ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 .composer{
@@ -535,7 +535,7 @@ body{
 /* Imagen de bienvenida estilo ChatGPT */
 .welcome {
   position: absolute;
-  top: 35%;                /* mismo valor que tu título */
+  top: 50%;                /* mismo valor que tu título */
   width: 100%;
   text-align: center;
   pointer-events: none;
@@ -1534,6 +1534,7 @@ body {
  }
 
 }
+
 
 
 
