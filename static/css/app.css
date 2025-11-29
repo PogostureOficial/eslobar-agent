@@ -1553,7 +1553,7 @@ body {
    ============================ */
 @media (max-width: 768px) {
   .welcome {
-    top: 50% !important;        /* exactamente en el medio */
+    top: 30% !important;        /* exactamente en el medio */
     transform: translateY(-50%); /* corrección exacta */
   }
 
@@ -1567,7 +1567,7 @@ body {
    ============================ */
 @media (min-width: 769px) {
   .welcome {
-    top: 38% !important;        /* MUY parecido al ChatGPT real */
+    top: 58% !important;        /* MUY parecido al ChatGPT real */
     transform: translateY(-38%);
   }
 }
@@ -1589,12 +1589,8 @@ body {
     background: none;
   }
 
-  /* Ocultar el texto de "menú" si lo tuvieras en mobile */
-  .menu-btn {
-    position: absolute;
-    left: 12px; /* lo dejo en el borde */
-  }
 }
+
 
 
 
