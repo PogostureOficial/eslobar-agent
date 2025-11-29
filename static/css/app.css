@@ -578,7 +578,7 @@ body{
 /* Texto "4o" */
 .brand-sub {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   color: #858585; /* similar al 4o de ChatGPT */
   margin-left: 6px;
   margin-top: 1px;
@@ -1587,7 +1587,7 @@ body {
     font-size: 18px;
     padding: 6px 10px;
     background: none;
-    font-weight:600;
+    font-weight:500;
   }
 
    /* Ocultar el texto de "menú" si lo tuvieras en mobile */
@@ -1597,6 +1597,7 @@ body {
   }
 
 }
+
 
 
 
