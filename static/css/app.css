@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "OpenAI";
+  src: url("/static/fonts/OpenAISans-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 :root{
   --bg:#fff;
   --surface:#0d0d0f;
@@ -22,7 +31,8 @@ html,body{
 }
 body{
   margin:0;color:var(--text);
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: "OpenAI", sans-serif;
+  /*font-family: "Segoe UI", system-ui, sans-serif;*/
   display:block;flex-direction:column;overflow-y: auto;
 
   /* FONDO TIPO CHATGPT */
@@ -1537,6 +1547,7 @@ body {
  }
 
 }
+
 
 
 
