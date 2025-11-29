@@ -1548,38 +1548,53 @@ body {
 
 }
 
+/* ============================
+   WELCOME LOGO — CENTRADO EN MÓVILES
+   ============================ */
+@media (max-width: 768px) {
+  .welcome {
+    top: 50% !important;        /* exactamente en el medio */
+    transform: translateY(-50%); /* corrección exacta */
+  }
 
+  .welcome-img {
+    margin-top: 0 !important;   /* evita empujes */
+  }
+}
 
+/* ============================
+   WELCOME LOGO — POSICIÓN EN ESCRITORIO
+   ============================ */
+@media (min-width: 769px) {
+  .welcome {
+    top: 38% !important;        /* MUY parecido al ChatGPT real */
+    transform: translateY(-38%);
+  }
+}
 
+/* ==================================
+   CENTRAR EL MODE-BTN EN MÓVILES
+   ================================== */
+@media (max-width: 768px) {
 
+  .nav-left {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
+  .model-btn {
+    font-size: 18px;
+    padding: 6px 10px;
+    background: none;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  /* Ocultar el texto de "menú" si lo tuvieras en mobile */
+  .menu-btn {
+    position: absolute;
+    left: 12px; /* lo dejo en el borde */
+  }
+}
 
 
 
