@@ -1589,7 +1589,14 @@ body {
     background: none;
   }
 
+   /* Ocultar el texto de "menú" si lo tuvieras en mobile */
+  .menu-btn {
+    position: absolute;
+    left: 80%; /* lo dejo en el borde */
+  }
+
 }
+
 
 
 
