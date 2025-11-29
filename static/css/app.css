@@ -1587,6 +1587,7 @@ body {
     font-size: 18px;
     padding: 6px 10px;
     background: none;
+    font-weight:600;
   }
 
    /* Ocultar el texto de "menú" si lo tuvieras en mobile */
@@ -1596,6 +1597,7 @@ body {
   }
 
 }
+
 
 
 
