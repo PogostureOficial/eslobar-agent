@@ -110,7 +110,7 @@ body{
 .attach-btn img{width:38px;height:38px;opacity: 1}
 .attach-btn:hover img{opacity:1}
 #input{
-  flex:1;resize:none;border:none;background:transparent;color: #000;font-size:15px;font-family: "Segoe UI", system-ui, sans-serif;
+  flex:1;resize:none;border:none;background:transparent;color: #000;font-size:15px;font-family: "OpenAI", sans-serif;
   padding:8px;max-height:150px;overflow-y:auto;
 }
 #input:focus{outline:none}
@@ -353,7 +353,7 @@ body{
   font-size: 16px;
   line-height: 1.45;
   color: #000;
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: "OpenAI", sans-serif;
 }
 
 /* --------- TÍTULOS --------- */
@@ -538,7 +538,7 @@ body{
 #input::placeholder {
   color: #878787;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 16px;             /* mismo tamaño que el input */
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: "OpenAI", sans-serif;
   font-weight:400;
 }
 
@@ -1514,7 +1514,7 @@ body {
   #input::placeholder {
   color: #878787;         /* color gris suave */                /* hace que no sea tan fuerte */
   font-size: 17px;             /* mismo tamaño que el input */
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: "OpenAI", sans-serif;
   font-weight:400;
   line-height: 1.6;
  }
@@ -1547,6 +1547,7 @@ body {
  }
 
 }
+
 
 
 
