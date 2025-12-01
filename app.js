@@ -1,4 +1,4 @@
-import { ChatKit } from "https://cdn.jsdelivr.net/npm/@openai/chatkit/dist/chatkit.es.js";
+import { ChatKit } from "https://cdn.platform.openai.com/deployments/chatkit/chatkit.js";
 
 // Inicialización del UI
 const chat = new ChatKit({
@@ -48,4 +48,5 @@ const chat = new ChatKit({
     }
   }
 });
+
 
