@@ -1,61 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Eslobar Chat</title>
+  <title>ChatKit Demo</title>
+  <style>
+    body { font-family: sans-serif; background: #f6f6f6; display:flex; flex-direction:column; align-items:center;}
+    #chat { width: 380px; background: white; border-radius:8px; border: 1px solid #eee; margin-top:40px; box-shadow:0 1px 4px #eee;}
+    .messages { height: 400px; overflow-y: auto; padding: 16px;}
+    .message { margin-bottom: 16px;}
+    .user { text-align: right; color: #2563eb;}
+    .assistant { text-align: left; color: #374151;}
+    #composer { display:flex; border-top:1px solid #eee;}
+    #input { flex:1; border:none; padding:12px;}
+    #send { background:#2563eb; color:white; border:none; padding:12px 20px;}
+  </style>
 </head>
-<body style="margin:0;">
-  <div id="chatkit-root" style="height:100vh;"></div>
-
-  <script src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"></script>
-
+<body>
+  <div id="chat">
+    <div class="messages" id="messages"></div>
+    <form id="composer" autocomplete="off">
+      <input id="input" autocomplete="off" placeholder="Escribe tu mensaje..." />
+      <button id="send" type="submit">Enviar</button>
+    </form>
+  </div>
   <script>
-  const chat = new ChatKit({
-    element: document.getElementById("chatkit-root"),
-    options: {
-      api: {
-        baseUrl: "https://eslobar-agent.vercel.app/ask",
-      },
+    // Simple ChatGPT-like behavior
+    const messagesDiv = document.getElementById('messages');
+    const composer = document.getElementById('composer');
+    const input = document.getElementById('input');
+    let thread_id = null; // Puede usarse para mantener contexto si necesitas, sino omite
 
-      theme: { 
-        colorScheme: "dark",
-        radius: "pill",
-        density: "compact",
-        color: { accent: { primary: "#8ab4ff" } },
-        typography: {
-          baseSize: 16,
-          fontFamily: "OpenAI, system-ui",
-          fontSources: [
-            {
-              family: "OpenAI Sans",
-              src: "https://cdn.openai.com/common/fonts/openai-sans/v2/OpenAISans-Regular.woff2",
-              weight: 400,
-              display: "swap",
-            }
-          ]
-        }
-      },
-
-      composer: {
-        attachments: { enabled: true },
-        models: [
-          { id: "gpt-5", label: "GPT-5", default: true },
-          { id: "gpt-4.1-mini", label: "GPT-4.1 Mini" }
-        ]
-      },
-
-      startScreen: {
-        greeting: "Bienvenido a Eslobar",
-        prompts: [
-          { icon: "bolt", label: "¿Qué puedes hacer?", prompt: "¿Qué puede hacer Eslobar?" }
-        ]
-      }
+    function appendMessage(who, text) {
+      const div = document.createElement('div');
+      div.className = 'message ' + who;
+      div.textContent = text;
+      messagesDiv.appendChild(div);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
-  });
-</script>
 
+    composer.addEventListener('submit', async e => {
+      e.preventDefault();
+      const text = input.value;
+      if (!text) return;
+      appendMessage('user', text);
+      input.value = '';
+
+      // Construye el payload de ChatKit (puedes ajustar si usas contexto/hilos)
+      const body = JSON.stringify({
+        messages: [
+          { role: "user", content: text }
+        ],
+        // thread_id, // agregar si usas persistencia de threads
+      });
+
+      appendMessage('assistant', '...'); // Mensaje temporal mientras responde
+
+      fetch('/api/chatkit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body
+      })
+      .then(response => response.json())
+      .then(data => {
+        messagesDiv.lastChild.textContent = data.choices?.[0]?.message?.content || 'Error';
+      }).catch(() => {
+        messagesDiv.lastChild.textContent = "Error de conexión";
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
