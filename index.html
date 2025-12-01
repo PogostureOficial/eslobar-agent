@@ -7,8 +7,55 @@
 <body style="margin:0;">
   <div id="chatkit-root" style="height:100vh;"></div>
 
-  <script type="module" src="static/app.js"></script>
+  <script src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"></script>
+
+  <script>
+  const chat = new ChatKit({
+    element: document.getElementById("chatkit-root"),
+    options: {
+      api: {
+        baseUrl: "https://eslobar-agent.vercel.app/ask",
+      },
+
+      theme: { 
+        colorScheme: "dark",
+        radius: "pill",
+        density: "compact",
+        color: { accent: { primary: "#8ab4ff" } },
+        typography: {
+          baseSize: 16,
+          fontFamily: "OpenAI, system-ui",
+          fontSources: [
+            {
+              family: "OpenAI Sans",
+              src: "https://cdn.openai.com/common/fonts/openai-sans/v2/OpenAISans-Regular.woff2",
+              weight: 400,
+              display: "swap",
+            }
+          ]
+        }
+      },
+
+      composer: {
+        attachments: { enabled: true },
+        models: [
+          { id: "gpt-5", label: "GPT-5", default: true },
+          { id: "gpt-4.1-mini", label: "GPT-4.1 Mini" }
+        ]
+      },
+
+      startScreen: {
+        greeting: "Bienvenido a Eslobar",
+        prompts: [
+          { icon: "bolt", label: "¿Qué puedes hacer?", prompt: "¿Qué puede hacer Eslobar?" }
+        ]
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
+
 
 
