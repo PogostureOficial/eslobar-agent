@@ -7,10 +7,8 @@ const chat = new ChatKit({
   // Configuración visual y funcional
   options: {
     api: {
-      baseUrl: "https://TU-SERVIDOR.com/ask", // o tu endpoint Flask
-      headers: async () => ({
-        Authorization: "Bearer TU_API_KEY"
-      })
+      baseUrl: "https://eslobar-agent.vercel.app/ask", // o tu endpoint Flask
+      // Sin headers. Eliminar Authorization.
     },
 
     theme: {
@@ -50,3 +48,4 @@ const chat = new ChatKit({
     }
   }
 });
+
