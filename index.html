@@ -1,71 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ChatKit Demo</title>
-  <style>
-    body { font-family: sans-serif; background: #f6f6f6; display:flex; flex-direction:column; align-items:center;}
-    #chat { width: 380px; background: white; border-radius:8px; border: 1px solid #eee; margin-top:40px; box-shadow:0 1px 4px #eee;}
-    .messages { height: 400px; overflow-y: auto; padding: 16px;}
-    .message { margin-bottom: 16px;}
-    .user { text-align: right; color: #2563eb;}
-    .assistant { text-align: left; color: #374151;}
-    #composer { display:flex; border-top:1px solid #eee;}
-    #input { flex:1; border:none; padding:12px;}
-    #send { background:#2563eb; color:white; border:none; padding:12px 20px;}
-  </style>
-</head>
-<body>
-  <div id="chat">
-    <div class="messages" id="messages"></div>
-    <form id="composer" autocomplete="off">
-      <input id="input" autocomplete="off" placeholder="Escribe tu mensaje..." />
-      <button id="send" type="submit">Enviar</button>
-    </form>
-  </div>
-  <script>
-    // Simple ChatGPT-like behavior
-    const messagesDiv = document.getElementById('messages');
-    const composer = document.getElementById('composer');
-    const input = document.getElementById('input');
-    let thread_id = null; // Puede usarse para mantener contexto si necesitas, sino omite
+  <head>
+    <meta charset="utf-8" />
+    <title>Eslobar - ChatKit</title>
+    <script src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"></script>
+    <style>
+      body, html { margin:0; height:100%; }
+      #root { height:100%; }
+    </style>
+  </head>
+  <body>
+    <openai-chatkit id="root"></openai-chatkit>
 
-    function appendMessage(who, text) {
-      const div = document.createElement('div');
-      div.className = 'message ' + who;
-      div.textContent = text;
-      messagesDiv.appendChild(div);
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
+    <script>
+      const options = {
+        api: {
+          async getClientSecret() {
+            const r = await fetch("/api/chatkit/session", { method: "POST" });
+            return (await r.json()).client_secret;
+          }
+        },
+        theme: {
+          colorScheme: "dark",
+          radius: "pill",
+          density: "compact",
+        }
+      };
 
-    composer.addEventListener('submit', async e => {
-      e.preventDefault();
-      const text = input.value;
-      if (!text) return;
-      appendMessage('user', text);
-      input.value = '';
-
-      // Construye el payload de ChatKit (puedes ajustar si usas contexto/hilos)
-      const body = JSON.stringify({
-        messages: [
-          { role: "user", content: text }
-        ],
-        // thread_id, // agregar si usas persistencia de threads
-      });
-
-      appendMessage('assistant', '...'); // Mensaje temporal mientras responde
-
-      fetch('/api/chatkit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body
-      })
-      .then(response => response.json())
-      .then(data => {
-        messagesDiv.lastChild.textContent = data.choices?.[0]?.message?.content || 'Error';
-      }).catch(() => {
-        messagesDiv.lastChild.textContent = "Error de conexión";
-      });
-    });
-  </script>
-</body>
+      document.getElementById("root").setAttribute("options", JSON.stringify(options));
+    </script>
+  </body>
 </html>
