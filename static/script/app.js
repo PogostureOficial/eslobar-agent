@@ -16,7 +16,7 @@ window.AGENT_RUNNER_URL = localStorage.getItem("AGENT_RUNNER_URL") || "https://a
 
 // ======= State =======
 let agentSessionId = null;
-let currentModel = 'gpt-4o-mini'; // default
+/* let currentModel = 'gpt-4o-mini'; // default */
 let isAgentMode  = false;
 
 // ======= Utils UI =======
@@ -688,6 +688,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
