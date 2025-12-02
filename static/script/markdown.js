@@ -1,6 +1,29 @@
 function markdownToHTML(md) {
   if (!md) return "";
 
+  // ============================================
+// 0) Detectar bloques ```conceptmap ... ```
+//    y renderizarlos como un cuadro vistoso
+// ============================================
+
+  md = md.replace(/```conceptmap\s*([\s\S]*?)```/gim, (match, content) => {
+    // Escapar HTML dentro del mapa
+    const safe = content
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .trim();
+
+    return `
+      <div class="conceptmap-box">
+        <div class="conceptmap-content">
+          ${safe.replace(/\n/g, "<br>")}
+        </div>
+      </div>
+    `;
+  });
+
+
   // Normalizar saltos múltiples (3+ → 2)
   md = md.replace(/\n{3,}/g, "\n\n");
 
@@ -208,4 +231,5 @@ function markdownToHTML(md) {
 
   return md.trim();
 }
+
 
