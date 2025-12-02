@@ -86,7 +86,6 @@ def ask():
         resp = client.responses.create(
             model=openai_model,
             input=messages_for_model_full,
-            temperature=0.4
         )
 
         reply = resp.output_text
@@ -143,7 +142,6 @@ def action():
         resp = client.responses.create(
             model="gpt-4o-mini",  # modelo rápido y barato para esto
             input=action_prompt,
-            temperature=0.2
         )
 
         full_text = (resp.output_text or "").strip()
@@ -209,6 +207,7 @@ def assets(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
