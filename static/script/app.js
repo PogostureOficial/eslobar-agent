@@ -199,10 +199,6 @@ let currentModel = "eslobar-5";  // default
 
 const modelSelectorBtn = modelBtn;   // reutilizamos los ya creados
 
-// Abrir/cerrar dropdown
-modelSelectorBtn.addEventListener("click", () => {
-  modelDropdown.classList.toggle("hidden");
-});
 
 // Selección de modelo
 modelDropdown.querySelectorAll(".dropdown-item").forEach(btn => {
@@ -686,6 +682,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
