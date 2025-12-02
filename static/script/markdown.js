@@ -6,22 +6,20 @@ function markdownToHTML(md) {
 //    y renderizarlos como un cuadro vistoso
 // ============================================
 
-  md = md.replace(/```conceptmap\s*([\s\S]*?)```/gim, (match, content) => {
-    // Escapar HTML dentro del mapa
-    const safe = content
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .trim();
+// ========================================
+// CUADRO AUTOMÁTICO PARA LISTADOS LARGOS
+// ========================================
 
-    return `
+// Si el markdown tiene 6 o más líneas que empiezan con "- "
+  const bulletMatches = md.match(/^\s*-\s.+$/gim) || [];
+
+  if (bulletMatches.length >= 6) {
+    md = `
       <div class="conceptmap-box">
-        <div class="conceptmap-content">
-          ${safe.replace(/\n/g, "<br>")}
-        </div>
+        ${md}
       </div>
     `;
-  });
+  }
 
 
   // Normalizar saltos múltiples (3+ → 2)
@@ -231,5 +229,6 @@ function markdownToHTML(md) {
 
   return md.trim();
 }
+
 
 
