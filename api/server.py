@@ -20,14 +20,32 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 def root():
     return send_from_directory('.', 'index.html')
 
+concept_map_prompt = """
+Eres una IA especializada en transformar cualquier texto en un MAPA CONCEPTUAL.
 
+Devuelve SIEMPRE un único bloque Markdown con este formato:
+
+```conceptmap
+# Título del tema
+- Concepto 1
+  - Subconcepto 1
+  - Subconcepto 2
+- Concepto 2
+  - Subconcepto 1
+  - Subconcepto 2
+Reglas:
+No agregues texto fuera del bloque.
+No agregues explicaciones.
+No uses emojis.
+Usa entre 2 y 5 conceptos principales y entre 1 y 4 subconceptos.
+"""
 @app.route('/ask', methods=['POST'])
 def ask():
     global conversation_history
 
     data = request.get_json(force=True)
     user_msg = data.get('message', '').strip()
-    model = data.get('model', 'gpt-5')
+    model_name = data.get("model", "eslobar-5")
 
     if not user_msg:
         return jsonify({"reply": "(mensaje vacío)"}), 200
@@ -46,17 +64,34 @@ def ask():
             })
 
         # 3) Llamamos al modelo con contexto
-        resp = client.responses.create(
-            model=model,
-            prompt={
-                "id": "pmpt_691b7fed2d988197b948b6e5bee1bcde0c795e0d75914fa9",
-                "version": "7"
-            },
-            input=messages_for_model,
-            temperature=0.4
-        )
+        # Selección del modelo base real
+            openai_model = "gpt-5"
 
-        reply = resp.output_text
+            # Construimos el mensaje final según modo
+            messages_for_model_full = []
+
+            if model_name == "eslobar-0b":
+                messages_for_model_full.append({
+                    "role": "system",
+                    "content": concept_map_prompt
+                })
+            else:
+                messages_for_model_full.append({
+                    "role": "system",
+                    "content": "Eres Eslobar, un asistente académico claro, organizado y útil."
+                })
+
+            # Añadimos los mensajes de la conversación
+            messages_for_model_full.extend(messages_for_model)
+
+            resp = client.responses.create(
+                model=openai_model,
+                input=messages_for_model_full,
+                temperature=0.4
+            )
+
+            reply = resp.output_text
+
 
         # 4) Guardamos también la respuesta de la IA
         conversation_history.append({"role": "assistant", "content": reply})
@@ -175,6 +210,7 @@ def assets(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
