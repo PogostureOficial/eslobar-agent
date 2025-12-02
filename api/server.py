@@ -39,6 +39,7 @@ No agregues explicaciones.
 No uses emojis.
 Usa entre 2 y 5 conceptos principales y entre 1 y 4 subconceptos.
 """
+
 @app.route('/ask', methods=['POST'])
 def ask():
     global conversation_history
@@ -51,49 +52,46 @@ def ask():
         return jsonify({"reply": "(mensaje vacío)"}), 200
 
     try:
-        # 1) Guardamos el mensaje del usuario en la memoria
+        # Guardamos el mensaje del usuario
         conversation_history.append({"role": "user", "content": user_msg})
         conversation_history = conversation_history[-MAX_HISTORY:]
 
-        # 2) Armamos la conversación para el modelo
-        messages_for_model = []
-        for m in conversation_history:
-            messages_for_model.append({
-                "role": m["role"],
-                "content": m["content"]
+        # Preparamos mensajes del historial
+        messages_for_model = [
+            {"role": m["role"], "content": m["content"]}
+            for m in conversation_history
+        ]
+
+        # Modelo real usado (siempre gpt-5)
+        openai_model = "gpt-5"
+
+        # Construir el "mensaje completo" según modo
+        messages_for_model_full = []
+
+        if model_name == "eslobar-0b":
+            messages_for_model_full.append({
+                "role": "system",
+                "content": concept_map_prompt
+            })
+        else:
+            messages_for_model_full.append({
+                "role": "system",
+                "content": "Eres Eslobar, un asistente académico claro, organizado y útil."
             })
 
-        # 3) Llamamos al modelo con contexto
-        # Selección del modelo base real
-            openai_model = "gpt-5"
+        # Agregar conversación
+        messages_for_model_full.extend(messages_for_model)
 
-            # Construimos el mensaje final según modo
-            messages_for_model_full = []
+        # Llamada al modelo
+        resp = client.responses.create(
+            model=openai_model,
+            input=messages_for_model_full,
+            temperature=0.4
+        )
 
-            if model_name == "eslobar-0b":
-                messages_for_model_full.append({
-                    "role": "system",
-                    "content": concept_map_prompt
-                })
-            else:
-                messages_for_model_full.append({
-                    "role": "system",
-                    "content": "Eres Eslobar, un asistente académico claro, organizado y útil."
-                })
+        reply = resp.output_text
 
-            # Añadimos los mensajes de la conversación
-            messages_for_model_full.extend(messages_for_model)
-
-            resp = client.responses.create(
-                model=openai_model,
-                input=messages_for_model_full,
-                temperature=0.4
-            )
-
-            reply = resp.output_text
-
-
-        # 4) Guardamos también la respuesta de la IA
+        # Guardamos respuesta
         conversation_history.append({"role": "assistant", "content": reply})
         conversation_history = conversation_history[-MAX_HISTORY:]
 
@@ -101,6 +99,7 @@ def ask():
 
     except Exception as e:
         return jsonify({"reply": f"Error: {e}"}), 500
+
 
 
 
@@ -210,6 +209,7 @@ def assets(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", 8080)))
+
 
 
 
