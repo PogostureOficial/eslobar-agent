@@ -192,6 +192,32 @@ function updatePreChatMode() {
   document.body.classList.toggle("pre-chat", !hasMessages);
 }
 
+// ===============================
+// MANEJO DE MODELOS ESLOBAR
+// ===============================
+let currentModel = "eslobar-5";  // default
+
+const modelSelectorBtn = document.getElementById("modelSelector");
+const modelDropdown = document.getElementById("modelDropdown");
+const currentModelName = document.getElementById("currentModelName");
+
+// Abrir/cerrar dropdown
+modelSelectorBtn.addEventListener("click", () => {
+  modelDropdown.classList.toggle("hidden");
+});
+
+// Selección de modelo
+modelDropdown.querySelectorAll(".dropdown-item").forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentModel = btn.dataset.model;
+    currentModelName.textContent = btn.textContent.split(" ")[0];   // solo "Eslobar"
+    document.querySelector(".brand-sub").textContent =
+      currentModel === "eslobar-0b" ? "0b" : "5";
+
+    modelDropdown.classList.add("hidden");
+  });
+});
+
 
 
 // ======= Backend chat normal =======
@@ -662,6 +688,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
