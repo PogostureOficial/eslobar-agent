@@ -1598,6 +1598,32 @@ body {
 
 }
 
+/* ===========================
+   CUADRO ESPECIAL: CONCEPTMAP
+   =========================== */
+
+.conceptmap-box {
+  background: #f7f9fc;
+  border: 1px solid #d8e2f0;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin: 16px 0;
+  max-width: 100%;
+}
+
+.conceptmap-content {
+  font-family: "OpenAI", sans-serif;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.conceptmap-content br {
+  line-height: 1.5;
+}
+
+
 
 
 
