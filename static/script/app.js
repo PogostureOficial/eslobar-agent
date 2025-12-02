@@ -197,9 +197,7 @@ function updatePreChatMode() {
 // ===============================
 let currentModel = "eslobar-5";  // default
 
-const modelSelectorBtn = document.getElementById("modelSelector");
-const modelDropdown = document.getElementById("modelDropdown");
-const currentModelName = document.getElementById("currentModelName");
+const modelSelectorBtn = modelBtn;   // reutilizamos los ya creados
 
 // Abrir/cerrar dropdown
 modelSelectorBtn.addEventListener("click", () => {
@@ -688,6 +686,7 @@ document.querySelectorAll(".attach-option[data-style]").forEach(opt => {
     opt.insertAdjacentHTML("beforeend", `<img src="static/images/tick.png" class="tick">`);
   });
 });
+
 
 
 
