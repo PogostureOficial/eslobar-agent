@@ -1,0 +1,358 @@
+/* =========================
+   FUENTE + VARIABLES GLOBALES
+   ========================= */
+@font-face {
+  font-family: "OpenAI";
+  src: url("/static/fonts/OpenAISans-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #fff;
+  --surface: #0d0d0f;
+  --surface-2: #111214;
+  --text: #000;
+  --muted: #9b9ba1;
+  --line: #26272e;
+  --hover: #fff;
+  --accent: #8ab4ff;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --t: 0.15s ease;
+  --a: 0s ease;
+}
+
+/* =========================
+   RESET / BASE
+   ========================= */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: "OpenAI", sans-serif;
+  /* font-family: "Segoe UI", system-ui, sans-serif; */
+  display: block;
+  flex-direction: column;
+  overflow-y: auto;
+
+  /* FONDO TIPO CHATGPT */
+  background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)),
+    url("/static/images/bg-blur.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  /* Por si acaso, sin scroll horizontal de toda la página */
+  overflow-x: hidden;
+}
+
+/* En mobile desactivar fixed background */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+}
+
+/* =========================
+   AGENT VIEWER / TARJETAS
+   ========================= */
+
+/* Wrapper gradiente */
+.agent-shell {
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(180deg, #1673ff 0%, #07c2ff 100%);
+}
+
+.agent-inner {
+  background: #121418;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #22262f;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35) inset;
+}
+
+/* Top */
+.agent-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f1116;
+  padding: 10px 14px;
+  border-bottom: 1px solid #22262f;
+}
+
+.agent-tab {
+  display: inline-block;
+  background: #181b23;
+  color: #cfd3dc;
+  border: 1px solid #2c3140;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+/* Área frame */
+.agent-stage {
+  position: relative;
+  background: #0b0c10;
+}
+
+.agent-stage img.frame {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Overlay/cursor/tip (si lo usás por JS) */
+.agent-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.agent-cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transform: translate(-10px, -10px);
+  display: none;
+}
+
+.agent-tip {
+  position: absolute;
+  background: #0b0c10;
+  border: 1px solid var(--line);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  display: none;
+}
+
+/* Barra inferior “exacta” */
+.agent-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #0f1116;
+  border-top: 1px solid #22262f;
+}
+
+.agent-progress {
+  flex: 1;
+  height: 8px;
+  background: #ffffff;
+  opacity: 0.95;
+  border-radius: 999px;
+  position: relative;
+}
+
+.agent-progress-fill {
+  content: "";
+  position: absolute;
+  left: 32px;
+  right: 110px;
+  top: 0;
+  bottom: 0;
+}
+
+.agent-live {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: #9fc7ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.agent-live .dot {
+  width: 10px;
+  height: 10px;
+  background: #1e7bff;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Acciones rápidas debajo del visor */
+.quick-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border-top: 1px dashed var(--line);
+  background: #0f1116;
+}
+
+.quick-actions button {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.quick-actions button:hover {
+  background: var(--hover);
+}
+
+/* ===== Visor EXACTO según maqueta (background PNG) ===== */
+.agent-card {
+  background: url("/static/images/background-agent.png") center/cover no-repeat;
+  border-radius: 26px;
+  padding: 38px 34px 54px 50px;
+}
+
+.agent-frame-wrap {
+  background: #2f2f2f;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.agent-tabbar {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: #222;
+  color: #d9d9d9;
+  border-radius: 14px 14px 10px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  font-size: 13px;
+  z-index: 3;
+}
+
+.agent-tabbar img.favicon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+.agent-tabbar .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(60vw, 420px);
+}
+
+.agent-viewport {
+  position: relative;
+  width: 100%;
+}
+
+.agent-viewport img.frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.agent-meta {
+  display: none;
+}
+
+/* =========================
+   MODAL
+   ========================= */
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 420px);
+  background: #fff;
+  color: #000;
+  border: 1px solid #d4d4d4;
+  border-radius: 16px;
+  padding: 18px 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.modal-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-card p {
+  margin: 0 0 14px;
+  line-height: 1.4;
+  color: #222;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* =========================
+   MÁSCARA INFERIOR
+   ========================= */
+.bottom-mask {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: none;
+  pointer-events: none;
+}
