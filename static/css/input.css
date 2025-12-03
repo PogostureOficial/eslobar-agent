@@ -521,7 +521,21 @@ body.pre-chat .suggestions {
     background-repeat: no-repeat;
     opacity: .8;
   }
+
+   /* Botones */
+   .attach-btn,
+   .send-btn {
+     background: none;
+     border: none;
+     cursor: pointer;
+     width: 46px;
+     height: 34px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
 }
+
 
 
 
