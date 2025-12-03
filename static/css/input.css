@@ -525,16 +525,11 @@ body.pre-chat .suggestions {
    /* Botones */
    .attach-btn,
    .send-btn {
-     background: none;
-     border: none;
-     cursor: pointer;
      width: 46px;
-     height: 34px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
+     margin-left: 15px;
    }
 }
+
 
 
 
