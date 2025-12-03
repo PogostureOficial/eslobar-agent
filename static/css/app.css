@@ -1696,6 +1696,31 @@ body {
 
 }
 
+/* ===== FIJAR ALTURA DEL INPUT PARA QUE NO CAMBIE CON EL PLACEHOLDER ===== */
+@media (max-width: 768px) {
+
+  .input-wrapper {
+    min-height: 44px;           /* altura estable de la píldora */
+    align-items: center;        /* centra verticalmente todo */
+  }
+
+  #input {
+    min-height: 24px;           /* alto mínimo de la línea */
+    line-height: 24px;          /* MISMO alto que el texto */
+    padding-top: 8px;
+    padding-bottom: 8px;        /* 8 + 24 + 8 = 40px aprox. de contenido */
+    font-size: 15px;
+    box-sizing: content-box;
+  }
+
+  #input::placeholder {
+    line-height: 24px;          /* misma línea que el texto normal */
+    font-size: 15px;
+  }
+}
+
+
+
 
 
 
