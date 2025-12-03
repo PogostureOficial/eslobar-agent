@@ -540,6 +540,12 @@ body.pre-chat .suggestions {
     box-shadow: 0 0px 100px rgba(0, 0, 0, 0.3);
 }
 
+.attach-btn {
+  position: relative;
+  z-index: 4;
+}
+
+
 
 
 
