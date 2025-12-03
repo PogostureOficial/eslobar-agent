@@ -413,4 +413,70 @@ body.pre-chat .suggestions {
   }
 }
 
+/* =========================================================
+   PLUS FUERA DEL INPUT (como la 2da imagen)
+   - No requiere cambios de HTML
+   - Mantiene el input como “píldora” y el + como círculo aparte
+   ========================================================= */
+.composer{
+  --plus-size: 44px;   /* diámetro del círculo del + */
+  --plus-gap: 10px;    /* separación entre + y píldora */
+  --plus-offset: calc(var(--plus-size) + var(--plus-gap));
+}
+
+/* La píldora (input) se corre a la derecha para dejar lugar al + */
+.input-wrapper{
+  position: relative; /* referencia para posicionar el + */
+  margin-left: var(--plus-offset);
+  width: min(780px, calc(95% - var(--plus-offset)));
+}
+
+/* Desktop width original, pero restando el espacio del + */
+@media (min-width: 800px){
+  .input-wrapper{
+    width: min(900px, calc(95% - var(--plus-offset)));
+  }
+}
+
+/* Teléfonos chicos */
+@media (max-width: 600px){
+  .input-wrapper{
+    width: calc(95% - var(--plus-offset));
+  }
+}
+
+/* Mobile: conservar tu tamaño, pero restando el + */
+@media (max-width: 768px){
+  .input-wrapper{
+    width: calc(90% - var(--plus-offset));
+    margin-left: var(--plus-offset);
+    border-radius: 999px; /* píldora bien redonda (como la imagen) */
+  }
+}
+
+/* Sacamos el + del flujo: lo “pegamos” afuera a la izquierda */
+.input-wrapper .attach-container{
+  position: absolute;
+  left: calc(-1 * var(--plus-offset));
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo del botón + (usa icon1.png) */
+.attach-btn{
+  width: var(--plus-size);
+  height: var(--plus-size);
+  border-radius: 999px;
+  background: #f3f3f3;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.05);
+}
+
+.attach-btn img{
+  width: 18px;
+  height: 18px;
+}
+
 
