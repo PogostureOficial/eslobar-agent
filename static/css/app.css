@@ -1700,7 +1700,7 @@ body {
 @media (max-width: 768px) {
 
   .input-wrapper {
-    min-height: 44px;           /* altura estable de la píldora */
+    min-height: 14px;           /* altura estable de la píldora */
     align-items: center;        /* centra verticalmente todo */
   }
 
@@ -1718,6 +1718,7 @@ body {
     font-size: 15px;
   }
 }
+
 
 
 
