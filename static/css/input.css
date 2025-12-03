@@ -503,7 +503,25 @@ body.pre-chat .suggestions {
     background-position: center;
     background-repeat: no-repeat;
   }
+
+   /* Ocultar imagen original del micrófono solo en móvil */
+  .mic-btn img {
+    display: none;
+  }
+
+  /* Usar ícono móvil como pseudo-elemento */
+  .mic-btn::before {
+    content: "";
+    display: block;
+    width: 22px;   /* mismo tamaño visual aproximado */
+    height: 22px;
+    background-image: url("/static/images/microfono-mobile.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
+
 
 
 
