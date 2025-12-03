@@ -7,7 +7,7 @@
   flex-direction: column;
   position: relative;
   overflow: visible;
-  padding-bottom: 70px;
+  padding-bottom: 0px;
 }
 
 .messages {
@@ -433,4 +433,5 @@
     display: none;
   }
 }
+
 
