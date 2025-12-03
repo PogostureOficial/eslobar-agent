@@ -525,9 +525,11 @@ body.pre-chat .suggestions {
    /* Botones */
    .send-btn {
      width: 46px;
-     margin-left: 15px;
+     margin-left: -5px;
+     opacity: 0.8;
    }
 }
+
 
 
 
