@@ -1659,11 +1659,11 @@ body {
 @media (max-width: 768px) {
 
   /* Fondo de la zona inferior */
-  .composer {
+ /* .composer {
     background: #f5f5f5;
     padding: 6px 8px 10px;
     align-items: center;
-  }
+  }*/
 
   /* Barra de input (píldora gris clara) */
   .input-wrapper {
@@ -1671,7 +1671,7 @@ body {
     max-width: 600px;
     background: #f3f3f3;
     border-radius: 999px;
-    border: 1px solid #e3e3e3;
+    border: 0px solid #e3e3e3;
     padding: 8px 12px;
     gap: 6px;
     align-items: center;
@@ -1679,24 +1679,7 @@ body {
     box-shadow: none;
   }
 
-  /* Botón "+" redondo blanco */
-  .attach-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 30px;
-    background: #ffffff;
-    border: 0px solid #e3e3e3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
 
-  .attach-btn img {
-    width: 14px;
-    height: 14px;
-    opacity: 0.9;
-  }
 
   /* Input de texto */
   #input {
@@ -1711,49 +1694,9 @@ body {
     font-weight: 400;
   }
 
-  /* Micrófono igual que ahora, sin fondo */
-  .mic-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
 
-  .mic-btn img {
-    width: 18px;
-    height: 18px;
-    opacity: 0.6;
-  }
-
-  /* Botón de enviar: círculo negro a la derecha */
-  .send-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    background: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: none;
-  }
-
-  .send-btn img {
-    width: 18px;
-    height: 18px;
-    opacity: 1 !important;  /* que no quede gris */
-    filter: invert(1);       /* si tu icono es oscuro, lo vuelve blanco */
-  }
-
-  /* Cuando esté deshabilitado, que solo baje la opacidad */
-  .send-btn:disabled {
-    opacity: 0.3;
-  }
 }
+
 
 
 
