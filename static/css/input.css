@@ -513,14 +513,16 @@ body.pre-chat .suggestions {
   .mic-btn::before {
     content: "";
     display: block;
-    width: 22px;   /* mismo tamaño visual aproximado */
-    height: 22px;
+    width: 44px;   /* mismo tamaño visual aproximado */
+    height: 44px;
     background-image: url("/static/images/microfono-mobile.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    opacity: .8;
   }
 }
+
 
 
 
