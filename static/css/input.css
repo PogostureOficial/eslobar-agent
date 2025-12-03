@@ -400,10 +400,10 @@ body.pre-chat .suggestions {
   }
 
   .input-wrapper {
-    width: 100%;
+    width: 90%;
     max-width: 600px;
     background: #f3f3f3;
-    border-radius: 999px;
+    border-radius: 15px;
     border: 0px solid #e3e3e3;
     padding: 8px 12px;
     gap: 6px;
@@ -412,4 +412,5 @@ body.pre-chat .suggestions {
     box-shadow: none;
   }
 }
+
 
