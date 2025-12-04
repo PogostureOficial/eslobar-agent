@@ -548,18 +548,24 @@ body.pre-chat .suggestions {
 /* =========================
    BOTÓN "+" LIQUID GLASS
    ========================= */
+
+
 .attach-btn {
-  background: rgba(255, 255, 255, 0.25); 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.25);
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  overflow: hidden; /* clave */
 }
+
+.attach-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: inherit;
+  z-index: -1;
+}
+
 
 
 
