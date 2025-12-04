@@ -495,8 +495,8 @@ body.pre-chat .suggestions {
   .attach-btn::before {
     content: "";
     display: block;
-    width: 45px;    /* mismo tamaño que antes */
-    height: 45px;
+    width: 55px;    /* mismo tamaño que antes */
+    height: 55px;
     background-image: url("/static/images/icon1-mobile.png");
     background-size: contain;
     background-position: center;
@@ -558,6 +558,7 @@ body.pre-chat .suggestions {
     rgba(255,255,255,1) 100%
   );
 }
+
 
 
 
