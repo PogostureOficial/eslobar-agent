@@ -470,11 +470,11 @@ body.pre-chat .suggestions {
   width: var(--plus-size);
   height: var(--plus-size);
   border-radius: 999px;
-  background: rgba(233, 233, 233, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 1);
-  box-shadow: 0 0px 50px rgba(0, 0, 0, 1);
+  box-shadow: 0 0px 50px rgba(0, 0, 0, 0.1);
 }
 
 .attach-btn img{
@@ -533,11 +533,11 @@ body.pre-chat .suggestions {
    INPUT LIQUID GLASS
    ========================= */
 .input-wrapper {
-    background: rgba(233, 233, 233, 0.85);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 1);
-    box-shadow: 0 0px 100px rgba(0, 0, 0, 1);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.3);
 }
 
 .bottom-mask {
@@ -558,6 +558,7 @@ body.pre-chat .suggestions {
     rgba(255,255,255,1) 100%
   );
 }
+
 
 
 
