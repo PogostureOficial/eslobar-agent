@@ -73,7 +73,7 @@
 
 /* Placeholder (base) */
 #input::placeholder {
-  color: #878787;
+  color: #545454;
   font-size: 19px;
   font-family: "OpenAI", sans-serif;
   font-weight: 400;
@@ -533,38 +533,13 @@ body.pre-chat .suggestions {
    INPUT LIQUID GLASS
    ========================= */
 .input-wrapper {
-    background: rgba(243, 243, 243, 0.6);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(233, 233, 233, 0.85);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 1);
-    box-shadow: 0 0px 100px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0px 100px rgba(0, 0, 0, 1);
 }
 
-.attach-btn {
-  position: relative;
-  z-index: 4;
-}
-
-/* =========================
-   BOTÓN "+" LIQUID GLASS
-   ========================= */
-
-
-.attach-btn {
-  position: relative;
-  overflow: hidden; /* clave */
-}
-
-.attach-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: inherit;
-  z-index: -1;
-}
 
 
 
