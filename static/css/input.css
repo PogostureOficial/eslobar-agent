@@ -3,7 +3,7 @@
    ========================= */
 .composer {
   position: fixed;
-  bottom: 19px;
+  bottom: 10px;
   width: 100%;
   background: transparent !important;
   padding: 4px 0 2px;
@@ -558,6 +558,7 @@ body.pre-chat .suggestions {
     rgba(255,255,255,1) 100%
   );
 }
+
 
 
 
