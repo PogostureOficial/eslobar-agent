@@ -470,16 +470,16 @@ body.pre-chat .suggestions {
   width: var(--plus-size);
   height: var(--plus-size);
   border-radius: 999px;
-  background: rgba(243, 243, 243, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(233, 233, 233, 0.85);
+  backdrop-filter: blur(px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 1);
-  box-shadow: 0 0px 100px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0px 50px rgba(0, 0, 0, 1);
 }
 
 .attach-btn img{
-  width: 35px;
-  height: 35px;
+  width: 41px;
+  height: 41px;
 }
 
 /* =========================
@@ -539,6 +539,7 @@ body.pre-chat .suggestions {
     border: 1px solid rgba(255, 255, 255, 1);
     box-shadow: 0 0px 100px rgba(0, 0, 0, 1);
 }
+
 
 
 
