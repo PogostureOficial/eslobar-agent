@@ -49,7 +49,7 @@ body {
   overflow-y: auto;
 
   /* FONDO TIPO CHATGPT */
-  background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)),
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
     url("/static/images/bg-blur.jpg");
   background-size: cover;
   background-position: center;
@@ -356,3 +356,4 @@ body {
   background: none;
   pointer-events: none;
 }
+
